@@ -63,12 +63,12 @@ const formSchema = z.object({
 });
 
 const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?: string }[] = [
-  { label: "My Story",           src: "/videos/v1.mp4", poster: "/videos/v1-poster.jpg" },
+  { label: "Wake Up Beautiful",  src: "/videos/v6.mp4", poster: "/videos/v6-poster.jpg" },
   { label: "Skin Transformation",src: "/videos/v2.mp4", poster: "/videos/v2-poster.jpg" },
   { label: "The Process",        src: "/videos/v3.mp4", poster: "/videos/v3-poster.jpg" },
   { label: "Brow Results",       src: "/videos/v4.mp4", poster: "/videos/v4-poster.jpg" },
   { label: "Nano Blading",       src: "/videos/v5.mp4", poster: "/videos/v5-poster.jpg" },
-  { label: "Wake Up Beautiful",  src: "/videos/v6.mp4", poster: "/videos/v6-poster.jpg" },
+  { label: "My Story",           src: "/videos/v1.mp4", poster: "/videos/v1-poster.jpg" },
 ];
 
 const SERVICES = [
