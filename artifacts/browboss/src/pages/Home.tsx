@@ -584,17 +584,18 @@ export default function Home() {
       </div>
 
       {/* Services Grid */}
-      <section id="services" className="py-14 md:py-20 bg-white">
+      <section id="services" className="pt-10 pb-16 md:pt-12 md:pb-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Our Signature Treatments</h2>
-            <div className="w-12 h-px bg-black mx-auto"></div>
+            <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-4">La Jolla Brow &amp; Beauty</p>
+            <h2 className="text-5xl md:text-6xl font-serif font-light mb-3">Our Signature Treatments</h2>
+            <p className="text-sm text-zinc-400 tracking-wide">Eight services. One studio. Crafted for you.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
