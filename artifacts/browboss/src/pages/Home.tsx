@@ -77,10 +77,10 @@ const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?
 const SERVICES = [
   { name: "Microblading & Shading",     price: "from $600", image: "/videos/v6-f25.jpg" },
   { name: "Ombre Powder Brows",          price: "from $650", image: "/images/powder-brows.jpg" },
-  { name: "Lip Blushing",               price: "from $550", image: "/videos/v12-f6.jpg" },
+  { name: "Lip Blushing",               price: "from $550", image: "/videos/v12-f1.jpg" },
   { name: "Lash Lift",                  price: "from $95",  image: "/videos/v10-f3.jpg", objectPosition: "top" },
   { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
-  { name: "Brow Shaping",               price: "from $45",  image: "/videos/v11-f6.jpg", objectPosition: "top" },
+  { name: "Brow Shaping",               price: "from $45",  image: "/videos/v11-f3.jpg", objectPosition: "top" },
   { name: "Scalp Micropigmentation SMP",price: "from $800", image: "/videos/v8-f5.jpg" },
   { name: "Custom Facials",             price: "from $120", image: "/videos/v9-f4.jpg" },
 ];
