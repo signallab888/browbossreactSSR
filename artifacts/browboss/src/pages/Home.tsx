@@ -89,9 +89,9 @@ const HERO_VIDEOS_DESKTOP = [
   "/videos/v6.mp4", // Wake Up Beautiful
 ];
 
-const HERO_VIDEOS_MOBILE = [
-  "/videos/v5.mp4", // Nano Blading
-  "/videos/v6.mp4", // Wake Up Beautiful
+const HERO_POSTERS_MOBILE = [
+  "/videos/v5-poster.jpg", // Nano Blading
+  "/videos/v6-poster.jpg", // Wake Up Beautiful
 ];
 
 function HeroSection({ bookingUrl }: { bookingUrl: string }) {
@@ -118,8 +118,8 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
     const t = setInterval(() => {
       setMobFading(true);
       setTimeout(() => {
-        setMobIdx(p => (p + 1) % HERO_VIDEOS_MOBILE.length);
-        setMobNext(p => (p + 1) % HERO_VIDEOS_MOBILE.length);
+        setMobIdx(p => (p + 1) % HERO_POSTERS_MOBILE.length);
+        setMobNext(p => (p + 1) % HERO_POSTERS_MOBILE.length);
         setMobFading(false);
       }, 1200);
     }, 7000);
@@ -129,27 +129,27 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   return (
     <section className="relative md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
 
-      {/* ── MOBILE videos: Nano Blading & Wake Up Beautiful ── */}
-      <video
+      {/* ── MOBILE posters: static frames cycling ── */}
+      <img
         key={`mob-a-${mobIdx}`}
-        src={HERO_VIDEOS_MOBILE[mobIdx]}
-        autoPlay muted loop playsInline
+        src={HERO_POSTERS_MOBILE[mobIdx]}
+        alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: mobFading ? 0 : 1, objectPosition: "center 60%" }}
         aria-hidden="true"
       />
-      <video
+      <img
         key={`mob-b-${mobNext}`}
-        src={HERO_VIDEOS_MOBILE[mobNext]}
-        autoPlay muted loop playsInline
+        src={HERO_POSTERS_MOBILE[mobNext]}
+        alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: mobFading ? 1 : 0, objectPosition: "center 60%" }}
         aria-hidden="true"
       />
-      {/* Mobile gradient — heavy white top (kills video text) fades to soft at center */}
+      {/* Mobile gradient — heavy white top fades to soft at center */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none z-[1]"
-        style={{ background: "linear-gradient(to bottom, white 0%, white 35%, rgba(255,255,255,0.45) 58%, rgba(255,255,255,0.80) 100%)" }}
+        style={{ background: "linear-gradient(to bottom, white 0%, white 30%, rgba(255,255,255,0.35) 55%, rgba(255,255,255,0.75) 100%)" }}
       />
 
       {/* ── DESKTOP videos ── */}
