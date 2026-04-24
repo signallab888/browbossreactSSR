@@ -456,16 +456,40 @@ export default function Home() {
       <HeroSection bookingUrl={bookingUrl} />
 
       {/* Trust Bar */}
-      <section className="bg-zinc-950 text-white py-3 border-b border-zinc-900">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] md:text-xs tracking-[0.2em] uppercase text-center font-medium">
-            <span className="flex items-center gap-1.5"><Star className="w-3 h-3 fill-white" /> 4.9 on Google · 500+ Reviews</span>
-            <span className="hidden md:inline text-zinc-700">|</span>
-            <span>Licensed &amp; Insured</span>
-            <span className="hidden md:inline text-zinc-700">|</span>
-            <span>10+ Years · 8,000+ Procedures</span>
-            <span className="hidden md:inline text-zinc-700">|</span>
-            <span>La Jolla, San Diego</span>
+      <section className="bg-zinc-950 text-white border-b border-zinc-900 overflow-hidden">
+        {/* Mobile: scrolling marquee */}
+        <div className="md:hidden py-3 overflow-hidden">
+          <div className="marquee-track text-[10px] tracking-[0.28em] uppercase font-medium text-zinc-300 whitespace-nowrap">
+            {[0, 1].map(i => (
+              <span key={i} className="flex items-center gap-0">
+                <span className="flex items-center gap-2 px-6"><Star className="w-2.5 h-2.5 fill-zinc-300 shrink-0" />4.9 on Google</span>
+                <span className="text-zinc-700 px-1">◆</span>
+                <span className="px-6">500+ Reviews</span>
+                <span className="text-zinc-700 px-1">◆</span>
+                <span className="px-6">Licensed &amp; Insured</span>
+                <span className="text-zinc-700 px-1">◆</span>
+                <span className="px-6">10+ Years Experience</span>
+                <span className="text-zinc-700 px-1">◆</span>
+                <span className="px-6">8,000+ Procedures</span>
+                <span className="text-zinc-700 px-1">◆</span>
+                <span className="px-6">La Jolla, San Diego</span>
+                <span className="text-zinc-700 px-1">◆</span>
+              </span>
+            ))}
+          </div>
+        </div>
+        {/* Desktop: static row */}
+        <div className="hidden md:block py-3">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-center gap-x-8 text-[10px] md:text-xs tracking-[0.2em] uppercase text-center font-medium">
+              <span className="flex items-center gap-1.5"><Star className="w-3 h-3 fill-white" /> 4.9 on Google · 500+ Reviews</span>
+              <span className="text-zinc-700">|</span>
+              <span>Licensed &amp; Insured</span>
+              <span className="text-zinc-700">|</span>
+              <span>10+ Years · 8,000+ Procedures</span>
+              <span className="text-zinc-700">|</span>
+              <span>La Jolla, San Diego</span>
+            </div>
           </div>
         </div>
       </section>
