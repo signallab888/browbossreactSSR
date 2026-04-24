@@ -90,8 +90,10 @@ const HERO_VIDEOS_DESKTOP = [
 ];
 
 const HERO_POSTERS_MOBILE = [
-  "/videos/v5-poster.jpg", // Nano Blading
-  "/videos/v6-poster.jpg", // Wake Up Beautiful
+  "/videos/v5-poster.jpg",   // Nano Blading — before portrait
+  "/videos/v4-poster-a.jpg", // Brow Results — after shot, clean brows
+  "/videos/v6-poster.jpg",   // Wake Up Beautiful — brow mapping
+  "/videos/v4-poster-b.jpg", // Brow Results — editorial after shot
 ];
 
 function HeroSection({ bookingUrl }: { bookingUrl: string }) {
