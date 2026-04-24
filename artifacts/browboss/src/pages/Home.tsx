@@ -1106,7 +1106,9 @@ export default function Home() {
               <ul className="space-y-4 text-zinc-400">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-                  <span>La Jolla<br />San Diego, CA</span>
+                  <a href="https://maps.google.com/?q=1150+Silverado+Street+Suite+308+La+Jolla+CA+92037" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+                    1150 Silverado St Suite 308<br />La Jolla, CA 92037
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 shrink-0" />
@@ -1121,12 +1123,16 @@ export default function Home() {
 
             <div>
               <h4 className="text-black font-medium tracking-widest uppercase mb-6 text-xs">Hours</h4>
-              <ul className="space-y-4 text-zinc-400">
-                <li className="flex justify-between">
-                  <span>Mon - Sat</span>
-                  <span>9:00 AM - 7:00 PM</span>
+              <ul className="space-y-3 text-zinc-400 text-sm">
+                <li className="flex justify-between gap-6">
+                  <span>Tue – Sat</span>
+                  <span>9AM – 5PM</span>
                 </li>
-                <li className="flex justify-between text-zinc-300">
+                <li className="flex justify-between gap-6">
+                  <span>Monday</span>
+                  <span className="tracking-wider text-xs">By Appt</span>
+                </li>
+                <li className="flex justify-between gap-6 text-zinc-300">
                   <span>Sunday</span>
                   <span>Closed</span>
                 </li>
