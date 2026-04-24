@@ -1303,12 +1303,12 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 max-w-7xl mx-auto">
               {[
-                "/images/insta-1.png",
-                "/images/service-brows.png",
-                "/images/insta-2.png",
-                "/images/value-brows.png",
-                "/images/service-lashes.png",
-                "/images/insta-1.png"
+                "/videos/v14-f35.jpg",
+                "/images/ba-brow-after.jpg",
+                "/videos/v13-f3.jpg",
+                "/videos/v12-f2.jpg",
+                "/videos/v7-f17.jpg",
+                "/images/leslie-founder.jpg"
               ].map((src, i) => (
                 <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" key={i} className="relative aspect-square overflow-hidden group block bg-zinc-200">
                   <img 
