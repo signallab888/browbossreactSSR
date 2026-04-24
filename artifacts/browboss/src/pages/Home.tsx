@@ -90,10 +90,10 @@ const HERO_VIDEOS_DESKTOP = [
 ];
 
 const HERO_POSTERS_MOBILE = [
-  "/videos/v5-poster.jpg",   // Nano Blading — before portrait
-  "/videos/v4-poster-a.jpg", // Brow Results — after shot, clean brows
-  "/videos/v6-poster.jpg",   // Wake Up Beautiful — brow mapping
-  "/videos/v4-poster-b.jpg", // Brow Results — editorial after shot
+  { src: "/videos/v5-poster.jpg",   pos: "65% 22%" }, // Nano Blading — shifted right to reveal more face
+  { src: "/videos/v4-poster-a.jpg", pos: "62% 22%" }, // Brow Results — shifted right
+  { src: "/videos/v6-poster.jpg",   pos: "center 22%" }, // Wake Up Beautiful — brow mapping (centered)
+  { src: "/videos/v4-poster-b.jpg", pos: "62% 22%" }, // Brow Results — shifted right
 ];
 
 function HeroSection({ bookingUrl }: { bookingUrl: string }) {
@@ -134,18 +134,18 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
       {/* ── MOBILE posters: static frames cycling ── */}
       <img
         key={`mob-a-${mobIdx}`}
-        src={HERO_POSTERS_MOBILE[mobIdx]}
+        src={HERO_POSTERS_MOBILE[mobIdx].src}
         alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: mobFading ? 0 : 1, objectPosition: "center 22%" }}
+        style={{ opacity: mobFading ? 0 : 1, objectPosition: HERO_POSTERS_MOBILE[mobIdx].pos }}
         aria-hidden="true"
       />
       <img
         key={`mob-b-${mobNext}`}
-        src={HERO_POSTERS_MOBILE[mobNext]}
+        src={HERO_POSTERS_MOBILE[mobNext].src}
         alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: mobFading ? 1 : 0, objectPosition: "center 22%" }}
+        style={{ opacity: mobFading ? 1 : 0, objectPosition: HERO_POSTERS_MOBILE[mobNext].pos }}
         aria-hidden="true"
       />
       {/* Mobile gradient — left white for text, image more visible on right */}
