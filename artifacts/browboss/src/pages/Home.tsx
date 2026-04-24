@@ -1024,7 +1024,7 @@ export default function Home() {
             <p className="text-zinc-400 text-sm tracking-wide">Tap to reveal</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
             {[
               {
                 label: "Microblading",
@@ -1043,6 +1043,12 @@ export default function Home() {
                 before: "/images/ba-lash-before.jpg",
                 after:  "/images/ba-lash-after.jpg",
                 posB: "center", posA: "top",
+              },
+              {
+                label: "Alopecia · Brow Restoration",
+                before: "/images/ba-alopecia-before.jpg",
+                after:  "/images/ba-alopecia-after.jpg",
+                posB: "top", posA: "top",
               },
             ].map((pair) => (
               <BeforeAfterCard key={pair.label} {...pair} />
