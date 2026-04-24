@@ -62,14 +62,13 @@ const formSchema = z.object({
   smsConsent: z.boolean().default(false),
 });
 
-// Add Instagram post/reel URLs here (format: https://www.instagram.com/p/SHORTCODE/)
-// or mp4 video URLs via `src`. Leave `instagramUrl` and `src` empty for a placeholder.
 const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?: string }[] = [
-  { label: "Microblading", instagramUrl: "https://www.instagram.com/p/DMfmfGBxOXq/" },
-  { label: "Brow Work", instagramUrl: "https://www.instagram.com/p/DJk11-VpR5V/" },
-  { label: "Results", instagramUrl: "https://www.instagram.com/p/DEjPVkjxO2y/" },
-  { label: "Transformation", instagramUrl: "https://www.instagram.com/p/DBRpq-kSyfR/" },
-  { label: "Before & After", instagramUrl: "https://www.instagram.com/p/C7E7K6rJf7T/" },
+  { label: "My Story", src: "/videos/v1.mp4" },
+  { label: "Skin Transformation", src: "/videos/v2.mp4" },
+  { label: "The Process", src: "/videos/v3.mp4" },
+  { label: "Brow Results", src: "/videos/v4.mp4" },
+  { label: "Nano Blading", src: "/videos/v5.mp4" },
+  { label: "Wake Up Beautiful", src: "/videos/v6.mp4" },
 ];
 
 const SERVICES = [
@@ -126,8 +125,12 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
           title={`Instagram post — ${label}`}
         />
       ) : src ? (
-        /* ── MP4 video ── */
-        <div onClick={handlePlay} className="w-full h-full cursor-pointer">
+        /* ── MP4 video — autoplay muted on hover, unmute on click ── */
+        <div
+          className="w-full h-full"
+          onMouseEnter={() => { videoRef.current?.play(); setIsPlaying(true); }}
+          onMouseLeave={() => { videoRef.current?.pause(); videoRef.current && (videoRef.current.currentTime = 0); setIsPlaying(false); }}
+        >
           <video
             ref={videoRef}
             src={src}
@@ -135,20 +138,24 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
             muted
             playsInline
             loop
+            preload="metadata"
             className="w-full h-full object-cover"
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           />
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-              {isPlaying
-                ? <span className="flex gap-1"><span className="w-1 h-5 bg-white rounded-sm"/><span className="w-1 h-5 bg-white rounded-sm"/></span>
-                : <Play className="w-6 h-6 text-white ml-1"/>
-              }
+          {/* Play indicator shown when not hovering */}
+          <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none ${isPlaying ? "opacity-0" : "opacity-100"}`}>
+            <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+              <Play className="w-5 h-5 text-white ml-0.5"/>
             </div>
           </div>
+          {/* Unmute button while playing */}
           {isPlaying && (
-            <button onClick={toggleMute} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center z-10" data-testid={`button-mute-${slug}`}>
+            <button
+              onClick={toggleMute}
+              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center z-10"
+              data-testid={`button-mute-${slug}`}
+            >
               {isMuted ? <VolumeX className="w-4 h-4 text-white"/> : <Volume2 className="w-4 h-4 text-white"/>}
             </button>
           )}
