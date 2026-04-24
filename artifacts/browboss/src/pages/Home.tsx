@@ -719,9 +719,10 @@ export default function Home() {
               className="relative aspect-[3/4] max-w-md mx-auto w-full"
             >
               <img 
-                src="/images/value-brows.png" 
-                alt="Perfect Brows" 
-                className="w-full h-full object-cover grayscale"
+                src="/images/value-model.jpg" 
+                alt="Perfect microbladed brows" 
+                className="w-full h-full object-cover"
+                style={{ objectPosition: "top" }}
               />
             </motion.div>
             <motion.div 
