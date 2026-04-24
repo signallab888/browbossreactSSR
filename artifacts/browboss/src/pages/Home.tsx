@@ -511,10 +511,6 @@ export default function Home() {
           <p className="font-serif font-light text-zinc-700 text-lg leading-relaxed mb-3">
             Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
           </p>
-          <div className="flex md:justify-center items-center gap-3 mt-4">
-            <span className="w-8 h-px bg-black/20" />
-            <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400">Cherry · Afterpay · Klarna — from $50/mo</p>
-          </div>
         </div>
       </div>
 
