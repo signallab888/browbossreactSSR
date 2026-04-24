@@ -296,12 +296,8 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
           title={`Instagram post — ${label}`}
         />
       ) : src ? (
-        /* ── MP4 video — autoplay muted on hover, unmute on click ── */
-        <div
-          className="w-full h-full"
-          onMouseEnter={() => { videoRef.current?.play(); setIsPlaying(true); }}
-          onMouseLeave={() => { videoRef.current?.pause(); videoRef.current && (videoRef.current.currentTime = 0); setIsPlaying(false); }}
-        >
+        /* ── MP4 video — play only on explicit click ── */
+        <div className="w-full h-full cursor-pointer" onClick={handlePlay}>
           <video
             ref={videoRef}
             src={src}
@@ -309,12 +305,18 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
             muted
             playsInline
             loop
-            preload="metadata"
+            preload="none"
             className="w-full h-full object-cover"
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           />
-          {/* Play indicator shown when not hovering */}
+          {/* Cover overlay with play button — visible until user clicks play */}
+          {!isPlaying && poster && (
+            <div className="absolute inset-0">
+              <img src={poster} alt={label} className="w-full h-full object-cover" />
+            </div>
+          )}
+          {/* Play button */}
           <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none ${isPlaying ? "opacity-0" : "opacity-100"}`}>
             <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
               <Play className="w-5 h-5 text-white ml-0.5"/>
