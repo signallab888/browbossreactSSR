@@ -593,7 +593,7 @@ export default function Home() {
             variants={fadeIn}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Our Services</h2>
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">Our Signature Treatments</h2>
             <div className="w-12 h-px bg-black mx-auto"></div>
           </motion.div>
 
