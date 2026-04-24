@@ -66,6 +66,7 @@ const formSchema = z.object({
 
 const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?: string }[] = [
   { label: "Wake Up Beautiful",  src: "/videos/v6.mp4", poster: "/videos/v6-poster.jpg" },
+  { label: "Lip Blushing & Lash Lift", src: "/videos/v7.mp4", poster: "/videos/v7-f26.jpg" },
   { label: "Skin Transformation",src: "/videos/v2.mp4", poster: "/videos/v2-poster.jpg" },
   { label: "The Process",        src: "/videos/v3.mp4", poster: "/videos/v3-poster.jpg" },
   { label: "Brow Results",       src: "/videos/v4.mp4", poster: "/videos/v4-poster.jpg" },
@@ -76,9 +77,9 @@ const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?
 const SERVICES = [
   { name: "Microblading & Shading",     price: "from $600", image: "/videos/v6-f25.jpg" },
   { name: "Ombre Powder Brows",          price: "from $650", image: "/videos/v6-f30.jpg" },
-  { name: "Lip Blushing",               price: "from $550", image: "/videos/v4-poster.jpg" },
-  { name: "Lash Lift",                  price: "from $95",  image: "/videos/v5-f6.jpg" },
-  { name: "Brow Lamination",            price: "from $85",  image: "/videos/v5-f2.jpg" },
+  { name: "Lip Blushing",               price: "from $550", image: "/videos/v7-f23.jpg" },
+  { name: "Lash Lift",                  price: "from $95",  image: "/videos/v7-f18.jpg" },
+  { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
   { name: "Brow Shaping",               price: "from $45",  image: "/videos/v6-f5.jpg" },
   { name: "Scalp Micropigmentation SMP",price: "from $800", image: "/videos/v6-f10.jpg" },
   { name: "Custom Facials",             price: "from $120", image: "/videos/v3-f5.jpg" },
