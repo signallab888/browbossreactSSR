@@ -439,6 +439,26 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground">
+
+      {/* Mobile Sticky Call Bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex border-t border-zinc-200 bg-white shadow-[0_-2px_16px_rgba(0,0,0,0.08)]">
+        <a
+          href="tel:+18583220010"
+          className="flex-1 flex items-center justify-center gap-2 py-4 bg-black text-white text-sm font-medium tracking-widest uppercase active:bg-zinc-800 transition-colors"
+        >
+          <Phone className="w-4 h-4" />
+          Call Now
+        </a>
+        <a
+          href="https://square.site/book/LF5CXE2RGFHEF/browboss-la-jolla-ca"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-4 bg-white text-black text-sm font-medium tracking-widest uppercase border-l border-zinc-200 active:bg-zinc-50 transition-colors"
+        >
+          Book Now
+        </a>
+      </div>
+
       {/* Sticky Header */}
       <header
         className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-zinc-100 py-4 transition-all duration-300"
@@ -1327,7 +1347,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white text-zinc-500 py-16 md:py-24 font-light text-sm border-t border-zinc-100">
+      <footer className="bg-white text-zinc-500 pt-16 pb-24 md:py-24 font-light text-sm border-t border-zinc-100">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-12 border-b border-zinc-100 pb-16 mb-12">
             <div className="md:col-span-1">
