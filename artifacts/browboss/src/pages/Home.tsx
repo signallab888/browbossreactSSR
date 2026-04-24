@@ -282,52 +282,97 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden bg-black">
-        {/* Full photo background */}
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://admin.browboss.com/public/images/banner/1584479041.jpg')" }}
-        />
-        {/* Fallback second photo if first fails */}
-        <img 
-          src="https://admin.browboss.com/public/images/banner/1584479041.jpg"
-          className="hidden"
-          onError={(e) => {
-            const hero = e.currentTarget.closest('section');
-            const bg = hero?.querySelector<HTMLElement>('[style*="background-image"]');
-            if (bg) bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=2074&auto=format&fit=crop')";
-          }}
-          alt=""
-        />
-        {/* Dark overlay — 50% so photo is clearly visible but text stays readable */}
-        <div className="absolute inset-0 z-[1] bg-black/50" />
+      <section className="relative min-h-[100dvh] flex items-end overflow-hidden bg-black" data-testid="hero-section">
         
-        <div className="container relative z-10 mx-auto px-4 text-center text-white max-w-4xl" style={{zIndex: 10}}>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.p variants={fadeIn} className="text-xs md:text-sm font-medium tracking-[0.3em] uppercase mb-6 text-zinc-300">
-              LA JOLLA • SAN DIEGO
-            </motion.p>
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl lg:text-8xl font-serif mb-8 leading-tight">
-              Effortless Beauty,<br />Every Day
-            </motion.h1>
-            <motion.p variants={fadeIn} className="text-lg md:text-xl text-zinc-300 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-              San Diego's premier studio for microblading, permanent makeup, lash lifts, and brows that wake up with you.
-            </motion.p>
-            <motion.div variants={fadeIn} className="flex flex-col items-center gap-4">
-              <Button asChild size="lg" className="bg-white text-black hover:bg-zinc-200 h-14 px-8 text-base tracking-wide uppercase font-medium rounded-none">
-                <a href={bookingUrl} target="_blank" rel="noopener noreferrer" data-testid="button-hero-book">
-                  Book Your Free Consultation
+        {/* Subtle video texture — plays silently at low opacity */}
+        <video
+          autoPlay muted loop playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.18 }}
+          aria-hidden="true"
+        >
+          <source src="/videos/v5.mp4" type="video/mp4" />
+        </video>
+
+        {/* Layered gradients for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 pointer-events-none" />
+
+        {/* Editorial content — left-aligned, bottom-anchored */}
+        <div className="relative z-10 w-full pb-20 md:pb-28 pt-32">
+          <div className="container mx-auto px-6 md:px-12 max-w-7xl">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              className="max-w-3xl"
+            >
+              {/* Location tag */}
+              <motion.div variants={fadeIn} className="flex items-center gap-3 mb-10">
+                <span className="block w-8 h-px bg-white/40" />
+                <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/50">
+                  La Jolla · San Diego
+                </p>
+              </motion.div>
+
+              {/* Main headline — editorial, large, light weight */}
+              <motion.h1
+                variants={fadeIn}
+                className="font-serif font-light text-white leading-[1.05] mb-8"
+                style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
+              >
+                The Art<br />
+                <em className="not-italic text-white/70">of</em> Perfect<br />
+                Brows.
+              </motion.h1>
+
+              {/* Thin rule */}
+              <motion.div variants={fadeIn} className="w-16 h-px bg-white/20 mb-8" />
+
+              {/* Subtext */}
+              <motion.p
+                variants={fadeIn}
+                className="text-base md:text-lg text-white/55 font-light leading-relaxed max-w-md mb-12"
+              >
+                Precision microblading, permanent makeup &amp; luxury beauty treatments in La Jolla — crafted for faces that deserve the finest.
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-5">
+                <a
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-hero-book"
+                  className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-100 transition-colors duration-200"
+                >
+                  Book a Consultation
                 </a>
-              </Button>
-              <p className="text-sm text-zinc-400 font-light">
-                Pay over time with Cherry, Afterpay or Klarna — as low as $50/month
-              </p>
+                <button
+                  onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                  className="inline-flex items-center gap-2 text-white/50 text-[11px] tracking-[0.25em] uppercase font-medium hover:text-white/80 transition-colors duration-200 group"
+                >
+                  See Services
+                  <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
+                </button>
+              </motion.div>
+
+              {/* Financing note */}
+              <motion.p variants={fadeIn} className="mt-6 text-[11px] text-white/30 tracking-wider uppercase">
+                Cherry · Afterpay · Klarna — from $50/mo
+              </motion.p>
             </motion.div>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-2 opacity-40">
+          <span className="text-[9px] tracking-[0.3em] uppercase text-white rotate-90 origin-center translate-y-3">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-px h-12 bg-gradient-to-b from-white to-transparent"
+          />
         </div>
       </section>
 
