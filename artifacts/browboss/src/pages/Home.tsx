@@ -15,7 +15,9 @@ import {
   ArrowRight,
   Play,
   Volume2,
-  VolumeX
+  VolumeX,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -359,6 +361,13 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
+  const galleryScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollGallery = (dir: "left" | "right") => {
+    const el = galleryScrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir === "right" ? 340 : -340, behavior: "smooth" });
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -554,56 +563,95 @@ export default function Home() {
       </section>
 
       {/* Work Showcase — Vertical Video Reels */}
-      <section id="gallery" className="py-20 md:py-28 bg-zinc-50 overflow-hidden border-t border-zinc-100">
-        <div className="container mx-auto px-4 mb-10">
+      <section id="gallery" className="py-20 md:py-32 bg-white overflow-hidden border-t border-zinc-100">
+
+        {/* Header */}
+        <div className="container mx-auto px-6 md:px-10 mb-10 md:mb-14">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeIn}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-4"
+            className="flex flex-col md:flex-row md:items-end justify-between gap-6"
           >
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-zinc-400 mb-3">Our Work</p>
-              <h2 className="text-4xl md:text-5xl font-serif text-black leading-tight">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-8 h-px bg-black/25" />
+                <p className="text-[10px] tracking-[0.38em] uppercase text-zinc-400">Our Work</p>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-serif text-black leading-[1.05]">
                 See the<br />Transformation
               </h2>
             </div>
-            <p className="text-zinc-400 text-sm max-w-xs leading-relaxed">
-              Real procedures, real results. Hover any clip to play.
-            </p>
+
+            <div className="flex flex-col gap-5 items-start md:items-end">
+              <p className="text-zinc-400 text-sm max-w-[200px] leading-relaxed md:text-right font-light">
+                Real procedures, real results.<br className="hidden md:block" /> Tap any clip to play.
+              </p>
+              {/* Desktop scroll arrows */}
+              <div className="hidden md:flex items-center gap-2">
+                <button
+                  onClick={() => scrollGallery("left")}
+                  aria-label="Scroll left"
+                  className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center hover:border-black transition-colors group"
+                >
+                  <ChevronLeft className="w-4 h-4 text-zinc-400 group-hover:text-black transition-colors" />
+                </button>
+                <button
+                  onClick={() => scrollGallery("right")}
+                  aria-label="Scroll right"
+                  className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center hover:border-black transition-colors group"
+                >
+                  <ChevronRight className="w-4 h-4 text-zinc-400 group-hover:text-black transition-colors" />
+                </button>
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Horizontally scrollable video strip */}
-        <div className="flex gap-4 px-4 md:px-8 overflow-x-auto pb-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {WORK_VIDEOS.map((video, i) => (
-            <motion.div
-              key={video.label}
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="snap-start"
-            >
-              <VideoCard {...video} />
-            </motion.div>
-          ))}
+        {/* Scrollable strip with edge fades */}
+        <div className="relative">
+          {/* Edge fade — left */}
+          <div className="absolute left-0 top-0 bottom-4 w-12 md:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          {/* Edge fade — right */}
+          <div className="absolute right-0 top-0 bottom-4 w-12 md:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          <div
+            ref={galleryScrollRef}
+            className="flex gap-5 px-6 md:px-16 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {WORK_VIDEOS.map((video, i) => (
+              <motion.div
+                key={video.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.07, duration: 0.55, ease: "easeOut" }}
+                className="snap-start"
+              >
+                <VideoCard {...video} />
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        <div className="container mx-auto px-4 mt-8">
+        {/* Footer row */}
+        <div className="container mx-auto px-6 md:px-10 mt-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="w-6 h-px bg-zinc-200" />
+            <span className="text-[10px] tracking-[0.3em] uppercase text-zinc-300">{WORK_VIDEOS.length} clips</span>
+          </div>
           <a
             href="https://www.instagram.com/browbosslajolla"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-black text-sm tracking-widest uppercase transition-colors"
+            className="inline-flex items-center gap-2 text-zinc-400 hover:text-black text-[11px] tracking-[0.22em] uppercase transition-colors"
             data-testid="link-instagram-gallery"
           >
-            <Instagram className="w-4 h-4" />
-            Follow @browbosslajolla for more
-            <ArrowRight className="w-4 h-4" />
+            <Instagram className="w-3.5 h-3.5" />
+            @browbosslajolla
+            <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>
       </section>
