@@ -358,6 +358,33 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
   );
 }
 
+function CountUp({ to, suffix = "", decimals = 0 }: { to: number; suffix?: string; decimals?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const duration = 1400;
+        const steps = 60;
+        const increment = to / steps;
+        let current = 0;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= to) { setCount(to); clearInterval(timer); }
+          else { setCount(decimals > 0 ? parseFloat(current.toFixed(decimals)) : Math.round(current)); }
+        }, duration / steps);
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [to, decimals]);
+  return <span ref={ref}>{decimals > 0 ? count.toFixed(decimals) : count}{suffix}</span>;
+}
+
 function BeforeAfterCard({ label, before, after, posB, posA }: { label: string; before: string; after: string; posB: string; posA: string }) {
   const [showAfter, setShowAfter] = useState(false);
   return (
@@ -574,13 +601,13 @@ export default function Home() {
           {/* Divider */}
           <div className="mt-10 mb-10 h-px bg-zinc-100 max-w-xs mx-auto" />
 
-          {/* Stats — 4 numbers, no headline */}
-          <div className="grid grid-cols-4 gap-4 text-center">
+          {/* Stats — animated count-up */}
+          <div className="grid grid-cols-4 gap-2 md:gap-4 text-center">
             {[
-              { stat: "500+", label: "Clients" },
-              { stat: "4.9★", label: "Google" },
-              { stat: "10+",  label: "Yrs Exp." },
-              { stat: "8",    label: "Services" },
+              { to: 500, suffix: "+", label: "Clients",   decimals: 0 },
+              { to: 4.9, suffix: "★", label: "Google",    decimals: 1 },
+              { to: 10,  suffix: "+", label: "Yrs Exp.",  decimals: 0 },
+              { to: 8,   suffix: "",  label: "Services",  decimals: 0 },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -589,16 +616,22 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" } } }}
               >
-                <p className="font-serif text-3xl md:text-4xl font-light mb-1 tracking-tight">{item.stat}</p>
+                <p className="font-serif text-3xl md:text-4xl font-light mb-1 tracking-tight">
+                  <CountUp to={item.to} suffix={item.suffix} decimals={item.decimals} />
+                </p>
                 <p className="text-[9px] uppercase tracking-[0.28em] text-zinc-400">{item.label}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Location line */}
-          <p className="mt-8 text-[9px] tracking-[0.32em] uppercase text-zinc-300">
-            La Jolla&ensp;·&ensp;Del Mar&ensp;·&ensp;Pacific Beach&ensp;·&ensp;Carmel Valley&ensp;·&ensp;San Diego
-          </p>
+          {/* Location strip */}
+          <div className="mt-10 flex items-center gap-3 justify-center">
+            <span className="flex-1 max-w-[60px] h-px bg-zinc-200" />
+            <p className="text-[9px] tracking-[0.32em] uppercase text-zinc-400">
+              La Jolla&ensp;·&ensp;Del Mar&ensp;·&ensp;Pacific Beach&ensp;·&ensp;Carmel Valley&ensp;·&ensp;San Diego
+            </p>
+            <span className="flex-1 max-w-[60px] h-px bg-zinc-200" />
+          </div>
 
         </div>
       </div>
