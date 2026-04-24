@@ -82,70 +82,103 @@ const SERVICES = [
   { name: "Custom Facials", price: "from $120", image: "/images/service-lashes.png" },
 ];
 
-const HERO_VIDEOS = [
+const HERO_VIDEOS_DESKTOP = [
   "/videos/v2.mp4", // Skin Transformation
   "/videos/v4.mp4", // Brow Results
   "/videos/v5.mp4", // Nano Blading
   "/videos/v6.mp4", // Wake Up Beautiful
 ];
 
+const HERO_VIDEOS_MOBILE = [
+  "/videos/v5.mp4", // Nano Blading
+  "/videos/v6.mp4", // Wake Up Beautiful
+];
+
 function HeroSection({ bookingUrl }: { bookingUrl: string }) {
-  const [currentIdx, setCurrentIdx] = useState(0);
-  const [nextIdx, setNextIdx] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const currentRef = useRef<HTMLVideoElement>(null);
-  const nextRef = useRef<HTMLVideoElement>(null);
+  const [deskIdx, setDeskIdx] = useState(0);
+  const [deskNext, setDeskNext] = useState(1);
+  const [mobIdx, setMobIdx] = useState(0);
+  const [mobNext, setMobNext] = useState(1);
+  const [deskFading, setDeskFading] = useState(false);
+  const [mobFading, setMobFading] = useState(false);
 
   useEffect(() => {
-    const DISPLAY_DURATION = 6000;
-    const FADE_DURATION = 1200;
-
-    const timer = setInterval(() => {
-      setIsTransitioning(true);
+    const t = setInterval(() => {
+      setDeskFading(true);
       setTimeout(() => {
-        setCurrentIdx((prev) => (prev + 1) % HERO_VIDEOS.length);
-        setNextIdx((prev) => (prev + 1) % HERO_VIDEOS.length);
-        setIsTransitioning(false);
-      }, FADE_DURATION);
-    }, DISPLAY_DURATION);
+        setDeskIdx(p => (p + 1) % HERO_VIDEOS_DESKTOP.length);
+        setDeskNext(p => (p + 1) % HERO_VIDEOS_DESKTOP.length);
+        setDeskFading(false);
+      }, 1200);
+    }, 6000);
+    return () => clearInterval(t);
+  }, []);
 
-    return () => clearInterval(timer);
+  useEffect(() => {
+    const t = setInterval(() => {
+      setMobFading(true);
+      setTimeout(() => {
+        setMobIdx(p => (p + 1) % HERO_VIDEOS_MOBILE.length);
+        setMobNext(p => (p + 1) % HERO_VIDEOS_MOBILE.length);
+        setMobFading(false);
+      }, 1200);
+    }, 7000);
+    return () => clearInterval(t);
   }, []);
 
   return (
     <section className="relative min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
 
-      {/* Videos — desktop only (hidden on mobile to avoid text bleed-through) */}
+      {/* ── MOBILE videos: Nano Blading & Wake Up Beautiful ── */}
       <video
-        key={`vid-a-${currentIdx}`}
-        ref={currentRef}
-        src={HERO_VIDEOS[currentIdx]}
+        key={`mob-a-${mobIdx}`}
+        src={HERO_VIDEOS_MOBILE[mobIdx]}
         autoPlay muted loop playsInline
-        className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: isTransitioning ? 0 : 1 }}
+        className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        style={{ opacity: mobFading ? 0 : 1, objectPosition: "center 60%" }}
         aria-hidden="true"
       />
       <video
-        key={`vid-b-${nextIdx}`}
-        ref={nextRef}
-        src={HERO_VIDEOS[nextIdx]}
+        key={`mob-b-${mobNext}`}
+        src={HERO_VIDEOS_MOBILE[mobNext]}
         autoPlay muted loop playsInline
-        className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: isTransitioning ? 1 : 0 }}
+        className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        style={{ opacity: mobFading ? 1 : 0, objectPosition: "center 60%" }}
         aria-hidden="true"
+      />
+      {/* Mobile gradient — heavy white top (kills video text) fades to soft at center */}
+      <div
+        className="md:hidden absolute inset-0 pointer-events-none z-[1]"
+        style={{ background: "linear-gradient(to bottom, white 0%, white 35%, rgba(255,255,255,0.45) 58%, rgba(255,255,255,0.80) 100%)" }}
       />
 
-      {/* Desktop: white-to-transparent split gradient */}
+      {/* ── DESKTOP videos ── */}
+      <video
+        key={`desk-a-${deskIdx}`}
+        src={HERO_VIDEOS_DESKTOP[deskIdx]}
+        autoPlay muted loop playsInline
+        className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        style={{ opacity: deskFading ? 0 : 1 }}
+        aria-hidden="true"
+      />
+      <video
+        key={`desk-b-${deskNext}`}
+        src={HERO_VIDEOS_DESKTOP[deskNext]}
+        autoPlay muted loop playsInline
+        className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        style={{ opacity: deskFading ? 1 : 0 }}
+        aria-hidden="true"
+      />
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-[1]" />
       <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/60 pointer-events-none z-[1]" />
 
-      {/* Dot indicators — desktop only */}
+      {/* Desktop dots */}
       <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20 gap-2">
-        {HERO_VIDEOS.map((_, i) => (
+        {HERO_VIDEOS_DESKTOP.map((_, i) => (
           <button
             key={i}
-            onClick={() => { setCurrentIdx(i); setNextIdx((i + 1) % HERO_VIDEOS.length); }}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIdx ? "bg-black w-6" : "w-1.5 bg-black/30"}`}
+            onClick={() => { setDeskIdx(i); setDeskNext((i + 1) % HERO_VIDEOS_DESKTOP.length); }}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === deskIdx ? "bg-black w-6" : "w-1.5 bg-black/30"}`}
             aria-label={`Video ${i + 1}`}
           />
         ))}
@@ -205,7 +238,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
         </div>
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll hint — desktop only */}
       <div className="absolute bottom-10 right-10 z-10 hidden md:flex flex-col items-center gap-2 opacity-30">
         <span className="text-[9px] tracking-[0.3em] uppercase text-black rotate-90 origin-center translate-y-3">Scroll</span>
         <motion.div
