@@ -108,15 +108,16 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   const [mobFading, setMobFading] = useState(false);
 
   useEffect(() => {
+    let st: ReturnType<typeof setTimeout>;
     const t = setInterval(() => {
       setDeskFading(true);
-      setTimeout(() => {
+      st = setTimeout(() => {
         setDeskIdx(p => (p + 1) % HERO_VIDEOS_DESKTOP.length);
         setDeskNext(p => (p + 1) % HERO_VIDEOS_DESKTOP.length);
         setDeskFading(false);
       }, 1200);
     }, 6000);
-    return () => clearInterval(t);
+    return () => { clearInterval(t); clearTimeout(st); };
   }, []);
 
   useEffect(() => {
@@ -161,18 +162,20 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
       <video
         key={`desk-a-${deskIdx}`}
         src={HERO_VIDEOS_DESKTOP[deskIdx]}
-        autoPlay muted loop playsInline
+        autoPlay muted loop playsInline preload="auto"
         className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: deskFading ? 0 : 1 }}
         aria-hidden="true"
+        ref={(el) => { if (el) el.play().catch(() => {}); }}
       />
       <video
         key={`desk-b-${deskNext}`}
         src={HERO_VIDEOS_DESKTOP[deskNext]}
-        autoPlay muted loop playsInline
+        autoPlay muted loop playsInline preload="auto"
         className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: deskFading ? 1 : 0 }}
         aria-hidden="true"
+        ref={(el) => { if (el) el.play().catch(() => {}); }}
       />
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-[1]" />
       <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/60 pointer-events-none z-[1]" />
