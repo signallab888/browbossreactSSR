@@ -810,30 +810,54 @@ export default function Home() {
             variants={fadeIn}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-black mb-4">Loved by 500+ Women Across San Diego</h2>
-            <div className="w-12 h-px bg-black/20 mx-auto"></div>
+            <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">Client Stories</p>
+            <h2 className="text-4xl md:text-5xl font-serif text-black mb-4">Loved by Hundreds of Women Across San Diego</h2>
+            <div className="w-12 h-px bg-black/20 mx-auto mb-6"></div>
+            <p className="text-zinc-400 text-sm tracking-wide">4.9 ★ · 247 verified reviews on Yelp</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                name: "Elda Lucero",
-                role: "Microblading Client, La Jolla",
-                quote: "If you are looking for a microblading artist to trust with your eyebrows, you found her! Leslie is AMAZING — meticulous and always making sure everything was extremely sanitary and painless.",
-                initials: "EL"
+                name: "Charmi T.",
+                location: "San Diego, CA",
+                date: "January 2026",
+                service: "Microblading",
+                quote: "BrowBoss is absolutely amazing! From the moment you walk in, you're welcomed with professionalism, warmth, and genuine care. The attention to detail is unmatched — my brows have never looked better. Leslie is a master at her craft. I trust them completely and wouldn't let anyone else touch my brows.",
+                initials: "CT"
               },
               {
-                name: "Kathryn Saky",
-                role: "Microblading Client, San Diego",
-                quote: "Leslie is amazing! Her attention to detail is unparalleled. Her work is impeccable. If you are in the San Diego area and want amazing brows, this is the place.",
-                initials: "KS"
+                name: "Alison B.",
+                location: "San Diego, CA",
+                date: "April 2026",
+                service: "Microblading",
+                quote: "I'd been hesitant about microblading as a blonde — worried about being matched with the right color. Leslie completely exceeded my expectations! The shape is perfect, and the color matches my hair and skin beautifully. I feel more youthful and confident already. I cannot recommend her more highly.",
+                initials: "AB"
               },
               {
-                name: "Tiger Nguyen",
-                role: "Nano Brows Client, San Diego",
-                quote: "I absolutely LOVE my brows. Leslie was the best throughout this whole experience — informed me about the process, helped decide the best shape to flatter my face. Couldn't have asked for more perfect brows.",
+                name: "Tiara N.",
+                location: "San Jose, CA",
+                date: "January 2025",
+                service: "Microblading",
+                quote: "Leslie took the consultation process very seriously, including looking at photos of how I normally fill in my eyebrows and offering advice on what brow shape would best suit my face. It's been a few weeks since my touch-up and I have never been more in love with my eyebrows. They look so natural.",
                 initials: "TN"
-              }
+              },
+              {
+                name: "Mur B.",
+                location: "Santa Barbara, CA",
+                date: "March 2026",
+                service: "Brow Shaping",
+                quote: "I was so nervous because I'm an artist and I know how one tiny shape could make it right or make it wrong. Leslie is the brow master and just a joy to work with. She listens, repeats back, reassures you then gets to work. Why didn't I do this sooner?",
+                initials: "MB"
+              },
+              {
+                name: "John E.",
+                location: "San Diego, CA",
+                date: "August 2025",
+                service: "Brow Shaping",
+                quote: "Fabiola assessed the facial shape, drew some lines before removing anything, and offered multiple opportunities for feedback and tweaking. I had no notes — she nailed it. I've been on the hunt for exactly this for years. Fellas: visit BrowBoss.",
+                initials: "JE"
+              },
             ].map((review, i) => (
               <motion.div 
                 key={review.name}
@@ -842,30 +866,50 @@ export default function Home() {
                 viewport={{ once: true, margin: "-50px" }}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.6 } }
+                  visible: { opacity: 1, y: 0, transition: { delay: (i % 3) * 0.15, duration: 0.6 } }
                 }}
                 className="bg-zinc-50 p-8 md:p-10 border border-zinc-100 flex flex-col h-full"
               >
-                <div className="flex items-center gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-black text-black" />
-                  ))}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-3.5 h-3.5 fill-black text-black" />
+                    ))}
+                  </div>
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-zinc-300">{review.service}</span>
                 </div>
-                <p className="text-lg font-serif italic font-light leading-relaxed mb-8 flex-grow text-zinc-700">
+                <p className="text-base font-serif italic font-light leading-relaxed mb-8 flex-grow text-zinc-700">
                   "{review.quote}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center font-serif text-lg tracking-widest text-zinc-400 bg-white">
+                  <div className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center font-serif text-sm tracking-widest text-zinc-400 bg-white flex-shrink-0">
                     {review.initials}
                   </div>
                   <div>
-                    <p className="font-serif text-lg text-black">{review.name}</p>
-                    <p className="text-xs uppercase tracking-wider text-zinc-400">{review.role}</p>
+                    <p className="font-serif text-base text-black">{review.name}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-zinc-400">{review.location} · {review.date}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="text-center mt-12"
+          >
+            <a
+              href="https://www.yelp.com/biz/browboss-brow-and-beauty-san-diego-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs tracking-[0.25em] uppercase text-zinc-400 hover:text-black transition-colors border-b border-zinc-200 hover:border-black pb-0.5"
+            >
+              Read all 247 reviews on Yelp
+            </a>
+          </motion.div>
         </div>
       </section>
 
