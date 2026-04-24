@@ -113,48 +113,46 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] flex items-end overflow-hidden bg-black" data-testid="hero-section">
+    <section className="relative min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
 
-      {/* Video A — current */}
+      {/* Videos — desktop only (hidden on mobile to avoid text bleed-through) */}
       <video
         key={`vid-a-${currentIdx}`}
         ref={currentRef}
         src={HERO_VIDEOS[currentIdx]}
         autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: isTransitioning ? 0 : 1 }}
         aria-hidden="true"
       />
-      {/* Video B — next (pre-loaded, fades in) */}
       <video
         key={`vid-b-${nextIdx}`}
         ref={nextRef}
         src={HERO_VIDEOS[nextIdx]}
         autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: isTransitioning ? 1 : 0 }}
         aria-hidden="true"
       />
 
-      {/* White gradient — floods left side so text is fully readable */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-[1]" />
-      {/* Top & bottom fades */}
-      <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/60 pointer-events-none z-[1]" />
+      {/* Desktop: white-to-transparent split gradient */}
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-[1]" />
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/60 pointer-events-none z-[1]" />
 
-      {/* Dot indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* Dot indicators — desktop only */}
+      <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20 gap-2">
         {HERO_VIDEOS.map((_, i) => (
           <button
             key={i}
             onClick={() => { setCurrentIdx(i); setNextIdx((i + 1) % HERO_VIDEOS.length); }}
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentIdx ? "bg-black w-6" : "bg-black/30"}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIdx ? "bg-black w-6" : "w-1.5 bg-black/30"}`}
             aria-label={`Video ${i + 1}`}
           />
         ))}
       </div>
 
       {/* Editorial content */}
-      <div className="relative z-10 w-full pb-24 md:pb-32 pt-32">
+      <div className="relative z-10 w-full pt-28 pb-16 md:pt-32 md:pb-28">
         <div className="container mx-auto px-6 md:px-12 max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-2xl">
 
