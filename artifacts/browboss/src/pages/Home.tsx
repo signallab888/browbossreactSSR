@@ -504,23 +504,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Intro text — between trust bar and services */}
-      <div className="bg-white px-6 pt-10 pb-2">
-        <div className="max-w-2xl mx-auto md:text-center">
-          <p className="text-[11px] tracking-[0.3em] uppercase text-zinc-400 mb-3">La Jolla · San Diego</p>
-          <p className="font-serif font-light text-zinc-700 text-lg leading-relaxed mb-3">
+      {/* Intro + Press — unified editorial block */}
+      <div className="bg-white px-6 py-12 md:py-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-4">La Jolla · San Diego</p>
+          <p className="font-serif font-light text-zinc-600 text-base md:text-lg leading-relaxed">
             Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
           </p>
-        </div>
-      </div>
 
-      {/* As Seen On — Press Bar */}
-      <div className="bg-white border-t border-zinc-100 py-7 px-6">
-        <div className="container mx-auto max-w-3xl flex flex-col items-center gap-5">
-          <p className="text-[9px] tracking-[0.4em] uppercase" style={{ color: "#c0b8b0" }}>As Seen On</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-12">
+          {/* Press divider */}
+          <div className="flex items-center gap-4 my-8 md:my-10">
+            <span className="flex-1 h-px bg-zinc-200" />
+            <span className="text-[9px] tracking-[0.45em] uppercase shrink-0" style={{ color: "#c0b8b0" }}>As Seen On</span>
+            <span className="flex-1 h-px bg-zinc-200" />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-10">
             {["The Globe & Mail", "FOX", "NCN", "The Chronicle Journal", "Extra"].map((name) => (
-              <span key={name} className="font-serif text-[11px] md:text-xs tracking-widest uppercase" style={{ color: "#c4bdb7" }}>{name}</span>
+              <span key={name} className="font-serif text-[10px] md:text-[11px] tracking-widest uppercase" style={{ color: "#c4bdb7" }}>{name}</span>
             ))}
           </div>
         </div>
