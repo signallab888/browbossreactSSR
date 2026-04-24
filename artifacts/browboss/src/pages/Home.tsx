@@ -361,6 +361,66 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
   );
 }
 
+function PreferredTimePicker({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const times = ["Morning 9–11am", "Midday 11am–2pm", "Afternoon 2–5pm", "Any Time"];
+  const [selDays, setSelDays] = useState<string[]>([]);
+  const [selTime, setSelTime] = useState("");
+
+  const toggleDay = (d: string) => {
+    setSelDays(prev => {
+      const next = prev.includes(d) ? prev.filter(x => x !== d) : [...prev, d];
+      const parts = [];
+      if (next.length) parts.push(next.join(", "));
+      if (selTime) parts.push(selTime);
+      onChange(parts.join(" · "));
+      return next;
+    });
+  };
+  const pickTime = (t: string) => {
+    const next = t === selTime ? "" : t;
+    setSelTime(next);
+    const parts = [];
+    if (selDays.length) parts.push(selDays.join(", "));
+    if (next) parts.push(next);
+    onChange(parts.join(" · "));
+  };
+
+  return (
+    <div className="space-y-3 pt-1">
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400 mb-2">Preferred Day</p>
+        <div className="flex flex-wrap gap-2">
+          {days.map(d => (
+            <button key={d} type="button" onClick={() => toggleDay(d)}
+              className={`px-3 py-1.5 text-xs tracking-wider border transition-colors select-none ${
+                selDays.includes(d) ? "bg-black text-white border-black" : "bg-white text-zinc-600 border-zinc-300 hover:border-zinc-600"
+              }`}>
+              {d}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400 mb-2">Preferred Time</p>
+        <div className="flex flex-wrap gap-2">
+          {times.map(t => (
+            <button key={t} type="button" onClick={() => pickTime(t)}
+              className={`px-3 py-1.5 text-xs tracking-wider border transition-colors select-none ${
+                selTime === t ? "bg-black text-white border-black" : "bg-white text-zinc-600 border-zinc-300 hover:border-zinc-600"
+              }`}>
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+      {value && (
+        <p className="text-[10px] text-zinc-400 tracking-wide">✓ {value}</p>
+      )}
+    </div>
+  );
+}
+
 function CountUp({ to, suffix = "", decimals = 0 }: { to: number; suffix?: string; decimals?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -1299,9 +1359,9 @@ export default function Home() {
                     name="date"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-xs uppercase tracking-widest text-zinc-500">Preferred Date / Time</FormLabel>
+                        <FormLabel className="text-xs uppercase tracking-widest text-zinc-500">Preferred Day &amp; Time</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. Next Tuesday morning" className="rounded-none border-zinc-300 focus-visible:ring-black h-12" {...field} />
+                          <PreferredTimePicker value={field.value} onChange={field.onChange} />
                         </FormControl>
                         <FormMessage className="text-xs" />
                       </FormItem>
