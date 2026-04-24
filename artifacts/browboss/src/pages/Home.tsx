@@ -870,9 +870,9 @@ export default function Home() {
               className="order-1 md:order-2 relative aspect-[4/5]"
             >
               <img 
-                src="/images/leslie-portrait.png" 
+                src="/images/leslie-founder.jpg" 
                 alt="Leslie Ritchie" 
-                className="w-full h-full object-cover grayscale"
+                className="w-full h-full object-cover object-top"
               />
             </motion.div>
           </div>
