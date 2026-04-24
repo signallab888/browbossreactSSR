@@ -135,7 +135,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
         src={HERO_POSTERS_MOBILE[mobIdx]}
         alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: mobFading ? 0 : 1, objectPosition: "center 35%" }}
+        style={{ opacity: mobFading ? 0 : 1, objectPosition: "right center" }}
         aria-hidden="true"
       />
       <img
@@ -143,13 +143,13 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
         src={HERO_POSTERS_MOBILE[mobNext]}
         alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: mobFading ? 1 : 0, objectPosition: "center 35%" }}
+        style={{ opacity: mobFading ? 1 : 0, objectPosition: "right center" }}
         aria-hidden="true"
       />
-      {/* Mobile gradient — white top for text, image reveals from 30% down */}
+      {/* Mobile gradient — left=white (text), right=image visible */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none z-[1]"
-        style={{ background: "linear-gradient(to bottom, white 0%, white 28%, rgba(255,255,255,0.15) 52%, rgba(255,255,255,0.60) 100%)" }}
+        style={{ background: "linear-gradient(to right, white 0%, white 38%, rgba(255,255,255,0.5) 58%, rgba(255,255,255,0.10) 85%, rgba(255,255,255,0.05) 100%)" }}
       />
 
       {/* ── DESKTOP videos ── */}
