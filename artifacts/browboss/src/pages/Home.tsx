@@ -504,15 +504,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mobile-only intro text — between trust bar and services */}
-      <div className="md:hidden bg-white px-6 pt-10 pb-2">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-zinc-400 mb-3">La Jolla · San Diego</p>
-        <p className="font-serif font-light text-zinc-700 text-lg leading-relaxed mb-3">
-          Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
-        </p>
-        <div className="flex items-center gap-3 mt-4">
-          <span className="w-8 h-px bg-black/20" />
-          <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400">Cherry · Afterpay · Klarna — from $50/mo</p>
+      {/* Intro text — between trust bar and services */}
+      <div className="bg-white px-6 pt-10 pb-2">
+        <div className="max-w-2xl mx-auto md:text-center">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-zinc-400 mb-3">La Jolla · San Diego</p>
+          <p className="font-serif font-light text-zinc-700 text-lg leading-relaxed mb-3">
+            Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
+          </p>
+          <div className="flex md:justify-center items-center gap-3 mt-4">
+            <span className="w-8 h-px bg-black/20" />
+            <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400">Cherry · Afterpay · Klarna — from $50/mo</p>
+          </div>
         </div>
       </div>
 
