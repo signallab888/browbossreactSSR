@@ -572,6 +572,40 @@ export default function Home() {
         </p>
       </div>
 
+      {/* Social Proof Stats */}
+      <section className="py-16 md:py-20 bg-white border-t border-zinc-100">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            className="text-center font-serif text-2xl md:text-3xl mb-12 font-light leading-snug"
+          >
+            500+ Women in San Diego Choose BrowBoss<br className="hidden md:block" /> for Their Brows, Lashes &amp; Skin
+          </motion.h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
+            {[
+              { stat: "500+",   label: "Happy Clients" },
+              { stat: "4.9★",   label: "on Google (326)" },
+              { stat: "10+",    label: "Years Experience" },
+              { stat: "8",      label: "Signature Services" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.55, ease: "easeOut" } } }}
+              >
+                <p className="font-serif text-5xl md:text-6xl font-light mb-2 tracking-tight">{item.stat}</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid */}
       <section id="services" className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-4">
