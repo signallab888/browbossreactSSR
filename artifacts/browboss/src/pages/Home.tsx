@@ -82,6 +82,146 @@ const SERVICES = [
   { name: "Custom Facials", price: "from $120", image: "/images/service-lashes.png" },
 ];
 
+const HERO_VIDEOS = [
+  "/videos/v1.mp4",
+  "/videos/v2.mp4",
+  "/videos/v3.mp4",
+  "/videos/v4.mp4",
+  "/videos/v5.mp4",
+  "/videos/v6.mp4",
+];
+
+function HeroSection({ bookingUrl }: { bookingUrl: string }) {
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [nextIdx, setNextIdx] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const currentRef = useRef<HTMLVideoElement>(null);
+  const nextRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const DISPLAY_DURATION = 6000;
+    const FADE_DURATION = 1200;
+
+    const timer = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIdx((prev) => (prev + 1) % HERO_VIDEOS.length);
+        setNextIdx((prev) => (prev + 1) % HERO_VIDEOS.length);
+        setIsTransitioning(false);
+      }, FADE_DURATION);
+    }, DISPLAY_DURATION);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative min-h-[100dvh] flex items-end overflow-hidden bg-black" data-testid="hero-section">
+
+      {/* Video A — current */}
+      <video
+        key={`vid-a-${currentIdx}`}
+        ref={currentRef}
+        src={HERO_VIDEOS[currentIdx]}
+        autoPlay muted loop playsInline
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        style={{ opacity: isTransitioning ? 0 : 1 }}
+        aria-hidden="true"
+      />
+      {/* Video B — next (pre-loaded, fades in) */}
+      <video
+        key={`vid-b-${nextIdx}`}
+        ref={nextRef}
+        src={HERO_VIDEOS[nextIdx]}
+        autoPlay muted loop playsInline
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
+        style={{ opacity: isTransitioning ? 1 : 0 }}
+        aria-hidden="true"
+      />
+
+      {/* White gradient — floods left side so text is fully readable */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-[1]" />
+      {/* Top & bottom fades */}
+      <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/60 pointer-events-none z-[1]" />
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {HERO_VIDEOS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setCurrentIdx(i); setNextIdx((i + 1) % HERO_VIDEOS.length); }}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentIdx ? "bg-black w-6" : "bg-black/30"}`}
+            aria-label={`Video ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Editorial content */}
+      <div className="relative z-10 w-full pb-24 md:pb-32 pt-32">
+        <div className="container mx-auto px-6 md:px-12 max-w-7xl">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-2xl">
+
+            <motion.div variants={fadeIn} className="flex items-center gap-3 mb-10">
+              <span className="block w-8 h-px bg-black/25" />
+              <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-zinc-500">
+                La Jolla · San Diego
+              </p>
+            </motion.div>
+
+            <motion.h1
+              variants={fadeIn}
+              className="font-serif font-light text-black leading-[1.05] mb-8"
+              style={{ fontSize: "clamp(2.8rem, 8vw, 6.5rem)" }}
+            >
+              The Art<br />
+              <em className="not-italic text-zinc-300">of</em> Perfect<br />
+              Brows.
+            </motion.h1>
+
+            <motion.div variants={fadeIn} className="w-12 h-px bg-black/15 mb-8" />
+
+            <motion.p variants={fadeIn} className="text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-sm mb-12">
+              Precision microblading, permanent makeup &amp; luxury beauty treatments — crafted for faces that deserve the finest.
+            </motion.p>
+
+            <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-5">
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-hero-book"
+                className="inline-flex items-center bg-black text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-800 transition-colors duration-200"
+              >
+                Book a Consultation
+              </a>
+              <button
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 text-zinc-400 text-[11px] tracking-[0.25em] uppercase font-medium hover:text-black transition-colors duration-200 group"
+              >
+                See Services
+                <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
+              </button>
+            </motion.div>
+
+            <motion.p variants={fadeIn} className="mt-7 text-[10px] text-zinc-400 tracking-wider uppercase">
+              Cherry · Afterpay · Klarna — from $50/mo
+            </motion.p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="absolute bottom-10 right-10 z-10 hidden md:flex flex-col items-center gap-2 opacity-30">
+        <span className="text-[9px] tracking-[0.3em] uppercase text-black rotate-90 origin-center translate-y-3">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-px h-10 bg-gradient-to-b from-black to-transparent"
+        />
+      </div>
+    </section>
+  );
+}
+
 function VideoCard({ label, instagramUrl, src, poster }: { label: string; instagramUrl?: string; src?: string; poster?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -282,99 +422,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-end overflow-hidden bg-white" data-testid="hero-section">
-        
-        {/* Very subtle video texture at low opacity */}
-        <video
-          autoPlay muted loop playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.06 }}
-          aria-hidden="true"
-        >
-          <source src="/videos/v5.mp4" type="video/mp4" />
-        </video>
-
-        {/* Light gradient wash — white edges, slight center tint */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-white/95 to-zinc-50 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/80 pointer-events-none" />
-
-        {/* Editorial content — left-aligned, bottom-anchored */}
-        <div className="relative z-10 w-full pb-20 md:pb-28 pt-32">
-          <div className="container mx-auto px-6 md:px-12 max-w-7xl">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              className="max-w-3xl"
-            >
-              {/* Location tag */}
-              <motion.div variants={fadeIn} className="flex items-center gap-3 mb-10">
-                <span className="block w-8 h-px bg-black/30" />
-                <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-zinc-400">
-                  La Jolla · San Diego
-                </p>
-              </motion.div>
-
-              {/* Main headline */}
-              <motion.h1
-                variants={fadeIn}
-                className="font-serif font-light text-black leading-[1.05] mb-8"
-                style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
-              >
-                The Art<br />
-                <em className="not-italic text-zinc-300">of</em> Perfect<br />
-                Brows.
-              </motion.h1>
-
-              {/* Thin rule */}
-              <motion.div variants={fadeIn} className="w-16 h-px bg-black/15 mb-8" />
-
-              {/* Subtext */}
-              <motion.p
-                variants={fadeIn}
-                className="text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-md mb-12"
-              >
-                Precision microblading, permanent makeup &amp; luxury beauty treatments in La Jolla — crafted for faces that deserve the finest.
-              </motion.p>
-
-              {/* CTAs */}
-              <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-5">
-                <a
-                  href={bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="button-hero-book"
-                  className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-800 transition-colors duration-200"
-                >
-                  Book a Consultation
-                </a>
-                <button
-                  onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex items-center gap-2 text-zinc-400 text-[11px] tracking-[0.25em] uppercase font-medium hover:text-black transition-colors duration-200 group"
-                >
-                  See Services
-                  <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
-                </button>
-              </motion.div>
-
-              {/* Financing note */}
-              <motion.p variants={fadeIn} className="mt-6 text-[11px] text-zinc-300 tracking-wider uppercase">
-                Cherry · Afterpay · Klarna — from $50/mo
-              </motion.p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-2 opacity-30">
-          <span className="text-[9px] tracking-[0.3em] uppercase text-black rotate-90 origin-center translate-y-3">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-px h-12 bg-gradient-to-b from-black to-transparent"
-          />
-        </div>
-      </section>
+      <HeroSection bookingUrl={bookingUrl} />
 
       {/* Trust Bar */}
       <section className="bg-zinc-950 text-white py-3 border-b border-zinc-900">
