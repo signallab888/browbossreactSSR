@@ -516,6 +516,18 @@ export default function Home() {
         </div>
       </div>
 
+      {/* As Seen On — Press Bar */}
+      <div className="bg-white border-t border-zinc-100 py-7 px-6">
+        <div className="container mx-auto max-w-3xl flex flex-col items-center gap-5">
+          <p className="text-[9px] tracking-[0.4em] uppercase" style={{ color: "#c0b8b0" }}>As Seen On</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-12">
+            {["The Globe & Mail", "FOX", "NCN", "The Chronicle Journal", "Extra"].map((name) => (
+              <span key={name} className="font-serif text-[11px] md:text-xs tracking-widest uppercase" style={{ color: "#c4bdb7" }}>{name}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Services Grid */}
       <section id="services" className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-4">
