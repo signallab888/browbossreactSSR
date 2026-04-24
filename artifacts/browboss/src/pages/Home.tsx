@@ -81,7 +81,7 @@ const SERVICES = [
   { name: "Lash Lift",                  price: "from $95",  image: "/videos/v7-f18.jpg" },
   { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
   { name: "Brow Shaping",               price: "from $45",  image: "/videos/v6-f5.jpg" },
-  { name: "Scalp Micropigmentation SMP",price: "from $800", image: "/videos/v6-f10.jpg" },
+  { name: "Scalp Micropigmentation SMP",price: "from $800", image: "/videos/v8-f5.jpg" },
   { name: "Custom Facials",             price: "from $120", image: "/videos/v3-f5.jpg" },
 ];
 
