@@ -543,12 +543,12 @@ export default function Home() {
       </section>
 
       {/* Intro · Press · Stats — unified */}
-      <div className="bg-white px-6 pt-12 pb-16 md:pt-16 md:pb-20">
+      <div className="bg-white px-6 pt-10 pb-10 md:pt-14 md:pb-12">
         <div className="max-w-xl mx-auto text-center">
 
-          {/* One-line editorial statement */}
-          <p className="font-serif font-light text-zinc-500 text-base md:text-lg leading-relaxed tracking-wide">
-            Precision beauty in La Jolla — results that look unmistakably you.
+          {/* Intro statement */}
+          <p className="font-serif font-light text-zinc-600 text-base md:text-lg leading-relaxed">
+            Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
           </p>
 
           {/* Divider */}
@@ -584,7 +584,7 @@ export default function Home() {
       </div>
 
       {/* Services Grid */}
-      <section id="services" className="py-24 md:py-32 bg-white">
+      <section id="services" className="py-14 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div 
             initial="hidden"
