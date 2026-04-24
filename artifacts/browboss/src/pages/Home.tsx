@@ -127,7 +127,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   }, []);
 
   return (
-    <section className="relative md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
+    <section className="relative min-h-[75vh] md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
 
       {/* ── MOBILE posters: static frames cycling ── */}
       <img
@@ -135,7 +135,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
         src={HERO_POSTERS_MOBILE[mobIdx]}
         alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: mobFading ? 0 : 1, objectPosition: "center bottom" }}
+        style={{ opacity: mobFading ? 0 : 1, objectPosition: "center 35%" }}
         aria-hidden="true"
       />
       <img
@@ -143,13 +143,13 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
         src={HERO_POSTERS_MOBILE[mobNext]}
         alt=""
         className="md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
-        style={{ opacity: mobFading ? 1 : 0, objectPosition: "center bottom" }}
+        style={{ opacity: mobFading ? 1 : 0, objectPosition: "center 35%" }}
         aria-hidden="true"
       />
-      {/* Mobile gradient — solid white top 55%, soft reveal bottom */}
+      {/* Mobile gradient — white top for text, image reveals from 30% down */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none z-[1]"
-        style={{ background: "linear-gradient(to bottom, white 0%, white 55%, rgba(255,255,255,0.4) 75%, rgba(255,255,255,0.80) 100%)" }}
+        style={{ background: "linear-gradient(to bottom, white 0%, white 28%, rgba(255,255,255,0.15) 52%, rgba(255,255,255,0.60) 100%)" }}
       />
 
       {/* ── DESKTOP videos ── */}
