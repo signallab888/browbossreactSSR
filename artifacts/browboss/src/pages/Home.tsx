@@ -185,11 +185,11 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
       </div>
 
       {/* Editorial content */}
-      <div className="relative z-10 w-full pt-28 pb-16 md:pt-32 md:pb-28">
+      <div className="relative z-10 w-full pt-20 pb-8 md:pt-32 md:pb-28">
         <div className="container mx-auto px-6 md:px-12 max-w-7xl">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-2xl">
 
-            <motion.div variants={fadeIn} className="flex items-center gap-3 mb-10">
+            <motion.div variants={fadeIn} className="flex items-center gap-3 mb-5 md:mb-10">
               <span className="block w-8 h-px bg-black/25" />
               <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-zinc-500">
                 La Jolla · San Diego
@@ -198,7 +198,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
 
             <motion.h1
               variants={fadeIn}
-              className="font-serif font-light text-black leading-[1.05] mb-8"
+              className="font-serif font-light text-black leading-[1.05] mb-5 md:mb-8"
               style={{ fontSize: "clamp(2.8rem, 8vw, 6.5rem)" }}
             >
               The Art<br />
@@ -206,19 +206,19 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
               Brows.
             </motion.h1>
 
-            <motion.div variants={fadeIn} className="w-12 h-px bg-black/15 mb-8" />
+            <motion.div variants={fadeIn} className="w-12 h-px bg-black/15 mb-5 md:mb-8" />
 
-            <motion.p variants={fadeIn} className="text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-sm mb-12">
+            <motion.p variants={fadeIn} className="text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-sm mb-7 md:mb-12">
               Precision microblading, permanent makeup &amp; luxury beauty treatments — crafted for faces that deserve the finest.
             </motion.p>
 
-            <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-5">
+            <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-4 md:gap-5">
               <a
                 href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="button-hero-book"
-                className="inline-flex items-center bg-black text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-800 transition-colors duration-200"
+                className="inline-flex items-center bg-black text-white px-7 py-3.5 md:px-8 md:py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-800 transition-colors duration-200"
               >
                 Book a Consultation
               </a>
@@ -231,7 +231,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
               </button>
             </motion.div>
 
-            <motion.p variants={fadeIn} className="mt-7 text-[10px] text-zinc-400 tracking-wider uppercase">
+            <motion.p variants={fadeIn} className="mt-4 md:mt-7 text-[10px] text-zinc-400 tracking-wider uppercase">
               Cherry · Afterpay · Klarna — from $50/mo
             </motion.p>
           </motion.div>
