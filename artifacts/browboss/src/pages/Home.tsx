@@ -211,7 +211,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
             <motion.div variants={fadeIn} className="w-12 h-px bg-black/15 mb-5 md:mb-8" />
 
             <motion.p variants={fadeIn} className="hidden md:block text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-sm mb-7 md:mb-12">
-              Precision microblading, permanent makeup &amp; luxury beauty treatments — crafted for faces that deserve the finest.
+              Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
             </motion.p>
 
             <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-4 md:gap-5">
@@ -500,7 +500,7 @@ export default function Home() {
       <div className="md:hidden bg-white px-6 pt-10 pb-2">
         <p className="text-[11px] tracking-[0.3em] uppercase text-zinc-400 mb-3">La Jolla · San Diego</p>
         <p className="font-serif font-light text-zinc-700 text-lg leading-relaxed mb-3">
-          Precision microblading, permanent makeup &amp; luxury beauty treatments — crafted for faces that deserve the finest.
+          Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
         </p>
         <div className="flex items-center gap-3 mt-4">
           <span className="w-8 h-px bg-black/20" />
