@@ -129,7 +129,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   }, []);
 
   return (
-    <section className="relative min-h-[52vh] md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
+    <section className="relative min-h-[52vh] md:min-h-[calc(100dvh-80px)] flex items-center md:items-end overflow-hidden bg-white md:mt-[80px]" data-testid="hero-section">
 
       {/* ── MOBILE posters: static frames cycling ── */}
       <img
@@ -391,11 +391,7 @@ export default function Home() {
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary selection:text-primary-foreground">
       {/* Sticky Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-sm border-b border-zinc-100 py-4"
-            : "bg-white border-b border-zinc-100 py-4 md:bg-white/0 md:border-transparent md:py-6"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-zinc-100 py-4 transition-all duration-300"
       >
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 z-50">
