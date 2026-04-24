@@ -117,10 +117,13 @@ export default function Home() {
             <img 
               src="https://browboss.com/img/logo.svg" 
               alt="BrowBoss Logo" 
-              className={`h-8 transition-all ${!isScrolled && "invert"}`}
+              className={`h-12 w-auto transition-all duration-300 ${!isScrolled ? "brightness-0 invert" : "brightness-0"}`}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement?.insertAdjacentHTML('beforeend', '<span class="font-serif font-bold text-2xl tracking-wider">BROWBOSS</span>');
+                const fallback = document.createElement('span');
+                fallback.className = `font-serif font-bold text-2xl tracking-[0.2em] ${!isScrolled ? 'text-white' : 'text-black'}`;
+                fallback.textContent = 'BROWBOSS';
+                e.currentTarget.parentElement?.appendChild(fallback);
               }}
             />
           </Link>
@@ -168,10 +171,26 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden bg-black">
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-800 via-black to-black opacity-80"></div>
-        <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1512496015851-a908383e4450?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-overlay"></div>
+        {/* Full photo background */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://admin.browboss.com/public/images/banner/1584479041.jpg')" }}
+        />
+        {/* Fallback second photo if first fails */}
+        <img 
+          src="https://admin.browboss.com/public/images/banner/1584479041.jpg"
+          className="hidden"
+          onError={(e) => {
+            const hero = e.currentTarget.closest('section');
+            const bg = hero?.querySelector<HTMLElement>('[style*="background-image"]');
+            if (bg) bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=2074&auto=format&fit=crop')";
+          }}
+          alt=""
+        />
+        {/* Dark overlay — 50% so photo is clearly visible but text stays readable */}
+        <div className="absolute inset-0 z-[1] bg-black/50" />
         
-        <div className="container relative z-10 mx-auto px-4 text-center text-white max-w-4xl">
+        <div className="container relative z-10 mx-auto px-4 text-center text-white max-w-4xl" style={{zIndex: 10}}>
           <motion.div
             initial="hidden"
             animate="visible"
