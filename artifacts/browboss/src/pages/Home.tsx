@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
@@ -12,7 +12,10 @@ import {
   Mail,
   Instagram,
   Facebook,
-  ArrowRight
+  ArrowRight,
+  Play,
+  Volume2,
+  VolumeX
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -59,6 +62,16 @@ const formSchema = z.object({
   smsConsent: z.boolean().default(false),
 });
 
+// To replace with real videos: add a `src` URL (mp4) to each entry.
+// Videos should be vertical (9:16) for best display.
+const WORK_VIDEOS: { label: string; src?: string; poster?: string }[] = [
+  { label: "Microblading" },
+  { label: "Nano Brows" },
+  { label: "Lip Blush" },
+  { label: "Lash Lift" },
+  { label: "Brow Lamination" },
+];
+
 const SERVICES = [
   { name: "Microblading & Shading", price: "from $600", image: "/images/service-brows.png" },
   { name: "Ombre Powder Brows", price: "from $650", image: "/images/service-lashes.png" },
@@ -69,6 +82,91 @@ const SERVICES = [
   { name: "Scalp Micropigmentation SMP", price: "from $800", image: "/images/service-brows.png" },
   { name: "Custom Facials", price: "from $120", image: "/images/service-lashes.png" },
 ];
+
+function VideoCard({ label, src, poster }: { label: string; src?: string; poster?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const handlePlay = () => {
+    const vid = videoRef.current;
+    if (!vid || !src) return;
+    if (isPlaying) {
+      vid.pause();
+      setIsPlaying(false);
+    } else {
+      vid.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setIsMuted(videoRef.current.muted);
+  };
+
+  return (
+    <div
+      onClick={handlePlay}
+      className="relative flex-shrink-0 w-[220px] md:w-[260px] aspect-[9/16] rounded-none overflow-hidden bg-zinc-900 group cursor-pointer border border-zinc-800"
+      data-testid={`video-card-${label.toLowerCase().replace(/\s+/, '-')}`}
+    >
+      {src ? (
+        <video
+          ref={videoRef}
+          src={src}
+          poster={poster}
+          muted
+          playsInline
+          loop
+          className="w-full h-full object-cover"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+      ) : (
+        /* Placeholder when no video URL is set yet */
+        <div className="w-full h-full bg-gradient-to-b from-zinc-800 to-zinc-950 flex items-center justify-center">
+          <div className="text-center space-y-3 px-4">
+            <div className="w-14 h-14 rounded-full border border-zinc-600 flex items-center justify-center mx-auto">
+              <Play className="w-6 h-6 text-zinc-400 ml-1" />
+            </div>
+            <p className="text-zinc-500 text-xs tracking-widest uppercase">Add Video</p>
+          </div>
+        </div>
+      )}
+
+      {/* Always-visible label at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-16 pb-4 px-4 pointer-events-none">
+        <p className="text-white text-xs tracking-[0.2em] uppercase font-medium">{label}</p>
+      </div>
+
+      {/* Play/pause overlay shown on hover */}
+      {src && (
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+            {isPlaying
+              ? <span className="flex gap-1"><span className="w-1 h-5 bg-white rounded-sm" /><span className="w-1 h-5 bg-white rounded-sm" /></span>
+              : <Play className="w-6 h-6 text-white ml-1" />
+            }
+          </div>
+        </div>
+      )}
+
+      {/* Mute toggle — only when playing */}
+      {src && isPlaying && (
+        <button
+          onClick={toggleMute}
+          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center z-10"
+          data-testid={`button-mute-${label.toLowerCase().replace(/\s+/, '-')}`}
+        >
+          {isMuted ? <VolumeX className="w-4 h-4 text-white" /> : <Volume2 className="w-4 h-4 text-white" />}
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -278,6 +376,75 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Work Showcase — Vertical Video Reels */}
+      <section id="gallery" className="py-20 md:py-28 bg-black overflow-hidden">
+        <div className="container mx-auto px-4 mb-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            className="flex flex-col md:flex-row md:items-end justify-between gap-4"
+          >
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-zinc-500 mb-3">Our Work</p>
+              <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+                See the<br />Transformation
+              </h2>
+            </div>
+            <p className="text-zinc-400 text-sm max-w-xs leading-relaxed">
+              Real procedures, real results. Tap any reel to play.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Horizontally scrollable video strip */}
+        <div className="flex gap-4 px-4 md:px-8 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {WORK_VIDEOS.map((video, i) => (
+            <motion.div
+              key={video.label}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+              className="snap-start"
+            >
+              <VideoCard {...video} />
+            </motion.div>
+          ))}
+
+          {/* "Add more" end card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: WORK_VIDEOS.length * 0.08, duration: 0.5 }}
+            className="snap-start flex-shrink-0 w-[220px] md:w-[260px] aspect-[9/16] border border-dashed border-zinc-700 flex flex-col items-center justify-center gap-3 text-center px-6"
+          >
+            <div className="w-12 h-12 rounded-full border border-zinc-600 flex items-center justify-center">
+              <span className="text-zinc-500 text-2xl font-thin">+</span>
+            </div>
+            <p className="text-zinc-600 text-xs tracking-widest uppercase leading-relaxed">More reels coming soon</p>
+          </motion.div>
+        </div>
+
+        <div className="container mx-auto px-4 mt-8">
+          <a
+            href="https://www.instagram.com/browbosslajolla"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-zinc-400 hover:text-white text-sm tracking-widest uppercase transition-colors"
+            data-testid="link-instagram-gallery"
+          >
+            <Instagram className="w-4 h-4" />
+            Follow @browbosslajolla for more
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </section>
 
