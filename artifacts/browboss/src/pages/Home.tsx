@@ -358,6 +358,44 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
   );
 }
 
+function BeforeAfterCard({ label, before, after, posB, posA }: { label: string; before: string; after: string; posB: string; posA: string }) {
+  const [showAfter, setShowAfter] = useState(false);
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }}
+      className="cursor-pointer select-none"
+      onClick={() => setShowAfter((v) => !v)}
+    >
+      <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100">
+        <img
+          src={before}
+          alt={`${label} before`}
+          className={`absolute inset-0 w-full h-full object-cover grayscale transition-opacity duration-500 ${showAfter ? "opacity-0" : "opacity-100"}`}
+          style={{ objectPosition: posB }}
+        />
+        <img
+          src={after}
+          alt={`${label} after`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${showAfter ? "opacity-100" : "opacity-0"}`}
+          style={{ objectPosition: posA }}
+        />
+        <div className="absolute bottom-0 left-0 right-0 flex">
+          <div className={`flex-1 py-2 text-center text-[9px] tracking-[0.3em] uppercase font-medium transition-colors duration-300 ${!showAfter ? "bg-black text-white" : "bg-white/80 text-zinc-400"}`}>
+            Before
+          </div>
+          <div className={`flex-1 py-2 text-center text-[9px] tracking-[0.3em] uppercase font-medium transition-colors duration-300 ${showAfter ? "bg-black text-white" : "bg-white/80 text-zinc-400"}`}>
+            After
+          </div>
+        </div>
+      </div>
+      <p className="font-serif text-sm text-zinc-700 mt-4">{label}</p>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -923,6 +961,49 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Before & After */}
+      <section id="transformations" className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">Real Results</p>
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">Before & After</h2>
+            <div className="w-8 h-px bg-black mx-auto mb-4" />
+            <p className="text-zinc-400 text-sm tracking-wide">Tap to reveal</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                label: "Microblading",
+                before: "/images/ba-micro-before.jpg",
+                after:  "/images/ba-micro-after.jpg",
+                posB: "top", posA: "top",
+              },
+              {
+                label: "Brow Shaping",
+                before: "/images/ba-brow-before.jpg",
+                after:  "/images/ba-brow-after.jpg",
+                posB: "top", posA: "top",
+              },
+              {
+                label: "Lash Lift",
+                before: "/images/ba-lash-before.jpg",
+                after:  "/images/ba-lash-after.jpg",
+                posB: "center", posA: "top",
+              },
+            ].map((pair) => (
+              <BeforeAfterCard key={pair.label} {...pair} />
+            ))}
+          </div>
         </div>
       </section>
 
