@@ -127,7 +127,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
+    <section className="relative md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
 
       {/* ── MOBILE videos: Nano Blading & Wake Up Beautiful ── */}
       <video
