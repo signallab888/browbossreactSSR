@@ -66,10 +66,10 @@ const formSchema = z.object({
 // or mp4 video URLs via `src`. Leave `instagramUrl` and `src` empty for a placeholder.
 const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?: string }[] = [
   { label: "Microblading", instagramUrl: "https://www.instagram.com/p/DMfmfGBxOXq/" },
-  { label: "Nano Brows" },
-  { label: "Lip Blush" },
-  { label: "Lash Lift" },
-  { label: "Brow Lamination" },
+  { label: "Brow Work", instagramUrl: "https://www.instagram.com/p/DJk11-VpR5V/" },
+  { label: "Results", instagramUrl: "https://www.instagram.com/p/DEjPVkjxO2y/" },
+  { label: "Transformation", instagramUrl: "https://www.instagram.com/p/DBRpq-kSyfR/" },
+  { label: "Before & After", instagramUrl: "https://www.instagram.com/p/C7E7K6rJf7T/" },
 ];
 
 const SERVICES = [
