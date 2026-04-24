@@ -1,0 +1,167 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Inter",
+      "role": "body"
+    },
+    {
+      "family": "Arial",
+      "role": "body"
+    },
+    {
+      "family": "Helvetica",
+      "role": "body"
+    },
+    {
+      "family": "Roboto",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#FFCBE4",
+    "secondary": "#992233",
+    "accent": "#F5F53C",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#F5F53C"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Inter",
+      "heading": "Inter"
+    },
+    "fontStacks": {
+      "heading": [
+        "headingfont",
+        "Inter",
+        "Trebuchet MS",
+        "Arial",
+        "sans-serif"
+      ],
+      "body": [
+        "basefont",
+        "Inter",
+        "Helvetica",
+        "Arial",
+        "sans-serif",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans"
+      ],
+      "paragraph": [
+        "basefont",
+        "Inter",
+        "Helvetica",
+        "Arial",
+        "sans-serif",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans"
+      ]
+    },
+    "fontSizes": {
+      "h1": "33.92px",
+      "h2": "24px",
+      "body": "13px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "20px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "transparent",
+      "textColor": "#000000",
+      "borderColor": "#000000",
+      "borderRadius": "30px",
+      "borderRadiusCorners": {
+        "topLeft": "30px",
+        "topRight": "30px",
+        "bottomRight": "30px",
+        "bottomLeft": "30px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#000000",
+      "textColor": "#FFFFFF",
+      "borderColor": "#000000",
+      "borderRadius": "30px",
+      "borderRadiusCorners": {
+        "topLeft": "30px",
+        "topRight": "30px",
+        "bottomRight": "30px",
+        "bottomLeft": "30px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "favicon": "https://bourbonbrows.glossgenius.com/favicon.ico",
+    "ogImage": "https://static.glossgenius.com/public/salon/54e6791e98c9d1d22078bac25131a18d9db120b8/website_cover_image/492d3e92ad83a4ccbefe239e80da2179.jpeg"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "No visible or appropriately sized logo candidate matches the brand 'Bourbon Brows' in the header area. All candidates are either invisible or not suitable as a primary brand logo.",
+    "confidence": 0.3,
+    "rejected": true,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 1,
+      "text": "Book",
+      "reasoning": "The 'Book' button is likely the primary CTA due to its action-oriented text, which is crucial for a service-based website. Despite its transparent background, the text 'Book' suggests a direct action related to the site's purpose."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "View All Services",
+      "reasoning": "The 'View All Services' button is secondary as it provides additional information rather than a direct action. It has a different background color (#000000) compared to the primary button."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "playful",
+    "energy": "medium",
+    "targetAudience": "Individuals seeking beauty services"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.95,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "No visible or appropriately sized logo candidate matches the brand 'Bourbon Brows' in the header area. All candidates are either invisible or not suitable as a primary brand logo.",
+        "confidence": 0.3
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

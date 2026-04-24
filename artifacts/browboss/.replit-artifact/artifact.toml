@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "BrowBoss — La Jolla Brow & Beauty"
+version = "1.0.0"
+id = "artifacts/browboss"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19857
+
+[services.development]
+run = "pnpm --filter @workspace/browboss run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/browboss", "run", "build" ]
+publicDir = "artifacts/browboss/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19857"
+BASE_PATH = "/"

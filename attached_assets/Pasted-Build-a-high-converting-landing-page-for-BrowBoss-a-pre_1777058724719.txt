@@ -1,0 +1,424 @@
+Build a high-converting landing page for BrowBoss, a premium brow 
+and beauty studio in La Jolla, San Diego, California.
+
+═══════════════════════════════════════════════════════════
+TARGET AUDIENCE
+═══════════════════════════════════════════════════════════
+
+American women, dual segment:
+- Affluent clients (ages 35-60, disposable income, value luxury)
+- Aspirational clients (ages 25-45, budget-conscious but willing 
+  to invest in beauty)
+
+The design must feel premium enough for affluent clients while 
+including subtle accessibility signals (financing, starting prices, 
+diverse testimonials) so price is never an objection.
+
+═══════════════════════════════════════════════════════════
+TECH STACK (MANDATORY)
+═══════════════════════════════════════════════════════════
+
+- Astro 4+ with static site generation (SSG)
+- Tailwind CSS for styling
+- Vanilla JavaScript only when needed
+- NO React, NO Vue, NO heavy frameworks
+- All HTML server-rendered for maximum SEO
+- Static output deployable to Hostinger via FTP
+- Build command: npm run build outputs to /dist
+
+═══════════════════════════════════════════════════════════
+DESIGN SYSTEM
+═══════════════════════════════════════════════════════════
+
+Aesthetic: Modern editorial luxury, black & white minimalist
+Think: Vogue magazine meets boutique medical spa
+
+Colors:
+- Primary: Pure black (#0A0A0A)
+- Background: Pure white (#FFFFFF)
+- Accent: Warm cream (#F5F1EC) for section backgrounds
+- Text secondary: Charcoal (#4A4A4A)
+- NO gradients, NO bright colors, NO shadows except very subtle
+
+Typography:
+- Headings: Playfair Display (serif, editorial feel)
+- Body: Inter (clean sans-serif)
+- Accent/pricing: Inter medium weight
+- Generous letter-spacing on uppercase labels
+
+Layout:
+- Max-width 1280px for content
+- Generous whitespace (minimum 80px between sections desktop)
+- Mobile-first responsive design
+- Smooth scroll behavior
+- Subtle fade-in animations on scroll only (no bouncing, no flashing)
+
+═══════════════════════════════════════════════════════════
+PAGE STRUCTURE (in this exact order)
+═══════════════════════════════════════════════════════════
+
+────────────────────────────────────────────
+SECTION 1: HERO (above the fold)
+────────────────────────────────────────────
+
+- Full-viewport video background
+- Video attributes: autoplay, muted, loop, playsinline, poster image
+- Dark overlay (40% black) for text readability
+- Centered content:
+  * Small uppercase label: "LA JOLLA • SAN DIEGO"
+  * H1 (Playfair Display, large): "Effortless Beauty, Every Day"
+  * Subheadline (Inter, medium): "San Diego's premier studio for 
+    microblading, permanent makeup, lash lifts, and brows that 
+    wake up with you."
+  * Primary CTA button (white bg, black text, large): 
+    "Book Your Free Consultation"
+  * Below CTA, small text: "Pay over time with Cherry, Afterpay 
+    or Klarna — as low as $50/month"
+- Sticky header with logo, minimal nav (Services, Gallery, About, 
+  Book), and a small "Call (619) XXX-XXXX" link
+
+────────────────────────────────────────────
+SECTION 2: TRUST BAR (thin strip)
+────────────────────────────────────────────
+
+Horizontal bar with 4 trust signals separated by dots:
+⭐ 4.9 on Google (500+ Reviews) • Licensed & Insured • 
+Featured in [Local Magazine] • 10+ Years of Experience
+
+────────────────────────────────────────────
+SECTION 3: SERVICES GRID
+────────────────────────────────────────────
+
+Section title: "Our Services"
+Subtitle: "Expert treatments designed to enhance your natural beauty"
+
+Grid of 8 service cards (mobile: 2 cols, tablet: 3 cols, desktop: 4 cols):
+
+1. Microblading & Shading — Starting at $600
+2. Ombre Powder Brows — Starting at $650
+3. Lip Blushing — Starting at $550
+4. Lash Lift — Starting at $95
+5. Brow Lamination — Starting at $85
+6. Brow Shaping — Starting at $45
+7. Scalp Micropigmentation (SMP) — Starting at $800
+8. Custom Facials — Starting at $120
+
+Each card:
+- Black & white image (hover: slight zoom)
+- Service name (Playfair Display)
+- "Starting at $X" + tiny text "or $XX/month with Cherry"
+- Duration: "Lasts up to 3 years" (where applicable)
+- Hover reveals "Learn More →"
+- Each card links to /services/[slug]
+
+────────────────────────────────────────────
+SECTION 4: VALUE REFRAMING (price objection killer)
+────────────────────────────────────────────
+
+Full-width section with cream background
+Split layout (50/50 desktop, stacked mobile)
+
+Left side: Editorial B&W photo of woman with perfect brows
+
+Right side:
+- Small label: "THE REAL COST OF NOT DOING IT"
+- H2: "Stop Spending $1,200 a Year on Brow Pencils"
+- Body copy: "The average woman spends over $1,200 annually on 
+  brow products, touch-ups, and the 15 minutes every morning 
+  perfecting them. Microblading is a one-time investment that 
+  pays you back in confidence, time, and money for up to 3 years."
+- 3 quick stats in a row:
+  * "$0.55/day" — "Cost of microblading over 3 years"
+  * "91 hours" — "Time saved on morning makeup in a year"
+  * "3 years" — "Of waking up ready"
+
+────────────────────────────────────────────
+SECTION 5: BEFORE & AFTER GALLERY
+────────────────────────────────────────────
+
+Section title: "Real Clients. Real Results."
+Subtitle: "No filters, no retouching — just our work."
+
+Horizontal swipeable carousel with 10 slots
+Each slot: before/after split image with subtle divider
+Caption: service type and optional client first name
+Navigation: arrow buttons + dot indicators + swipe gestures
+
+────────────────────────────────────────────
+SECTION 6: HOW IT WORKS (anxiety reducer)
+────────────────────────────────────────────
+
+Section title: "Your BrowBoss Experience"
+3-step process, horizontal on desktop, vertical on mobile:
+
+Step 1: "Complimentary Consultation"
+"We sit down together, discuss your goals, face shape, and skin type. 
+No pressure, no commitment. (15-30 min)"
+
+Step 2: "Custom Design, Perfected"
+"We map your brows using golden ratio techniques and show you the 
+design before we begin. You approve every detail."
+
+Step 3: "Results That Last"
+"Walk out with brows that last up to 3 years. Includes a 
+complimentary 6-week perfection session ($150 value)."
+
+Each step has an elegant number (01, 02, 03) in Playfair Display
+
+────────────────────────────────────────────
+SECTION 7: TESTIMONIALS
+────────────────────────────────────────────
+
+Section title: "Loved by 500+ Women Across San Diego"
+
+3 testimonial cards (carousel on mobile):
+Each card contains:
+- Client photo (real, diverse ages and ethnicities)
+- 5-star rating
+- Quote (specific, 2-3 sentences): 
+  Example: "I was terrified of microblading after a bad experience 
+  elsewhere. Leslie listened, took her time, and gave me the most 
+  natural-looking brows I've ever had. One year later, they still 
+  look perfect."
+- Full name, service received, city
+  Example: "Sarah M. — Microblading Client, Del Mar"
+
+────────────────────────────────────────────
+SECTION 8: MEET LESLIE (founder trust)
+────────────────────────────────────────────
+
+Split layout (40/60)
+Left: Large editorial B&W portrait of Leslie
+Right:
+- Small label: "MEET YOUR ARTIST"
+- H2: "Leslie Ritchie, Founder & Lead Artist"
+- Bio (4 lines max): "Leslie is a California-licensed permanent 
+  makeup artist with over 10 years of experience transforming 
+  brows across San Diego. Trained by industry leaders and 
+  obsessed with precision, she treats every client like family."
+- Certifications row: small logos/text of certifications
+- CTA: "Book with Leslie →"
+
+────────────────────────────────────────────
+SECTION 9: FINANCING & PAYMENT (price objection destroyer)
+────────────────────────────────────────────
+
+Cream background section
+Section title: "Beauty Within Reach"
+Subtitle: "Flexible payment options so you can book today."
+
+3 logo cards horizontally:
+- Cherry: "Pre-qualify in 60 seconds. 0% APR available."
+- Afterpay: "4 interest-free payments."
+- Klarna: "Pay in 4, or over time."
+
+Below: "All services include a complimentary 6-week touch-up session."
+
+────────────────────────────────────────────
+SECTION 10: FAQ (SEO + objection handling)
+────────────────────────────────────────────
+
+Section title: "Frequently Asked Questions"
+Accordion with 8 questions. Implement with FAQPage schema markup.
+
+1. Does microblading hurt?
+2. How long does microblading last?
+3. How much does permanent makeup cost in San Diego?
+4. Is it safe? Are you licensed?
+5. How long does the appointment take?
+6. What should I do before my appointment?
+7. How do I care for my brows after microblading?
+8. Do you offer payment plans?
+
+────────────────────────────────────────────
+SECTION 11: BOOKING FORM
+────────────────────────────────────────────
+
+Section title: "Book Your Free Consultation"
+Subtitle: "No commitment. We'll help you find the perfect service for you."
+
+Form with ONLY 4 fields (clean, large, easy to tap):
+1. First Name (required)
+2. Phone Number (required, formatted)
+3. Service of Interest (dropdown with 8 services + "Not sure yet")
+4. Preferred Date (date picker)
+
+Optional checkbox: "Yes, send me appointment reminders and exclusive 
+offers via text" (SMS consent for future marketing)
+
+Submit button (large, black, full-width on mobile): 
+"Get My Free Consultation"
+
+Below button: "We'll text or call you within 24 hours. 
+No spam, ever."
+
+Form submits to a placeholder webhook URL (to be connected to 
+GoHighLevel later). On submit, show success message: 
+"Thank you! We'll be in touch within 24 hours."
+
+────────────────────────────────────────────
+SECTION 12: LOCATION & CONTACT
+────────────────────────────────────────────
+
+Split layout (50/50)
+
+Left: Embedded Google Map of La Jolla location
+
+Right:
+- Address with icon
+- Hours (Mon-Sat 9am-7pm, Sun closed)
+- Click-to-call phone number (large, tappable)
+- Click-to-text SMS link
+- Email
+- Social icons: Instagram, TikTok, Google Reviews
+
+────────────────────────────────────────────
+SECTION 13: FOOTER
+────────────────────────────────────────────
+
+Minimal footer:
+- Logo
+- Quick links: Services, Gallery, About, Book, Contact
+- Service pages links (for SEO)
+- Copyright + Privacy Policy + Terms of Service
+- "Proudly serving La Jolla, Del Mar, Carmel Valley, 
+  Pacific Beach, and all of San Diego"
+
+═══════════════════════════════════════════════════════════
+STICKY ELEMENTS (mobile only)
+═══════════════════════════════════════════════════════════
+
+- Sticky bottom bar on mobile that appears after scrolling 50% down:
+  Two buttons side by side:
+  [ Text Us ] (opens SMS with pre-filled message)
+  [ Book Now ] (scrolls to booking form)
+
+- NO floating WhatsApp button (American market)
+- NO chat bot popup
+- NO exit-intent popup
+- NO email capture popup
+
+═══════════════════════════════════════════════════════════
+SEO REQUIREMENTS (critical for local ranking)
+═══════════════════════════════════════════════════════════
+
+Meta tags:
+- Title: "BrowBoss | Microblading & Permanent Makeup in La Jolla, San Diego"
+- Description: "San Diego's premier brow studio. Expert microblading, 
+  permanent makeup, lash lifts & brow lamination in La Jolla. 
+  Book your free consultation today."
+- Open Graph image (branded)
+- Twitter Card tags
+- Canonical URLs
+
+Schema.org structured data:
+- LocalBusiness (BeautySalon type) with full NAP, hours, rating
+- Service schema for each of the 8 services
+- FAQPage schema for the FAQ section
+- Review schema for testimonials
+- BreadcrumbList on service pages
+
+Technical SEO:
+- Semantic HTML5 (header, nav, main, section, article, aside, footer)
+- Single H1 per page
+- Proper heading hierarchy (H1 > H2 > H3)
+- Alt text on every image (descriptive + keyword-rich)
+- Sitemap.xml auto-generated
+- robots.txt
+- Clean URL structure: /services/microblading-san-diego
+- 404 page
+
+Individual service pages (for local keyword targeting):
+Create these 8 pages at /services/[slug]:
+- /services/microblading-san-diego
+- /services/ombre-powder-brows-san-diego
+- /services/lip-blushing-san-diego
+- /services/lash-lift-la-jolla
+- /services/brow-lamination-san-diego
+- /services/brow-shaping-san-diego
+- /services/scalp-micropigmentation-san-diego
+- /services/facials-la-jolla
+
+Each service page template includes:
+- Hero with service name + location keyword
+- "What is [service]" explanation
+- Benefits (bullet points)
+- Process (step by step)
+- Pricing starting at + financing info
+- Before/after specific to that service
+- FAQ specific to that service
+- Related services
+- Booking form (same 4 fields)
+- Schema markup specific to Service type
+
+═══════════════════════════════════════════════════════════
+PERFORMANCE REQUIREMENTS
+═══════════════════════════════════════════════════════════
+
+- Lighthouse mobile score: 95+ across all metrics
+- First Contentful Paint: under 1.5 seconds
+- Largest Contentful Paint: under 2.5 seconds
+- Total page size: under 1MB (excluding video)
+- Images: WebP format with JPG fallback, lazy loaded below fold
+- Hero video: compressed, max 2MB, with poster image
+- Critical CSS inlined
+- Fonts: preloaded, display=swap
+- No render-blocking resources
+- Minified HTML, CSS, JS
+
+═══════════════════════════════════════════════════════════
+ACCESSIBILITY (WCAG AA)
+═══════════════════════════════════════════════════════════
+
+- Proper ARIA labels on all interactive elements
+- Keyboard navigable (tab order makes sense)
+- Focus states visible
+- Minimum 44x44px tap targets on mobile
+- Color contrast ratios meeting AA standards
+- Alt text on all images
+- Form labels properly associated
+- Skip-to-content link for screen readers
+
+═══════════════════════════════════════════════════════════
+FILE STRUCTURE
+═══════════════════════════════════════════════════════════
+
+/src
+  /pages
+    index.astro (home)
+    /services
+      [slug].astro (dynamic service pages)
+    404.astro
+    privacy.astro
+    terms.astro
+  /components
+    Header.astro
+    Hero.astro
+    TrustBar.astro
+    ServicesGrid.astro
+    ValueReframe.astro
+    BeforeAfter.astro
+    HowItWorks.astro
+    Testimonials.astro
+    MeetLeslie.astro
+    Financing.astro
+    FAQ.astro
+    BookingForm.astro
+    Location.astro
+    Footer.astro
+    StickyMobileBar.astro
+  /layouts
+    Layout.astro (base with SEO meta)
+    ServiceLayout.astro
+  /data
+    services.json (services data)
+    testimonials.json
+    faq.json
+/public
+  /images (B&W editorial photos)
+  /videos (hero video)
+  favicon.ico
+  robots.txt
+  sitemap.xml (auto-generated)
+
+════════════════════════════════════════════════

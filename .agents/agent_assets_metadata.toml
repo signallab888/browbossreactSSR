@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "_SrCYei7GT4d6r8OU8PZX"
+uri = "file://artifacts/browboss/public/images/service-brows.png"
+type = "image"
+title = "Close up perfect brows B&W"
+
+[[generated]]
+id = "AGTw2XdtcHUH_Tss--z_2"
+uri = "file://artifacts/browboss/public/images/service-lashes.png"
+type = "image"
+title = "Close up eyelashes B&W"
+
+[[generated]]
+id = "5m_c6g2llOTH3wj-0xN4v"
+uri = "file://artifacts/browboss/public/images/value-brows.png"
+type = "image"
+title = "Editorial woman brows B&W"
+
+[[generated]]
+id = "vBKoixno1ciMyXZ8CBVOq"
+uri = "file://artifacts/browboss/public/images/leslie-portrait.png"
+type = "image"
+title = "Professional artist portrait B&W"
+
+[[generated]]
+id = "0ZqDjVARDiSyGGwWX62b3"
+uri = "file://artifacts/browboss/public/images/insta-1.png"
+type = "image"
+title = "Beauty studio aesthetic B&W"
+
+[[generated]]
+id = "YtKr8M7rLdLxYqVdE1fJl"
+uri = "file://artifacts/browboss/public/images/insta-2.png"
+type = "image"
+title = "Minimalist beauty shot B&W"
