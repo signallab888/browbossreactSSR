@@ -76,7 +76,7 @@ const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?
 
 const SERVICES = [
   { name: "Microblading & Shading",     price: "from $600", image: "/videos/v6-f25.jpg" },
-  { name: "Ombre Powder Brows",          price: "from $650", image: "/videos/v6-f30.jpg" },
+  { name: "Ombre Powder Brows",          price: "from $650", image: "/images/powder-brows.jpg" },
   { name: "Lip Blushing",               price: "from $550", image: "/videos/v7-f23.jpg" },
   { name: "Lash Lift",                  price: "from $95",  image: "/videos/v7-f18.jpg" },
   { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
