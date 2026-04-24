@@ -221,7 +221,7 @@ export default function Home() {
       {/* Sticky Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-sm border-b border-border py-4" : "bg-transparent py-6"
+          isScrolled ? "bg-white/95 backdrop-blur-sm border-b border-zinc-100 py-4" : "bg-white/0 py-6"
         }`}
       >
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
@@ -229,11 +229,11 @@ export default function Home() {
             <img 
               src="https://browboss.com/img/logo.svg" 
               alt="BrowBoss Logo" 
-              className={`h-12 w-auto transition-all duration-300 ${!isScrolled ? "brightness-0 invert" : "brightness-0"}`}
+              className="h-12 w-auto transition-all duration-300 brightness-0"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 const fallback = document.createElement('span');
-                fallback.className = `font-serif font-bold text-2xl tracking-[0.2em] ${!isScrolled ? 'text-white' : 'text-black'}`;
+                fallback.className = 'font-serif font-bold text-2xl tracking-[0.2em] text-black';
                 fallback.textContent = 'BROWBOSS';
                 e.currentTarget.parentElement?.appendChild(fallback);
               }}
@@ -241,7 +241,7 @@ export default function Home() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className={`hidden md:flex items-center gap-8 ${!isScrolled ? "text-white" : "text-foreground"}`}>
+          <nav className="hidden md:flex items-center gap-8 text-black">
             <a href="#services" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Services</a>
             <a href="#gallery" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Gallery</a>
             <a href="#about" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">About</a>
@@ -259,9 +259,9 @@ export default function Home() {
             data-testid="button-mobile-menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-foreground" />
+              <X className="w-6 h-6 text-black" />
             ) : (
-              <Menu className={`w-6 h-6 ${!isScrolled ? "text-white" : "text-foreground"}`} />
+              <Menu className="w-6 h-6 text-black" />
             )}
           </button>
         </div>
@@ -282,21 +282,21 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-end overflow-hidden bg-black" data-testid="hero-section">
+      <section className="relative min-h-[100dvh] flex items-end overflow-hidden bg-white" data-testid="hero-section">
         
-        {/* Subtle video texture — plays silently at low opacity */}
+        {/* Very subtle video texture at low opacity */}
         <video
           autoPlay muted loop playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.18 }}
+          style={{ opacity: 0.06 }}
           aria-hidden="true"
         >
           <source src="/videos/v5.mp4" type="video/mp4" />
         </video>
 
-        {/* Layered gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 pointer-events-none" />
+        {/* Light gradient wash — white edges, slight center tint */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-white/95 to-zinc-50 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/80 pointer-events-none" />
 
         {/* Editorial content — left-aligned, bottom-anchored */}
         <div className="relative z-10 w-full pb-20 md:pb-28 pt-32">
@@ -309,30 +309,30 @@ export default function Home() {
             >
               {/* Location tag */}
               <motion.div variants={fadeIn} className="flex items-center gap-3 mb-10">
-                <span className="block w-8 h-px bg-white/40" />
-                <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/50">
+                <span className="block w-8 h-px bg-black/30" />
+                <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-zinc-400">
                   La Jolla · San Diego
                 </p>
               </motion.div>
 
-              {/* Main headline — editorial, large, light weight */}
+              {/* Main headline */}
               <motion.h1
                 variants={fadeIn}
-                className="font-serif font-light text-white leading-[1.05] mb-8"
+                className="font-serif font-light text-black leading-[1.05] mb-8"
                 style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
               >
                 The Art<br />
-                <em className="not-italic text-white/70">of</em> Perfect<br />
+                <em className="not-italic text-zinc-300">of</em> Perfect<br />
                 Brows.
               </motion.h1>
 
               {/* Thin rule */}
-              <motion.div variants={fadeIn} className="w-16 h-px bg-white/20 mb-8" />
+              <motion.div variants={fadeIn} className="w-16 h-px bg-black/15 mb-8" />
 
               {/* Subtext */}
               <motion.p
                 variants={fadeIn}
-                className="text-base md:text-lg text-white/55 font-light leading-relaxed max-w-md mb-12"
+                className="text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-md mb-12"
               >
                 Precision microblading, permanent makeup &amp; luxury beauty treatments in La Jolla — crafted for faces that deserve the finest.
               </motion.p>
@@ -344,13 +344,13 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-hero-book"
-                  className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-100 transition-colors duration-200"
+                  className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold hover:bg-zinc-800 transition-colors duration-200"
                 >
                   Book a Consultation
                 </a>
                 <button
                   onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex items-center gap-2 text-white/50 text-[11px] tracking-[0.25em] uppercase font-medium hover:text-white/80 transition-colors duration-200 group"
+                  className="inline-flex items-center gap-2 text-zinc-400 text-[11px] tracking-[0.25em] uppercase font-medium hover:text-black transition-colors duration-200 group"
                 >
                   See Services
                   <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-8" />
@@ -358,7 +358,7 @@ export default function Home() {
               </motion.div>
 
               {/* Financing note */}
-              <motion.p variants={fadeIn} className="mt-6 text-[11px] text-white/30 tracking-wider uppercase">
+              <motion.p variants={fadeIn} className="mt-6 text-[11px] text-zinc-300 tracking-wider uppercase">
                 Cherry · Afterpay · Klarna — from $50/mo
               </motion.p>
             </motion.div>
@@ -366,27 +366,27 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-2 opacity-40">
-          <span className="text-[9px] tracking-[0.3em] uppercase text-white rotate-90 origin-center translate-y-3">Scroll</span>
+        <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-2 opacity-30">
+          <span className="text-[9px] tracking-[0.3em] uppercase text-black rotate-90 origin-center translate-y-3">Scroll</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-px h-12 bg-gradient-to-b from-white to-transparent"
+            className="w-px h-12 bg-gradient-to-b from-black to-transparent"
           />
         </div>
       </section>
 
       {/* Trust Bar */}
-      <section className="bg-zinc-900 text-white py-4 border-b border-zinc-800">
+      <section className="bg-zinc-950 text-white py-3 border-b border-zinc-900">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs md:text-sm tracking-wider uppercase text-center font-medium">
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 fill-white" /> 4.9 on Google (500+ Reviews)</span>
-            <span className="hidden md:inline text-zinc-700">•</span>
-            <span>Licensed & Insured</span>
-            <span className="hidden md:inline text-zinc-700">•</span>
-            <span>Featured in BarChart & Globe and Mail</span>
-            <span className="hidden md:inline text-zinc-700">•</span>
-            <span>10+ Years of Experience</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] md:text-xs tracking-[0.2em] uppercase text-center font-medium">
+            <span className="flex items-center gap-1.5"><Star className="w-3 h-3 fill-white" /> 4.9 on Google · 500+ Reviews</span>
+            <span className="hidden md:inline text-zinc-700">|</span>
+            <span>Licensed &amp; Insured</span>
+            <span className="hidden md:inline text-zinc-700">|</span>
+            <span>10+ Years · 8,000+ Procedures</span>
+            <span className="hidden md:inline text-zinc-700">|</span>
+            <span>La Jolla, San Diego</span>
           </div>
         </div>
       </section>
@@ -439,7 +439,7 @@ export default function Home() {
       </section>
 
       {/* Work Showcase — Vertical Video Reels */}
-      <section id="gallery" className="py-20 md:py-28 bg-black overflow-hidden">
+      <section id="gallery" className="py-20 md:py-28 bg-zinc-50 overflow-hidden border-t border-zinc-100">
         <div className="container mx-auto px-4 mb-10">
           <motion.div
             initial="hidden"
@@ -449,19 +449,19 @@ export default function Home() {
             className="flex flex-col md:flex-row md:items-end justify-between gap-4"
           >
             <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-zinc-500 mb-3">Our Work</p>
-              <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+              <p className="text-xs tracking-[0.3em] uppercase text-zinc-400 mb-3">Our Work</p>
+              <h2 className="text-4xl md:text-5xl font-serif text-black leading-tight">
                 See the<br />Transformation
               </h2>
             </div>
             <p className="text-zinc-400 text-sm max-w-xs leading-relaxed">
-              Real procedures, real results. Tap any reel to play.
+              Real procedures, real results. Hover any clip to play.
             </p>
           </motion.div>
         </div>
 
         {/* Horizontally scrollable video strip */}
-        <div className="flex gap-4 px-4 md:px-8 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
+        <div className="flex gap-4 px-4 md:px-8 overflow-x-auto pb-4 snap-x snap-mandatory"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {WORK_VIDEOS.map((video, i) => (
@@ -476,20 +476,6 @@ export default function Home() {
               <VideoCard {...video} />
             </motion.div>
           ))}
-
-          {/* "Add more" end card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: WORK_VIDEOS.length * 0.08, duration: 0.5 }}
-            className="snap-start flex-shrink-0 w-[220px] md:w-[260px] aspect-[9/16] border border-dashed border-zinc-700 flex flex-col items-center justify-center gap-3 text-center px-6"
-          >
-            <div className="w-12 h-12 rounded-full border border-zinc-600 flex items-center justify-center">
-              <span className="text-zinc-500 text-2xl font-thin">+</span>
-            </div>
-            <p className="text-zinc-600 text-xs tracking-widest uppercase leading-relaxed">More reels coming soon</p>
-          </motion.div>
         </div>
 
         <div className="container mx-auto px-4 mt-8">
@@ -497,7 +483,7 @@ export default function Home() {
             href="https://www.instagram.com/browbosslajolla"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-white text-sm tracking-widest uppercase transition-colors"
+            className="inline-flex items-center gap-2 text-zinc-400 hover:text-black text-sm tracking-widest uppercase transition-colors"
             data-testid="link-instagram-gallery"
           >
             <Instagram className="w-4 h-4" />
@@ -601,7 +587,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 bg-black text-white">
+      <section className="py-24 md:py-32 bg-white border-t border-zinc-100">
         <div className="container mx-auto px-4">
           <motion.div 
             initial="hidden"
@@ -610,8 +596,8 @@ export default function Home() {
             variants={fadeIn}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Loved by 500+ Women Across San Diego</h2>
-            <div className="w-12 h-px bg-white mx-auto"></div>
+            <h2 className="text-4xl md:text-5xl font-serif text-black mb-4">Loved by 500+ Women Across San Diego</h2>
+            <div className="w-12 h-px bg-black/20 mx-auto"></div>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -644,23 +630,23 @@ export default function Home() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.6 } }
                 }}
-                className="bg-zinc-900 p-8 md:p-10 border border-zinc-800 flex flex-col h-full"
+                className="bg-zinc-50 p-8 md:p-10 border border-zinc-100 flex flex-col h-full"
               >
                 <div className="flex items-center gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-white text-white" />
+                    <Star key={i} className="w-4 h-4 fill-black text-black" />
                   ))}
                 </div>
-                <p className="text-lg font-serif italic font-light leading-relaxed mb-8 flex-grow">
+                <p className="text-lg font-serif italic font-light leading-relaxed mb-8 flex-grow text-zinc-700">
                   "{review.quote}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center font-serif text-lg tracking-widest text-zinc-400">
+                  <div className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center font-serif text-lg tracking-widest text-zinc-400 bg-white">
                     {review.initials}
                   </div>
                   <div>
-                    <p className="font-serif text-lg">{review.name}</p>
-                    <p className="text-xs uppercase tracking-wider text-zinc-500">{review.role}</p>
+                    <p className="font-serif text-lg text-black">{review.name}</p>
+                    <p className="text-xs uppercase tracking-wider text-zinc-400">{review.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -913,58 +899,58 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-zinc-400 py-16 md:py-24 font-light text-sm">
+      <footer className="bg-white text-zinc-500 py-16 md:py-24 font-light text-sm border-t border-zinc-100">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 border-b border-zinc-800 pb-16 mb-12">
+          <div className="grid md:grid-cols-4 gap-12 border-b border-zinc-100 pb-16 mb-12">
             <div className="md:col-span-1">
               <img 
                 src="https://browboss.com/img/logo.svg" 
                 alt="BrowBoss" 
-                className="h-8 invert mb-6 opacity-80"
+                className="h-8 brightness-0 mb-6 opacity-70"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement?.insertAdjacentHTML('beforeend', '<span class="font-serif font-bold text-2xl tracking-wider text-white">BROWBOSS</span>');
+                  e.currentTarget.parentElement?.insertAdjacentHTML('beforeend', '<span class="font-serif font-bold text-2xl tracking-wider text-black">BROWBOSS</span>');
                 }}
               />
-              <p className="mb-6 max-w-xs">
+              <p className="mb-6 max-w-xs text-zinc-400">
                 San Diego's premier destination for effortless beauty and permanent makeup.
               </p>
               <div className="flex gap-4">
-                <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-black transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="text-zinc-400 hover:text-black transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
               </div>
             </div>
 
             <div>
-              <h4 className="text-white font-medium tracking-widest uppercase mb-6 text-xs">Contact</h4>
-              <ul className="space-y-4">
+              <h4 className="text-black font-medium tracking-widest uppercase mb-6 text-xs">Contact</h4>
+              <ul className="space-y-4 text-zinc-400">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                   <span>La Jolla<br />San Diego, CA</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 shrink-0" />
-                  <a href="tel:8583220010" className="hover:text-white transition-colors">(858) 322-0010</a>
+                  <a href="tel:8583220010" className="hover:text-black transition-colors">(858) 322-0010</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-4 h-4 shrink-0" />
-                  <a href="mailto:INFO@BROWBOSS.COM" className="hover:text-white transition-colors uppercase">INFO@BROWBOSS.COM</a>
+                  <a href="mailto:INFO@BROWBOSS.COM" className="hover:text-black transition-colors uppercase">INFO@BROWBOSS.COM</a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-medium tracking-widest uppercase mb-6 text-xs">Hours</h4>
-              <ul className="space-y-4">
+              <h4 className="text-black font-medium tracking-widest uppercase mb-6 text-xs">Hours</h4>
+              <ul className="space-y-4 text-zinc-400">
                 <li className="flex justify-between">
                   <span>Mon - Sat</span>
                   <span>9:00 AM - 7:00 PM</span>
                 </li>
-                <li className="flex justify-between text-zinc-500">
+                <li className="flex justify-between text-zinc-300">
                   <span>Sunday</span>
                   <span>Closed</span>
                 </li>
@@ -972,21 +958,21 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="text-white font-medium tracking-widest uppercase mb-6 text-xs">Links</h4>
-              <ul className="space-y-4 uppercase tracking-wider text-xs">
-                <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-                <li><a href="#gallery" className="hover:text-white transition-colors">Gallery</a></li>
-                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-                <li><a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-white font-medium">Book Appointment</a></li>
+              <h4 className="text-black font-medium tracking-widest uppercase mb-6 text-xs">Links</h4>
+              <ul className="space-y-4 uppercase tracking-wider text-xs text-zinc-400">
+                <li><a href="#services" className="hover:text-black transition-colors">Services</a></li>
+                <li><a href="#gallery" className="hover:text-black transition-colors">Gallery</a></li>
+                <li><a href="#about" className="hover:text-black transition-colors">About</a></li>
+                <li><a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="text-black font-medium hover:opacity-60 transition-opacity">Book Appointment</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600 uppercase tracking-widest">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-300 uppercase tracking-widest">
             <p>© 2025 BrowBoss Brow & Beauty. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
