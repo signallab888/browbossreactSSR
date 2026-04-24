@@ -75,14 +75,14 @@ const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?
 ];
 
 const SERVICES = [
+  { name: "Lash Lift",                  price: "from $95",  image: "/videos/v13-f1.jpg", objectPosition: "top" },
+  { name: "Custom Facials",             price: "from $120", image: "/videos/v9-f4.jpg" },
+  { name: "Brow Shaping",               price: "from $45",  image: "/videos/v11-f3.jpg", objectPosition: "top" },
+  { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
   { name: "Microblading & Shading",     price: "from $600", image: "/videos/v14-f35.jpg" },
   { name: "Ombre Powder Brows",          price: "from $650", image: "/images/powder-brows.jpg" },
   { name: "Lip Blushing",               price: "from $550", image: "/videos/v12-f1.jpg" },
-  { name: "Lash Lift",                  price: "from $95",  image: "/videos/v13-f1.jpg", objectPosition: "top" },
-  { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
-  { name: "Brow Shaping",               price: "from $45",  image: "/videos/v11-f3.jpg", objectPosition: "top" },
   { name: "Scalp Micropigmentation SMP",price: "from $800", image: "/videos/v8-f5.jpg" },
-  { name: "Custom Facials",             price: "from $120", image: "/videos/v9-f4.jpg" },
 ];
 
 const HERO_VIDEOS_DESKTOP = [
@@ -745,6 +745,60 @@ export default function Home() {
             @browbosslajolla
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
+        </div>
+      </section>
+
+      {/* Quick Answers */}
+      <section className="py-20 md:py-28 bg-[#F5F1EC]">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeIn}
+            className="text-center mb-12"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl font-light mb-3">Quick Answers Before You Book</h2>
+            <p className="text-sm text-zinc-500 tracking-wide">The most common questions, answered in 10 seconds.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              {
+                icon: "🌿",
+                q: "Does it hurt?",
+                a: "Most clients describe it as mild scratching. We use medical-grade numbing cream so you stay comfortable from start to finish.",
+              },
+              {
+                icon: "⏳",
+                q: "How long does it last?",
+                a: "Microblading and permanent makeup last 1–3 years. Lash lifts last 6–8 weeks. Brow lamination lasts 4–6 weeks.",
+              },
+              {
+                icon: "💳",
+                q: "What does it cost?",
+                a: "Services start at $45. Permanent makeup from $550. Pay over time from $50/month with Cherry, Afterpay, or Klarna.",
+              },
+              {
+                icon: "🛡️",
+                q: "Is it safe?",
+                a: "Yes. California-licensed, fully insured, single-use disposable tools. Over 500 women have trusted us with their face.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.q}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" } } }}
+                className="bg-white rounded-xl p-5 flex flex-col gap-3 shadow-[0_1px_4px_rgba(0,0,0,0.06)]"
+              >
+                <span className="text-2xl">{item.icon}</span>
+                <p className="font-semibold text-sm leading-snug">{item.q}</p>
+                <p className="text-xs text-zinc-500 leading-relaxed">{item.a}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
