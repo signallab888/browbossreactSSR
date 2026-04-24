@@ -542,69 +542,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Intro + Press — unified editorial block */}
-      <div className="bg-white px-6 py-12 md:py-16">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-4">La Jolla · San Diego</p>
-          <p className="font-serif font-light text-zinc-600 text-base md:text-lg leading-relaxed">
-            Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
+      {/* Intro · Press · Stats — unified */}
+      <div className="bg-white px-6 pt-12 pb-16 md:pt-16 md:pb-20">
+        <div className="max-w-xl mx-auto text-center">
+
+          {/* One-line editorial statement */}
+          <p className="font-serif font-light text-zinc-500 text-base md:text-lg leading-relaxed tracking-wide">
+            Precision beauty in La Jolla — results that look unmistakably you.
           </p>
 
-          {/* Press divider */}
-          <div className="flex items-center gap-4 my-8 md:my-10">
-            <span className="flex-1 h-px bg-zinc-200" />
-            <span className="text-[9px] tracking-[0.45em] uppercase shrink-0" style={{ color: "#c0b8b0" }}>As Seen On</span>
-            <span className="flex-1 h-px bg-zinc-200" />
+          {/* Press row */}
+          <div className="flex items-center gap-4 mt-8 mb-6">
+            <span className="flex-1 h-px bg-zinc-150" />
+            <span className="text-[9px] tracking-[0.45em] uppercase shrink-0 text-zinc-300">As Seen On</span>
+            <span className="flex-1 h-px bg-zinc-150" />
           </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-10">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:gap-x-8">
             {["The Globe & Mail", "FOX", "NCN", "The Chronicle Journal", "Extra"].map((name) => (
-              <span key={name} className="font-serif text-[10px] md:text-[11px] tracking-widest uppercase" style={{ color: "#c4bdb7" }}>{name}</span>
+              <span key={name} className="font-serif text-[10px] tracking-widest uppercase" style={{ color: "#cdc5be" }}>{name}</span>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* Location Strip */}
-      <div className="bg-white border-t border-zinc-100 py-3">
-        <p className="text-center text-[9px] tracking-[0.35em] uppercase text-zinc-400">
-          Serving La Jolla&nbsp;&bull;&nbsp;Del Mar&nbsp;&bull;&nbsp;Pacific Beach&nbsp;&bull;&nbsp;Carmel Valley&nbsp;&bull;&nbsp;San Diego
-        </p>
-      </div>
+          {/* Divider */}
+          <div className="my-10 h-px bg-zinc-100 max-w-xs mx-auto" />
 
-      {/* Social Proof Stats */}
-      <section className="py-16 md:py-20 bg-white border-t border-zinc-100">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={fadeIn}
-            className="text-center font-serif text-2xl md:text-3xl mb-12 font-light leading-snug"
-          >
-            500+ Women in San Diego Choose BrowBoss<br className="hidden md:block" /> for Their Brows, Lashes &amp; Skin
-          </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
+          {/* Stats — 4 numbers, no headline */}
+          <div className="grid grid-cols-4 gap-4 text-center">
             {[
-              { stat: "500+",   label: "Happy Clients" },
-              { stat: "4.9★",   label: "on Google (326)" },
-              { stat: "10+",    label: "Years Experience" },
-              { stat: "8",      label: "Signature Services" },
+              { stat: "500+", label: "Clients" },
+              { stat: "4.9★", label: "Google" },
+              { stat: "10+",  label: "Yrs Exp." },
+              { stat: "8",    label: "Services" },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
-                variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.55, ease: "easeOut" } } }}
+                variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" } } }}
               >
-                <p className="font-serif text-5xl md:text-6xl font-light mb-2 tracking-tight">{item.stat}</p>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400">{item.label}</p>
+                <p className="font-serif text-3xl md:text-4xl font-light mb-1 tracking-tight">{item.stat}</p>
+                <p className="text-[9px] uppercase tracking-[0.28em] text-zinc-400">{item.label}</p>
               </motion.div>
             ))}
           </div>
+
+          {/* Location line */}
+          <p className="mt-8 text-[9px] tracking-[0.32em] uppercase text-zinc-300">
+            La Jolla&ensp;·&ensp;Del Mar&ensp;·&ensp;Pacific Beach&ensp;·&ensp;Carmel Valley&ensp;·&ensp;San Diego
+          </p>
+
         </div>
-      </section>
+      </div>
 
       {/* Services Grid */}
       <section id="services" className="py-24 md:py-32 bg-white">
