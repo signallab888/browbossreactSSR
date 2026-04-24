@@ -551,20 +551,8 @@ export default function Home() {
             Precision beauty in La Jolla — results that look unmistakably you.
           </p>
 
-          {/* Press row */}
-          <div className="flex items-center gap-4 mt-8 mb-6">
-            <span className="flex-1 h-px bg-zinc-150" />
-            <span className="text-[9px] tracking-[0.45em] uppercase shrink-0 text-zinc-300">As Seen On</span>
-            <span className="flex-1 h-px bg-zinc-150" />
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:gap-x-8">
-            {["The Globe & Mail", "FOX", "NCN", "The Chronicle Journal", "Extra"].map((name) => (
-              <span key={name} className="font-serif text-[10px] tracking-widest uppercase" style={{ color: "#cdc5be" }}>{name}</span>
-            ))}
-          </div>
-
           {/* Divider */}
-          <div className="my-10 h-px bg-zinc-100 max-w-xs mx-auto" />
+          <div className="mt-10 mb-10 h-px bg-zinc-100 max-w-xs mx-auto" />
 
           {/* Stats — 4 numbers, no headline */}
           <div className="grid grid-cols-4 gap-4 text-center">
