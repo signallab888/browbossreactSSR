@@ -127,7 +127,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   }, []);
 
   return (
-    <section className="relative min-h-[75vh] md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
+    <section className="relative md:min-h-[100dvh] flex items-center md:items-end overflow-hidden bg-white" data-testid="hero-section">
 
       {/* ── MOBILE posters: static frames cycling ── */}
       <img
@@ -146,10 +146,10 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
         style={{ opacity: mobFading ? 1 : 0, objectPosition: "right center" }}
         aria-hidden="true"
       />
-      {/* Mobile gradient — left=white (text), right=image visible */}
+      {/* Mobile gradient — left=white (text zone), right=image */}
       <div
         className="md:hidden absolute inset-0 pointer-events-none z-[1]"
-        style={{ background: "linear-gradient(to right, white 0%, white 38%, rgba(255,255,255,0.5) 58%, rgba(255,255,255,0.10) 85%, rgba(255,255,255,0.05) 100%)" }}
+        style={{ background: "linear-gradient(to right, white 0%, white 50%, rgba(255,255,255,0.55) 65%, rgba(255,255,255,0.08) 88%, rgba(255,255,255,0.0) 100%)" }}
       />
 
       {/* ── DESKTOP videos ── */}
@@ -390,7 +390,9 @@ export default function Home() {
       {/* Sticky Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-sm border-b border-zinc-100 py-4" : "bg-white/0 py-6"
+          isScrolled
+            ? "bg-white/95 backdrop-blur-sm border-b border-zinc-100 py-4"
+            : "bg-white border-b border-zinc-100 py-4 md:bg-white/0 md:border-transparent md:py-6"
         }`}
       >
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
