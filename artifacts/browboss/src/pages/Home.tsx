@@ -208,7 +208,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
 
             <motion.div variants={fadeIn} className="w-12 h-px bg-black/15 mb-5 md:mb-8" />
 
-            <motion.p variants={fadeIn} className="text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-sm mb-7 md:mb-12">
+            <motion.p variants={fadeIn} className="hidden md:block text-base md:text-lg text-zinc-500 font-light leading-relaxed max-w-sm mb-7 md:mb-12">
               Precision microblading, permanent makeup &amp; luxury beauty treatments — crafted for faces that deserve the finest.
             </motion.p>
 
@@ -231,7 +231,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
               </button>
             </motion.div>
 
-            <motion.p variants={fadeIn} className="mt-4 md:mt-7 text-[10px] text-zinc-400 tracking-wider uppercase">
+            <motion.p variants={fadeIn} className="hidden md:block mt-4 md:mt-7 text-[10px] text-zinc-400 tracking-wider uppercase">
               Cherry · Afterpay · Klarna — from $50/mo
             </motion.p>
           </motion.div>
@@ -469,6 +469,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Mobile-only intro text — between trust bar and services */}
+      <div className="md:hidden bg-white px-6 pt-10 pb-2">
+        <p className="text-[11px] tracking-[0.3em] uppercase text-zinc-400 mb-3">La Jolla · San Diego</p>
+        <p className="font-serif font-light text-zinc-700 text-lg leading-relaxed mb-3">
+          Precision microblading, permanent makeup &amp; luxury beauty treatments — crafted for faces that deserve the finest.
+        </p>
+        <div className="flex items-center gap-3 mt-4">
+          <span className="w-8 h-px bg-black/20" />
+          <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400">Cherry · Afterpay · Klarna — from $50/mo</p>
+        </div>
+      </div>
 
       {/* Services Grid */}
       <section id="services" className="py-24 md:py-32 bg-white">
