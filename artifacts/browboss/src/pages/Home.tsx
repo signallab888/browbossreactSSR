@@ -899,14 +899,15 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8"
           >
             {[
-              { name: "Fabiola Gonzalez",  role: "Esthetician",                  img: "/images/team-fabiola.jpg",   pos: "top" },
-              { name: "Diana Jabar",        role: "Brow Specialist & Esthetician", img: "/images/team-diana.jpg",     pos: "top" },
-              { name: "Marisol Murillo",    role: "Lip Blush Specialist",          img: "/images/team-marisol.jpg",   pos: "top" },
-              { name: "Jackielou Tantay",   role: "Eyebrow Specialist",            img: "/images/team-jackielou.jpg", pos: "top" },
-              { name: "Marwa",              role: "Esthetician",                   img: "/images/team-marwa.jpg",     pos: "center" },
+              { name: "Leslie Ritchie",     role: "Founder & Master Brow Specialist", img: "/images/leslie-founder.jpg",  pos: "top" },
+              { name: "Fabiola Gonzalez",   role: "Esthetician",                      img: "/images/team-fabiola.jpg",    pos: "top" },
+              { name: "Diana Jabar",        role: "Brow Specialist & Esthetician",    img: "/images/team-diana.jpg",      pos: "top" },
+              { name: "Marisol Murillo",    role: "Lip Blush Specialist",             img: "/images/team-marisol.jpg",    pos: "top" },
+              { name: "Jackielou Tantay",   role: "Eyebrow Specialist",               img: "/images/team-jackielou.jpg",  pos: "top" },
+              { name: "Marwa",              role: "Esthetician",                      img: "/images/team-marwa.jpg",      pos: "center" },
             ].map((member) => (
               <motion.div key={member.name} variants={fadeIn} className="group">
                 <div className="aspect-[3/4] overflow-hidden mb-4 bg-zinc-200">
