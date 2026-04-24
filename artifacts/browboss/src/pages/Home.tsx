@@ -62,10 +62,10 @@ const formSchema = z.object({
   smsConsent: z.boolean().default(false),
 });
 
-// To replace with real videos: add a `src` URL (mp4) to each entry.
-// Videos should be vertical (9:16) for best display.
-const WORK_VIDEOS: { label: string; src?: string; poster?: string }[] = [
-  { label: "Microblading" },
+// Add Instagram post/reel URLs here (format: https://www.instagram.com/p/SHORTCODE/)
+// or mp4 video URLs via `src`. Leave `instagramUrl` and `src` empty for a placeholder.
+const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?: string }[] = [
+  { label: "Microblading", instagramUrl: "https://www.instagram.com/p/DMfmfGBxOXq/" },
   { label: "Nano Brows" },
   { label: "Lip Blush" },
   { label: "Lash Lift" },
@@ -83,21 +83,23 @@ const SERVICES = [
   { name: "Custom Facials", price: "from $120", image: "/images/service-lashes.png" },
 ];
 
-function VideoCard({ label, src, poster }: { label: string; src?: string; poster?: string }) {
+function VideoCard({ label, instagramUrl, src, poster }: { label: string; instagramUrl?: string; src?: string; poster?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
+  // Build Instagram embed URL from the post URL
+  const getEmbedUrl = (url: string) => {
+    // Normalize: strip trailing slash, then append /embed/
+    const base = url.replace(/\/$/, "");
+    return `${base}/embed/`;
+  };
+
   const handlePlay = () => {
     const vid = videoRef.current;
     if (!vid || !src) return;
-    if (isPlaying) {
-      vid.pause();
-      setIsPlaying(false);
-    } else {
-      vid.play();
-      setIsPlaying(true);
-    }
+    if (isPlaying) { vid.pause(); setIsPlaying(false); }
+    else { vid.play(); setIsPlaying(true); }
   };
 
   const toggleMute = (e: React.MouseEvent) => {
@@ -107,62 +109,67 @@ function VideoCard({ label, src, poster }: { label: string; src?: string; poster
     setIsMuted(videoRef.current.muted);
   };
 
+  const slug = label.toLowerCase().replace(/\s+/g, "-");
+
   return (
     <div
-      onClick={handlePlay}
-      className="relative flex-shrink-0 w-[220px] md:w-[260px] aspect-[9/16] rounded-none overflow-hidden bg-zinc-900 group cursor-pointer border border-zinc-800"
-      data-testid={`video-card-${label.toLowerCase().replace(/\s+/, '-')}`}
+      className="relative flex-shrink-0 w-[280px] md:w-[320px] aspect-[9/16] overflow-hidden bg-zinc-950 group border border-zinc-800"
+      data-testid={`video-card-${slug}`}
     >
-      {src ? (
-        <video
-          ref={videoRef}
-          src={src}
-          poster={poster}
-          muted
-          playsInline
-          loop
-          className="w-full h-full object-cover"
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
+      {/* ── Instagram embed ── */}
+      {instagramUrl ? (
+        <iframe
+          src={getEmbedUrl(instagramUrl)}
+          className="absolute inset-0 w-full h-full border-none"
+          scrolling="no"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+          title={`Instagram post — ${label}`}
         />
+      ) : src ? (
+        /* ── MP4 video ── */
+        <div onClick={handlePlay} className="w-full h-full cursor-pointer">
+          <video
+            ref={videoRef}
+            src={src}
+            poster={poster}
+            muted
+            playsInline
+            loop
+            className="w-full h-full object-cover"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+          />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              {isPlaying
+                ? <span className="flex gap-1"><span className="w-1 h-5 bg-white rounded-sm"/><span className="w-1 h-5 bg-white rounded-sm"/></span>
+                : <Play className="w-6 h-6 text-white ml-1"/>
+              }
+            </div>
+          </div>
+          {isPlaying && (
+            <button onClick={toggleMute} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center z-10" data-testid={`button-mute-${slug}`}>
+              {isMuted ? <VolumeX className="w-4 h-4 text-white"/> : <Volume2 className="w-4 h-4 text-white"/>}
+            </button>
+          )}
+        </div>
       ) : (
-        /* Placeholder when no video URL is set yet */
+        /* ── Placeholder ── */
         <div className="w-full h-full bg-gradient-to-b from-zinc-800 to-zinc-950 flex items-center justify-center">
           <div className="text-center space-y-3 px-4">
             <div className="w-14 h-14 rounded-full border border-zinc-600 flex items-center justify-center mx-auto">
-              <Play className="w-6 h-6 text-zinc-400 ml-1" />
+              <Play className="w-6 h-6 text-zinc-500 ml-1"/>
             </div>
-            <p className="text-zinc-500 text-xs tracking-widest uppercase">Add Video</p>
+            <p className="text-zinc-600 text-xs tracking-widest uppercase">Add Video</p>
           </div>
         </div>
       )}
 
-      {/* Always-visible label at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-16 pb-4 px-4 pointer-events-none">
-        <p className="text-white text-xs tracking-[0.2em] uppercase font-medium">{label}</p>
-      </div>
-
-      {/* Play/pause overlay shown on hover */}
-      {src && (
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            {isPlaying
-              ? <span className="flex gap-1"><span className="w-1 h-5 bg-white rounded-sm" /><span className="w-1 h-5 bg-white rounded-sm" /></span>
-              : <Play className="w-6 h-6 text-white ml-1" />
-            }
-          </div>
+      {/* Label badge — only shown for non-instagram (instagram has its own UI) */}
+      {!instagramUrl && (
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pt-16 pb-4 px-4 pointer-events-none">
+          <p className="text-white text-xs tracking-[0.2em] uppercase font-medium">{label}</p>
         </div>
-      )}
-
-      {/* Mute toggle — only when playing */}
-      {src && isPlaying && (
-        <button
-          onClick={toggleMute}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center z-10"
-          data-testid={`button-mute-${label.toLowerCase().replace(/\s+/, '-')}`}
-        >
-          {isMuted ? <VolumeX className="w-4 h-4 text-white" /> : <Volume2 className="w-4 h-4 text-white" />}
-        </button>
       )}
     </div>
   );
