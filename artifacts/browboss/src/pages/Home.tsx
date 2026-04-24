@@ -625,12 +625,10 @@ export default function Home() {
           </div>
 
           {/* Location strip */}
-          <div className="mt-10 flex items-center gap-3 justify-center">
-            <span className="flex-1 max-w-[60px] h-px bg-zinc-200" />
-            <p className="text-[9px] tracking-[0.32em] uppercase text-zinc-400">
+          <div className="mt-10 -mx-6 bg-black py-2.5 px-6">
+            <p className="text-center text-[9px] tracking-[0.35em] uppercase text-white">
               La Jolla&ensp;·&ensp;Del Mar&ensp;·&ensp;Pacific Beach&ensp;·&ensp;Carmel Valley&ensp;·&ensp;San Diego
             </p>
-            <span className="flex-1 max-w-[60px] h-px bg-zinc-200" />
           </div>
 
         </div>
