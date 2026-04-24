@@ -83,12 +83,10 @@ const SERVICES = [
 ];
 
 const HERO_VIDEOS = [
-  "/videos/v1.mp4",
-  "/videos/v2.mp4",
-  "/videos/v3.mp4",
-  "/videos/v4.mp4",
-  "/videos/v5.mp4",
-  "/videos/v6.mp4",
+  "/videos/v2.mp4", // Skin Transformation
+  "/videos/v4.mp4", // Brow Results
+  "/videos/v5.mp4", // Nano Blading
+  "/videos/v6.mp4", // Wake Up Beautiful
 ];
 
 function HeroSection({ bookingUrl }: { bookingUrl: string }) {
