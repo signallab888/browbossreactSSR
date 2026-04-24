@@ -565,6 +565,13 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Location Strip */}
+      <div className="bg-white border-t border-zinc-100 py-3">
+        <p className="text-center text-[9px] tracking-[0.35em] uppercase text-zinc-400">
+          Serving La Jolla&nbsp;&bull;&nbsp;Del Mar&nbsp;&bull;&nbsp;Pacific Beach&nbsp;&bull;&nbsp;Carmel Valley&nbsp;&bull;&nbsp;San Diego
+        </p>
+      </div>
+
       {/* Services Grid */}
       <section id="services" className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-4">
