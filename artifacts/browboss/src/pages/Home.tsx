@@ -879,6 +879,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Our Team */}
+      <section className="py-20 md:py-28 bg-zinc-50 border-t border-zinc-100">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="text-center mb-16"
+          >
+            <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">The Artists</p>
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">Our Team</h2>
+            <div className="w-8 h-px bg-black mx-auto" />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8"
+          >
+            {[
+              { name: "Fabiola Gonzalez",  role: "Esthetician",                  img: "/images/team-fabiola.jpg",   pos: "top" },
+              { name: "Diana Jabar",        role: "Brow Specialist & Esthetician", img: "/images/team-diana.jpg",     pos: "top" },
+              { name: "Marisol Murillo",    role: "Lip Blush Specialist",          img: "/images/team-marisol.jpg",   pos: "top" },
+              { name: "Jackielou Tantay",   role: "Eyebrow Specialist",            img: "/images/team-jackielou.jpg", pos: "top" },
+              { name: "Marwa",              role: "Esthetician",                   img: "/images/team-marwa.jpg",     pos: "center" },
+            ].map((member) => (
+              <motion.div key={member.name} variants={fadeIn} className="group">
+                <div className="aspect-[3/4] overflow-hidden mb-4 bg-zinc-200">
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    style={{ objectPosition: member.pos }}
+                  />
+                </div>
+                <p className="font-serif text-sm md:text-base text-zinc-900">{member.name}</p>
+                <p className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 mt-1">{member.role}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Financing */}
       <section className="py-20 bg-[#F5F1EC] border-y border-zinc-200">
         <div className="container mx-auto px-4 text-center">
