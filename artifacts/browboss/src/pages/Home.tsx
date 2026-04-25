@@ -983,19 +983,17 @@ export default function Home() {
                 The average woman spends 15 minutes a day drawing her brows and over $1,200 a year on pencils, pomades, and gels. Permanent makeup isn't an expense—it's an investment in your most valuable asset: your time. For just $0.55 a day, wake up with flawless brows for the next 3 years.
               </motion.p>
               
-              <motion.div variants={fadeIn} className="grid grid-cols-3 gap-8 pt-8 border-t border-zinc-300">
-                <div>
-                  <p className="text-3xl font-serif mb-2">$0.55/day</p>
-                  <p className="text-xs uppercase tracking-wider text-zinc-500">Cost over 3 years</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-serif mb-2">91 hours</p>
-                  <p className="text-xs uppercase tracking-wider text-zinc-500">Time saved per year</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-serif mb-2">3 years</p>
-                  <p className="text-xs uppercase tracking-wider text-zinc-500">Of waking up ready</p>
-                </div>
+              <motion.div variants={fadeIn} className="divide-y divide-zinc-200 md:divide-y-0 border-t border-zinc-300 md:grid md:grid-cols-3 md:gap-8 md:pt-8">
+                {[
+                  { value: "$0.55/day", label: "Cost over 3 years" },
+                  { value: "91 hours",  label: "Time saved per year" },
+                  { value: "3 years",   label: "Of waking up ready" },
+                ].map(({ value, label }) => (
+                  <div key={label} className="flex items-center justify-between md:block py-5 md:py-0">
+                    <p className="text-3xl font-serif md:mb-2">{value}</p>
+                    <p className="text-xs uppercase tracking-wider text-zinc-500 text-right md:text-left">{label}</p>
+                  </div>
+                ))}
               </motion.div>
             </motion.div>
           </div>
