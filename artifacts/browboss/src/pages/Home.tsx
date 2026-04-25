@@ -501,16 +501,45 @@ export default function Home() {
   const [tryOnError, setTryOnError] = useState<string | null>(null);
   const tryOnInputRef = useRef<HTMLInputElement>(null);
 
+  // Resize + square-crop to 1024×1024 PNG so it matches the server mask dimensions
+  const resizeTo1024 = (file: File): Promise<{ blob: Blob; previewUrl: string }> =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        const SIZE = 1024;
+        const canvas = document.createElement("canvas");
+        canvas.width = SIZE;
+        canvas.height = SIZE;
+        const ctx = canvas.getContext("2d")!;
+        const s = Math.min(img.naturalWidth, img.naturalHeight);
+        const sx = (img.naturalWidth - s) / 2;
+        const sy = (img.naturalHeight - s) / 2;
+        ctx.drawImage(img, sx, sy, s, s, 0, 0, SIZE, SIZE);
+        canvas.toBlob(
+          blob => {
+            URL.revokeObjectURL(url);
+            if (blob) resolve({ blob, previewUrl: canvas.toDataURL("image/png") });
+            else reject(new Error("Canvas conversion failed"));
+          },
+          "image/png"
+        );
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("Could not load image")); };
+      img.src = url;
+    });
+
   const handleTryOnUpload = async (file: File) => {
     if (!file) return;
-    const original = URL.createObjectURL(file);
-    setTryOnOriginal(original);
+    setTryOnOriginal(null);
     setTryOnResult(null);
     setTryOnError(null);
     setTryOnLoading(true);
     try {
+      const { blob, previewUrl } = await resizeTo1024(file);
+      setTryOnOriginal(previewUrl);
       const form = new FormData();
-      form.append("photo", file);
+      form.append("photo", blob, "photo.png");
       const res = await fetch("/api/brows/try-on", { method: "POST", body: form });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong");
