@@ -989,7 +989,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 bg-white border-t border-zinc-100">
+      <section className="py-24 md:py-32 bg-white border-t border-zinc-100" style={{ backgroundColor: "#FAFAF9" }}>
         <div className="container mx-auto px-4">
           <motion.div 
             initial="hidden"
@@ -1056,7 +1056,7 @@ export default function Home() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { delay: (i % 3) * 0.15, duration: 0.6 } }
                 }}
-                className="bg-zinc-50 p-8 md:p-10 border border-zinc-100 flex flex-col h-full"
+                className="bg-[#F5F1EC] p-8 md:p-10 flex flex-col h-full"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-1">
