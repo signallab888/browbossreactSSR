@@ -134,7 +134,7 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
   }, []);
 
   return (
-    <section className="relative min-h-[52vh] md:min-h-[calc(100dvh-80px)] flex items-center md:items-end overflow-hidden bg-white md:mt-[80px]" data-testid="hero-section">
+    <section className="relative min-h-[52vh] md:min-h-[calc(100dvh-72px)] flex items-center md:items-end overflow-hidden bg-white md:mt-[72px]" data-testid="hero-section">
 
       {/* ── MOBILE posters: static frames cycling ── */}
       <img
@@ -772,7 +772,7 @@ export default function Home() {
       </section>
 
       {/* Work Showcase — Vertical Video Reels */}
-      <section id="gallery" className="py-20 md:py-32 bg-white overflow-hidden border-t border-zinc-100">
+      <section id="gallery" className="py-14 md:py-20 bg-white overflow-hidden border-t border-zinc-100">
 
         {/* Header */}
         <div className="container mx-auto px-6 md:px-10 mb-10 md:mb-14">
@@ -895,7 +895,7 @@ export default function Home() {
       </section>
 
       {/* Quick Answers */}
-      <section className="py-20 md:py-28 bg-[#F5F1EC]">
+      <section className="py-14 md:py-20 bg-[#F5F1EC]">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.div
             initial="hidden"
@@ -949,7 +949,7 @@ export default function Home() {
       </section>
 
       {/* Value Reframing */}
-      <section className="py-24 md:py-32 bg-[#F5F1EC]">
+      <section className="py-16 md:py-24 bg-[#F5F1EC]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div 
@@ -1001,14 +1001,14 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-serif mb-4">Your BrowBoss Experience</h2>
             <div className="w-12 h-px bg-black mx-auto"></div>
@@ -1041,14 +1041,14 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 bg-white border-t border-zinc-100" style={{ backgroundColor: "#FAFAF9" }}>
+      <section className="py-16 md:py-24 bg-white border-t border-zinc-100" style={{ backgroundColor: "#FAFAF9" }}>
         <div className="container mx-auto px-4">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-16"
           >
             <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">Client Stories</p>
             <h2 className="text-4xl md:text-5xl font-serif text-black mb-4">Loved by Hundreds of Women Across San Diego</h2>
@@ -1154,7 +1154,7 @@ export default function Home() {
       </section>
 
       {/* Meet Leslie */}
-      <section id="about" className="py-24 md:py-32 bg-white">
+      <section id="about" className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div 
@@ -1202,14 +1202,14 @@ export default function Home() {
       </section>
 
       {/* Our Team */}
-      <section className="py-20 md:py-28 bg-zinc-50 border-t border-zinc-100">
+      <section className="py-14 md:py-20 bg-zinc-50 border-t border-zinc-100">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-14"
           >
             <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">The Artists</p>
             <h2 className="text-4xl md:text-5xl font-serif mb-4">Our Team</h2>
@@ -1249,14 +1249,14 @@ export default function Home() {
       </section>
 
       {/* Before & After */}
-      <section id="transformations" className="py-24 md:py-32 bg-white">
+      <section id="transformations" className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-14"
           >
             <p className="text-[10px] tracking-[0.35em] uppercase text-zinc-400 mb-3">Real Results</p>
             <h2 className="text-4xl md:text-5xl font-serif mb-4">Before & After</h2>
@@ -1330,7 +1330,7 @@ export default function Home() {
       </section>
 
       {/* Booking Form */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto">
             <motion.div 
