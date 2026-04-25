@@ -492,11 +492,35 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toast } = useToast();
   const galleryScrollRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
 
-  const scrollGallery = (dir: "left" | "right") => {
+  const goToSlide = (index: number) => {
     const el = galleryScrollRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir === "right" ? 340 : -340, behavior: "smooth" });
+    const card = el.children[index] as HTMLElement;
+    if (!card) return;
+    el.scrollTo({ left: card.offsetLeft - el.offsetLeft - 24, behavior: "smooth" });
+    setActiveSlide(index);
+  };
+
+  const scrollGallery = (dir: "left" | "right") => {
+    const next = dir === "right"
+      ? Math.min(activeSlide + 1, WORK_VIDEOS.length - 1)
+      : Math.max(activeSlide - 1, 0);
+    goToSlide(next);
+  };
+
+  const handleGalleryScroll = () => {
+    const el = galleryScrollRef.current;
+    if (!el) return;
+    let closest = 0;
+    let minDist = Infinity;
+    Array.from(el.children).forEach((child, i) => {
+      const card = child as HTMLElement;
+      const dist = Math.abs(card.offsetLeft - el.offsetLeft - el.scrollLeft);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    setActiveSlide(closest);
   };
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -803,6 +827,7 @@ export default function Home() {
 
           <div
             ref={galleryScrollRef}
+            onScroll={handleGalleryScroll}
             className="flex gap-5 px-6 md:px-16 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
@@ -819,6 +844,34 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* Mobile prev/next floating arrows */}
+          <button
+            onClick={() => scrollGallery("left")}
+            aria-label="Previous clip"
+            className={`md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 shadow-md border border-zinc-200 flex items-center justify-center transition-opacity duration-200 ${activeSlide === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+          >
+            <ChevronLeft className="w-4 h-4 text-black" />
+          </button>
+          <button
+            onClick={() => scrollGallery("right")}
+            aria-label="Next clip"
+            className={`md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/90 shadow-md border border-zinc-200 flex items-center justify-center transition-opacity duration-200 ${activeSlide === WORK_VIDEOS.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+          >
+            <ChevronRight className="w-4 h-4 text-black" />
+          </button>
+        </div>
+
+        {/* Mobile dots pagination */}
+        <div className="md:hidden flex items-center justify-center gap-1.5 mt-2 mb-2">
+          {WORK_VIDEOS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToSlide(i)}
+              aria-label={`Go to clip ${i + 1}`}
+              className={`transition-all duration-300 rounded-full ${i === activeSlide ? "w-5 h-1.5 bg-black" : "w-1.5 h-1.5 bg-zinc-300"}`}
+            />
+          ))}
         </div>
 
         {/* Footer row */}
