@@ -820,10 +820,10 @@ export default function Home() {
 
         {/* Scrollable strip with edge fades */}
         <div className="relative">
-          {/* Edge fade — left */}
-          <div className="absolute left-0 top-0 bottom-4 w-12 md:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          {/* Edge fade — right */}
-          <div className="absolute right-0 top-0 bottom-4 w-12 md:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          {/* Edge fade — left (desktop only) */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-4 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          {/* Edge fade — right (desktop only) */}
+          <div className="hidden md:block absolute right-0 top-0 bottom-4 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
           <div
             ref={galleryScrollRef}
