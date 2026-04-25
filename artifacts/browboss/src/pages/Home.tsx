@@ -422,8 +422,8 @@ function PreferredTimePicker({ value, onChange }: { value: string; onChange: (v:
   );
 }
 
-function CountUp({ to, suffix = "", decimals = 0 }: { to: number; suffix?: string; decimals?: number }) {
-  const [count, setCount] = useState(0);
+function CountUp({ to, suffix = "", decimals = 0, from = 0 }: { to: number; suffix?: string; decimals?: number; from?: number }) {
+  const [count, setCount] = useState(from);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
   useEffect(() => {
@@ -434,8 +434,8 @@ function CountUp({ to, suffix = "", decimals = 0 }: { to: number; suffix?: strin
         started.current = true;
         const duration = 1400;
         const steps = 60;
-        const increment = to / steps;
-        let current = 0;
+        const increment = (to - from) / steps;
+        let current = from;
         const timer = setInterval(() => {
           current += increment;
           if (current >= to) { setCount(to); clearInterval(timer); }
@@ -445,7 +445,7 @@ function CountUp({ to, suffix = "", decimals = 0 }: { to: number; suffix?: strin
     }, { threshold: 0.5 });
     observer.observe(el);
     return () => observer.disconnect();
-  }, [to, decimals]);
+  }, [to, from, decimals]);
   return <span ref={ref}>{decimals > 0 ? count.toFixed(decimals) : count}{suffix}</span>;
 }
 
@@ -707,25 +707,27 @@ export default function Home() {
           {/* Divider */}
           <div className="mt-10 mb-10 h-px bg-zinc-100 max-w-xs mx-auto" />
 
-          {/* Stats — animated count-up */}
-          <div className="grid grid-cols-4 gap-2 md:gap-4 text-center">
+          {/* Stats — 2×2 mobile / 4-col desktop */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-y md:divide-y-0 divide-zinc-100 border border-zinc-100">
             {[
-              { to: 500, suffix: "+", label: "Clients",   decimals: 0 },
-              { to: 4.9, suffix: "★", label: "Google",    decimals: 1 },
-              { to: 10,  suffix: "+", label: "Yrs Exp.",  decimals: 0 },
-              { to: 8,   suffix: "",  label: "Services",  decimals: 0 },
+              { to: 500,  from: 480, suffix: "+", label: "Clients Served",  sub: "",                      decimals: 0 },
+              { to: 4.9,  from: 4.8, suffix: "",  label: "★★★★★",           sub: "Rated on Google",       decimals: 1 },
+              { to: 10,   from: 0,   suffix: "+", label: "Years of Mastery", sub: "",                      decimals: 0 },
+              { to: 8000, from: 7800,suffix: "+", label: "Procedures",       sub: "& counting",            decimals: 0 },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
-                variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" } } }}
+                variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.55, ease: "easeOut" } } }}
+                className="flex flex-col items-center justify-center py-7 px-4 text-center gap-1"
               >
-                <p className="font-serif text-3xl md:text-4xl font-light mb-1 tracking-tight">
-                  <CountUp to={item.to} suffix={item.suffix} decimals={item.decimals} />
+                <p className="font-serif text-4xl md:text-5xl font-light tracking-tight leading-none">
+                  <CountUp to={item.to} from={item.from} suffix={item.suffix} decimals={item.decimals} />
                 </p>
-                <p className="text-[9px] uppercase tracking-[0.28em] text-zinc-400">{item.label}</p>
+                <p className="text-[9px] uppercase tracking-[0.28em] text-zinc-800 mt-2 font-medium">{item.label}</p>
+                {item.sub && <p className="text-[9px] tracking-[0.15em] text-zinc-400">{item.sub}</p>}
               </motion.div>
             ))}
           </div>
