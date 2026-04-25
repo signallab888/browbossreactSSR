@@ -290,7 +290,7 @@ function VideoCard({ label, instagramUrl, src, poster }: { label: string; instag
 
   return (
     <div
-      className="relative flex-shrink-0 w-[280px] md:w-[320px] aspect-[9/16] overflow-hidden bg-zinc-950 group border border-zinc-800"
+      className="relative flex-shrink-0 w-[calc(100vw-56px)] md:w-[320px] aspect-[9/16] overflow-hidden bg-zinc-950 group border border-zinc-800"
       data-testid={`video-card-${slug}`}
     >
       {/* ── Instagram embed ── */}
@@ -499,7 +499,7 @@ export default function Home() {
     if (!el) return;
     const card = el.children[index] as HTMLElement;
     if (!card) return;
-    el.scrollTo({ left: card.offsetLeft - el.offsetLeft - 24, behavior: "smooth" });
+    card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     setActiveSlide(index);
   };
 
@@ -513,11 +513,13 @@ export default function Home() {
   const handleGalleryScroll = () => {
     const el = galleryScrollRef.current;
     if (!el) return;
+    const centerX = el.scrollLeft + el.clientWidth / 2;
     let closest = 0;
     let minDist = Infinity;
     Array.from(el.children).forEach((child, i) => {
       const card = child as HTMLElement;
-      const dist = Math.abs(card.offsetLeft - el.offsetLeft - el.scrollLeft);
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(cardCenter - centerX);
       if (dist < minDist) { minDist = dist; closest = i; }
     });
     setActiveSlide(closest);
@@ -828,7 +830,7 @@ export default function Home() {
           <div
             ref={galleryScrollRef}
             onScroll={handleGalleryScroll}
-            className="flex gap-5 px-6 md:px-16 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
+            className="flex gap-4 px-7 md:px-16 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {WORK_VIDEOS.map((video, i) => (
@@ -838,7 +840,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.07, duration: 0.55, ease: "easeOut" }}
-                className="snap-start"
+                className="snap-center"
               >
                 <VideoCard {...video} />
               </motion.div>
