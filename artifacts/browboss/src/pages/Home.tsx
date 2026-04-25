@@ -683,9 +683,25 @@ export default function Home() {
       <div className="bg-white px-6 pt-10 pb-10 md:pt-14 md:pb-12">
         <div className="max-w-xl mx-auto text-center">
 
-          {/* Intro statement */}
-          <p className="font-serif font-light text-zinc-600 text-base md:text-lg leading-relaxed">
-            Microblading, permanent makeup, lash lifts, brow lamination, and lip blushing. Precision work, steady hands, and results that look unmistakably you. Crafted in the heart of La Jolla, San Diego.
+          {/* Service tags */}
+          <div className="flex flex-wrap justify-center gap-2 mb-7">
+            {["Microblading", "Permanent Makeup", "Lash Lifts", "Brow Lamination", "Lip Blushing"].map(s => (
+              <span key={s} className="text-[10px] tracking-[0.22em] uppercase text-zinc-400 border border-zinc-200 px-3 py-1.5 rounded-full">
+                {s}
+              </span>
+            ))}
+          </div>
+
+          {/* Pull quote */}
+          <p className="font-serif font-light text-zinc-800 text-2xl md:text-3xl leading-snug mb-5">
+            Precision work, steady hands,<br className="hidden sm:block" /> and results that look{" "}
+            <em className="not-italic text-black font-normal">unmistakably you.</em>
+          </p>
+
+          {/* Location */}
+          <p className="text-[11px] tracking-[0.3em] uppercase text-zinc-400 flex items-center justify-center gap-2">
+            <MapPin className="w-3 h-3" />
+            La Jolla, San Diego
           </p>
 
           {/* Divider */}
