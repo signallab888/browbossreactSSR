@@ -1245,11 +1245,10 @@ export default function Home() {
           >
             {[
               { name: "Leslie Ritchie",     role: "Founder & Master Brow Specialist", img: "/images/leslie-founder.jpg",  pos: "top" },
-              { name: "Fabiola Gonzalez",   role: "Esthetician",                      img: "/images/team-fabiola.jpg",    pos: "top" },
+              { name: "Marwa",              role: "Esthetician",                      img: "/images/team-fabiola.jpg",    pos: "top" },
               { name: "Diana Jabar",        role: "Brow Specialist & Esthetician",    img: "/images/team-diana.jpg",      pos: "top" },
               { name: "Marisol Murillo",    role: "Lip Blush Specialist",             img: "/images/team-marisol.jpg",    pos: "top" },
               { name: "Jackielou Tantay",   role: "Eyebrow Specialist",               img: "/images/team-jackielou.jpg",  pos: "top" },
-              { name: "Marwa",              role: "Esthetician",                      img: "/images/team-marwa.jpg",      pos: "center" },
             ].map((member) => (
               <motion.div key={member.name} variants={fadeIn} className="group">
                 <div className="aspect-[3/4] overflow-hidden mb-4 bg-zinc-200">
