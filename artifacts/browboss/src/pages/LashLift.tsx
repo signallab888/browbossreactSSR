@@ -112,13 +112,14 @@ export default function LashLift() {
             <motion.p variants={fadeUp} className="text-white/70 text-base font-light mb-8 leading-relaxed max-w-sm">
               No extensions. No glue. No morning routine. Just your natural lashes, open, curled, and visible from the moment you wake up.
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch gap-3 w-full sm:w-auto">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-100 transition-colors">
+                className="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-100 transition-colors whitespace-nowrap">
                 Book My Appointment <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="tel:8583220010" className="text-white/70 text-sm tracking-widest uppercase hover:text-white transition-colors">
-                Or call (858) 322-0010
+              <a href="tel:8583220010"
+                className="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-white hover:bg-white/10 transition-colors whitespace-nowrap">
+                <Phone className="w-3.5 h-3.5" /> (858) 322-0010
               </a>
             </motion.div>
           </motion.div>
