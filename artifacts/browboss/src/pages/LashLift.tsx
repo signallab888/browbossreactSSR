@@ -393,12 +393,15 @@ export default function LashLift() {
                 <p className="text-xs text-zinc-400">No hidden add-ons. No upsells at the table.</p>
               </div>
             </motion.div>
-            <motion.div variants={fadeUp} className="text-center mt-8">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch justify-center gap-3 mt-8">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-black text-white px-10 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors">
+                className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors whitespace-nowrap">
                 Book Online <ArrowRight className="w-4 h-4" />
               </a>
-              <p className="text-xs text-zinc-400 mt-4">or call <a href="tel:8583220010" className="text-black hover:underline">(858) 322-0010</a></p>
+              <a href="tel:8583220010"
+                className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors whitespace-nowrap">
+                <Phone className="w-3.5 h-3.5" /> (858) 322-0010
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -456,7 +459,8 @@ export default function LashLift() {
               className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors">
               Book My Appointment <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="tel:8583220010" className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors flex items-center gap-2">
+            <a href="tel:8583220010"
+              className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors whitespace-nowrap">
               <Phone className="w-3.5 h-3.5" /> (858) 322-0010
             </a>
           </div>
