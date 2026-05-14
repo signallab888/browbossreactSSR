@@ -87,10 +87,10 @@ const SERVICES = [
 ];
 
 const HERO_VIDEOS_DESKTOP = [
-  "/videos/v2.mp4", // Skin Transformation
-  "/videos/v4.mp4", // Brow Results
-  "/videos/v5.mp4", // Nano Blading
-  "/videos/v6.mp4", // Wake Up Beautiful
+  { src: "/videos/v2.mp4", poster: "/videos/v2-poster.jpg"   }, // Skin Transformation
+  { src: "/videos/v4.mp4", poster: "/videos/v4-poster-a.jpg" }, // Brow Results
+  { src: "/videos/v5.mp4", poster: "/videos/v5-poster.jpg"   }, // Nano Blading
+  { src: "/videos/v6.mp4", poster: "/videos/v6-poster.jpg"   }, // Wake Up Beautiful
 ];
 
 const HERO_POSTERS_MOBILE = [
@@ -162,7 +162,8 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
       {/* ── DESKTOP videos ── */}
       <video
         key={`desk-a-${deskIdx}`}
-        src={HERO_VIDEOS_DESKTOP[deskIdx]}
+        src={HERO_VIDEOS_DESKTOP[deskIdx].src}
+        poster={HERO_VIDEOS_DESKTOP[deskIdx].poster}
         autoPlay muted loop playsInline preload="auto"
         className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: deskFading ? 0 : 1 }}
@@ -171,7 +172,8 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
       />
       <video
         key={`desk-b-${deskNext}`}
-        src={HERO_VIDEOS_DESKTOP[deskNext]}
+        src={HERO_VIDEOS_DESKTOP[deskNext].src}
+        poster={HERO_VIDEOS_DESKTOP[deskNext].poster}
         autoPlay muted loop playsInline preload="auto"
         className="hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms]"
         style={{ opacity: deskFading ? 1 : 0 }}
