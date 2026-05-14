@@ -249,7 +249,7 @@ export default function LashLift() {
               transition={{ duration: 0.7 }}
               className="aspect-[3/4] overflow-hidden bg-zinc-200"
             >
-              <img src="/images/lash-after-2.jpg" alt="YUMI Lash Lift result" className="w-full h-full object-cover object-center" />
+              <img src="/images/frame-reel4.jpg" alt="YUMI Lash Lift result" className="w-full h-full object-cover object-bottom" />
             </motion.div>
           </div>
         </div>
