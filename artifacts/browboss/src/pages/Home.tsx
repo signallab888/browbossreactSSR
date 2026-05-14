@@ -774,7 +774,7 @@ export default function Home() {
                   <img 
                     src={service.image} 
                     alt={service.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{ objectPosition: (service as any).objectPosition ?? "center" }}
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
