@@ -599,7 +599,7 @@ export default function Home() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-black">
             <a href="#services" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Services</a>
-            <a href="#gallery" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Gallery</a>
+            <Link href="/gallery" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Gallery</Link>
             <a href="#about" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">About</a>
             <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Book</a>
             <a href="tel:8583220010" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity flex items-center gap-2">
@@ -627,7 +627,7 @@ export default function Home() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center gap-8 pt-16">
           <a href="#services" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif tracking-widest uppercase">Services</a>
-          <a href="#gallery" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif tracking-widest uppercase">Gallery</a>
+          <Link href="/gallery" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif tracking-widest uppercase">Gallery</Link>
           <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif tracking-widest uppercase">About</a>
           <a href={bookingUrl} target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-serif tracking-widest uppercase">Book</a>
           <a href="tel:8583220010" className="text-xl font-medium tracking-widest uppercase mt-8 flex items-center gap-2">
@@ -1588,7 +1588,7 @@ export default function Home() {
               <h4 className="text-black font-medium tracking-widest uppercase mb-6 text-xs">Links</h4>
               <ul className="space-y-4 uppercase tracking-wider text-xs text-zinc-400">
                 <li><a href="#services" className="hover:text-black transition-colors">Services</a></li>
-                <li><a href="#gallery" className="hover:text-black transition-colors">Gallery</a></li>
+                <li><Link href="/gallery" className="hover:text-black transition-colors">Gallery</Link></li>
                 <li><a href="#about" className="hover:text-black transition-colors">About</a></li>
                 <li><a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="text-black font-medium hover:opacity-60 transition-opacity">Book Appointment</a></li>
               </ul>
