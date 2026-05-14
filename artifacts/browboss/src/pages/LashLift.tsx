@@ -579,13 +579,13 @@ export default function LashLift() {
             <motion.p variants={fadeUp} className="text-sm text-zinc-500 mb-10 leading-relaxed">
               We're in La Jolla and serve clients from all over San Diego: Del Mar, Pacific Beach, UTC, Mission Hills, and beyond.
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch justify-center gap-4">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-black text-white px-10 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors w-full sm:w-auto justify-center">
+                className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors w-full sm:w-auto">
                 Book My Appointment <ArrowRight className="w-4 h-4" />
               </a>
               <a href="tel:8583220010"
-                className="inline-flex items-center gap-2 border border-zinc-200 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto justify-center whitespace-nowrap">
+                className="inline-flex items-center justify-center gap-2 border border-zinc-200 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto whitespace-nowrap">
                 <Phone className="w-4 h-4" /> (858) 322-0010
               </a>
             </motion.div>
