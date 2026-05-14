@@ -976,21 +976,22 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-[#F5F1EC]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
               className="relative aspect-[3/4] max-w-md mx-auto w-full"
             >
-              <img 
-                src="/images/value-model.jpg" 
-                alt="Perfect microbladed brows" 
+              <img
+                src="/images/value-model.jpg"
+                alt="Perfect microbladed brows"
                 className="w-full h-full object-cover"
                 style={{ objectPosition: "top" }}
               />
             </motion.div>
-            <motion.div 
+
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -998,24 +999,25 @@ export default function Home() {
               className="max-w-xl"
             >
               <motion.p variants={fadeIn} className="text-xs font-medium tracking-[0.2em] uppercase text-zinc-500 mb-4">
-                THE REAL COST OF NOT DOING IT
+                La Jolla · San Diego
               </motion.p>
-              <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
-                Stop Spending $1,200 a Year on Brow Pencils
+              <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif mb-6 leading-tight font-light">
+                Why Women in La Jolla Choose Permanent Makeup
               </motion.h2>
-              <motion.p variants={fadeIn} className="text-lg text-zinc-600 mb-12 font-light leading-relaxed">
-                The average woman spends 15 minutes a day drawing her brows and over $1,200 a year on pencils, pomades, and gels. Permanent makeup isn't an expense—it's an investment in your most valuable asset: your time. For just $0.55 a day, wake up with flawless brows for the next 3 years.
+              <motion.p variants={fadeIn} className="text-base text-zinc-600 mb-10 font-light leading-relaxed">
+                Drawing your brows every morning is a skill. Waking up without having to is a decision. Women who come to BrowBoss stop spending time on what should already be there — and start spending it on everything else.
               </motion.p>
-              
-              <motion.div variants={fadeIn} className="divide-y divide-zinc-200 md:divide-y-0 border-t border-zinc-300 md:grid md:grid-cols-3 md:gap-8 md:pt-8">
+
+              {/* Stats table */}
+              <motion.div variants={fadeIn} className="border-t border-zinc-300">
                 {[
-                  { value: "$0.55/day", label: "Cost over 3 years" },
-                  { value: "91 hours",  label: "Time saved per year" },
-                  { value: "3 years",   label: "Of waking up ready" },
-                ].map(({ value, label }) => (
-                  <div key={label} className="flex items-center justify-between md:block py-5 md:py-0">
-                    <p className="text-3xl font-serif md:mb-2">{value}</p>
-                    <p className="text-xs uppercase tracking-wider text-zinc-500 text-right md:text-left">{label}</p>
+                  { value: "91 hours",      label: "Saved every year" },
+                  { value: "3 years",       label: "Of waking up ready" },
+                  { value: "1 appointment", label: "Changes your morning forever" },
+                ].map(({ value, label }, i) => (
+                  <div key={label} className={`grid grid-cols-2 py-4 ${i < 2 ? "border-b border-zinc-200" : ""}`}>
+                    <p className="font-serif text-xl font-light text-black">{value}</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 self-center">{label}</p>
                   </div>
                 ))}
               </motion.div>
