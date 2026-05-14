@@ -561,6 +561,7 @@ export default function LashLift() {
               { q: "What do I need to do before the appointment?", a: "Come with clean lashes. No mascara, no eyelash curler in the 24 hours before. Remove contact lenses before we start. That's it." },
               { q: "Is it safe during pregnancy?", a: "The treatment is non-invasive and considered safe during pregnancy. If you're in your first trimester or have concerns, check with your doctor first. Call us and we'll answer any questions." },
               { q: "What if I don't like the result?", a: "The lift can't be reversed, so we take the consultation seriously. If you're nervous about going too dramatic, tell us before we start. We'll choose a subtle rod and a natural angle. We're not trying to overdo it." },
+              { q: "How long does the appointment take?", a: "About 60 minutes. If you add a tint, that is included in the same appointment. No extra time, no separate booking." },
             ];
             const left = faqs.slice(0, 6);
             const right = faqs.slice(6);
