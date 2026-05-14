@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Phone, ChevronDown, Check, X } from "lucide-react";
@@ -54,6 +54,21 @@ function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 export default function LashLift() {
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    video.currentTime = 18;
+    const onTimeUpdate = () => {
+      if (video.currentTime >= 20) {
+        video.currentTime = 18;
+      }
+    };
+    video.addEventListener("timeupdate", onTimeUpdate);
+    return () => video.removeEventListener("timeupdate", onTimeUpdate);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white font-sans text-black">
 
@@ -94,10 +109,10 @@ export default function LashLift() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-end bg-zinc-900 overflow-hidden">
         <video
+          ref={heroVideoRef}
           src="/videos/lash-lift-reel.mp4"
           autoPlay
           muted
-          loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-70"
           style={{ objectPosition: "50% 20%" }}
