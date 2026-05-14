@@ -76,7 +76,7 @@ const WORK_VIDEOS: { label: string; instagramUrl?: string; src?: string; poster?
 ];
 
 const SERVICES = [
-  { name: "Lash Lift",                  price: "from $95",  image: "/videos/v13-f1.jpg", objectPosition: "top" },
+  { name: "Lash Lift",                  price: "from $95",  image: "/videos/v13-f1.jpg", objectPosition: "top", link: "/lash-lift" },
   { name: "Custom Facials",             price: "from $120", image: "/videos/v9-f4.jpg" },
   { name: "Brow Shaping",               price: "from $45",  image: "/videos/v11-f3.jpg", objectPosition: "top" },
   { name: "Brow Lamination",            price: "from $85",  image: "/videos/v7-f17.jpg" },
@@ -758,35 +758,40 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {SERVICES.map((service, index) => (
-              <motion.div 
-                key={service.name}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { delay: index * 0.1, duration: 0.5 } }
-                }}
-                className="group cursor-pointer"
-              >
-                <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
-                  <img 
-                    src={service.image} 
-                    alt={service.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ objectPosition: (service as any).objectPosition ?? "center" }}
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                    <span className="text-white text-sm tracking-widest uppercase font-medium flex items-center gap-2">
-                      Learn More <ArrowRight className="w-4 h-4" />
-                    </span>
+            {SERVICES.map((service, index) => {
+              const card = (
+                <motion.div 
+                  key={service.name}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { delay: index * 0.1, duration: 0.5 } }
+                  }}
+                  className="group cursor-pointer"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                    <img 
+                      src={service.image} 
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: (service as any).objectPosition ?? "center" }}
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <span className="text-white text-sm tracking-widest uppercase font-medium flex items-center gap-2">
+                        Learn More <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <h3 className="font-serif text-xl mb-2">{service.name}</h3>
-                <p className="text-sm tracking-widest text-zinc-500 uppercase">{service.price}</p>
-              </motion.div>
-            ))}
+                  <h3 className="font-serif text-xl mb-2">{service.name}</h3>
+                  <p className="text-sm tracking-widest text-zinc-500 uppercase">{service.price}</p>
+                </motion.div>
+              );
+              return (service as any).link
+                ? <Link key={service.name} href={(service as any).link}>{card}</Link>
+                : <div key={service.name}>{card}</div>;
+            })}
           </div>
         </div>
       </section>
