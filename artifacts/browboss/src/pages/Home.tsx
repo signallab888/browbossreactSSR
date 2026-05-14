@@ -1320,35 +1320,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Financing */}
+      {/* Standards */}
       <section className="py-20 bg-[#F5F1EC] border-y border-zinc-200">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2 
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="text-3xl font-serif mb-12"
           >
-            Beauty Within Reach
-          </motion.h2>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-10">
-            <div className="flex flex-col items-center">
-              <span className="text-xl font-bold tracking-tight mb-2">CHERRY</span>
-              <span className="text-xs uppercase tracking-widest text-zinc-500">Pre-qualify in 60s • 0% APR</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-xl font-bold tracking-tight mb-2">afterpay<span className="text-[10px] align-super">®</span></span>
-              <span className="text-xs uppercase tracking-widest text-zinc-500">4 interest-free payments</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-xl font-bold tracking-tight mb-2">Klarna.</span>
-              <span className="text-xs uppercase tracking-widest text-zinc-500">Pay in 4 or over time</span>
-            </div>
-          </div>
-          <p className="text-sm text-zinc-500 font-light tracking-wide">
-            All services include a complimentary 6-week touch-up session.
-          </p>
+            <p className="font-serif text-2xl md:text-3xl font-light text-zinc-800 leading-relaxed mb-8">
+              Every artist at BrowBoss is certified, trained in their specific technique, and works on one client at a time. No rushing. No shortcuts. No one practicing on you.
+            </p>
+            <div className="w-8 h-px bg-zinc-300 mx-auto mb-6" />
+            <p className="text-[11px] tracking-[0.35em] uppercase text-zinc-400">
+              "The difference between a good result and a great one is who does it."
+            </p>
+          </motion.div>
         </div>
       </section>
 
