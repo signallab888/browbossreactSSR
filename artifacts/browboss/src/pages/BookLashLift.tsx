@@ -44,7 +44,7 @@ const serviceGroups: ServiceGroup[] = [
     description: "Enhances and defines your lashes. Pairs perfectly with a lift. Results last 3 to 6 weeks.",
     services: [
       { name: "Lash Tint", artist: "Marwa",   artistImage: "/images/team-marwa.jpg",   price: "$50", duration: "30 mins", bookingUrl: bookingBase },
-      { name: "Lash Tint", artist: "Fabiola", artistImage: "/images/team-fabiola.jpg", price: "$49", duration: "30 mins", bookingUrl: bookingBase },
+      { name: "Lash Tint", artist: "Fabiola", artistImage: "/images/team-fabiola.jpg", price: "$49", duration: "30 mins", bookingUrl: "https://book.squareup.com/appointments/c78e9dd5-847e-4392-8044-cd3f13e26abe/location/2H4Q2RWG1Q1QF/services/HIGK2SWJSSRKYVOOWXQT3ZGA" },
       { name: "Lash Tint", artist: "Diana",   artistImage: "/images/team-diana.jpg",   price: "$49", duration: "30 mins", bookingUrl: bookingBase },
     ],
   },
