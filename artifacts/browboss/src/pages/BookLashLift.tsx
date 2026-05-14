@@ -57,7 +57,7 @@ const serviceGroups: ServiceGroup[] = [
 ];
 
 function gridCols(count: number) {
-  if (count === 1) return "grid-cols-1 max-w-xs";
+  if (count === 1) return "grid-cols-1 md:max-w-sm md:mx-auto";
   if (count === 2) return "grid-cols-1 sm:grid-cols-2 max-w-xl";
   return "grid-cols-1 sm:grid-cols-2 md:grid-cols-3";
 }
