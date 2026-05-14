@@ -402,16 +402,16 @@ export default function LashLift() {
             className="grid md:grid-cols-3 gap-6">
             {[
               {
-                quote: "I've had lash lifts at two other places in San Diego. This is the first time I walked out happy with the curl. They asked me about my eye shape and adjusted everything to fit it. No other place has done that.",
-                author: "Client, La Jolla",
+                quote: "Kelly has been my lash fairy for the last couple of years. I love going to Browboss for my lash lifts but also the people. I appreciate them having my lash health in mind and being super careful with the procedure. I don't live in the area but it is worth the drive.",
+                author: "Lynette Lopez",
               },
               {
-                quote: "I'm a swimmer. Extensions never lasted more than a week. My lash lift from Browboss held almost three months. Done with mascara forever.",
-                author: "Client, Pacific Beach",
+                quote: "I am a first time lash lifter and I am in love! Kelly was my esthetician and her work was impeccable. Her application was very gentle. My eyes felt like they were in great hands. When she finished and gave me the mirror to see... I let out a very genuine 'oh my god, WOW!'",
+                author: "Nicole Osorio Broadnax",
               },
               {
-                quote: "I was nervous because I have really short lashes. They were honest with me before starting, adjusted the approach, and it still made a visible difference. Really appreciated that they didn't just go through the motions.",
-                author: "Client, San Diego",
+                quote: "I haven't had to wear mascara for months! I recommend purchasing the lash serum from Browboss as well. It has extended the life of the lash lift and made my lashes longer.",
+                author: "Leslie Altherr",
               },
             ].map((r) => (
               <motion.div key={r.author} variants={fadeUp} className="border-t border-zinc-200 pt-6">
@@ -473,6 +473,18 @@ export default function LashLift() {
               <div className="w-1 h-1 rounded-full bg-zinc-400" />
               <div className="h-px w-12 bg-zinc-300" />
             </div>
+          </motion.div>
+
+          {/* Ella Keefe quote — near FAQ for the "afraid to ruin my lashes" concern */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.5 }}
+            className="mb-10 border-l-2 border-black pl-6 max-w-2xl mx-auto"
+          >
+            <p className="text-sm text-zinc-600 leading-relaxed italic mb-3">
+              "I was nervous for someone to touch my natural lashes but she did such an incredible job I couldn't believe it. If you are coming in for a lash lift and tint I highly recommend Diana."
+            </p>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400">— Ella Keefe</p>
           </motion.div>
 
           {/* 2-column grid */}
