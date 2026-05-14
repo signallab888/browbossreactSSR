@@ -1005,7 +1005,7 @@ export default function Home() {
                 Why Women in La Jolla Choose Permanent Makeup
               </motion.h2>
               <motion.p variants={fadeIn} className="text-base text-zinc-600 mb-10 font-light leading-relaxed">
-                Drawing your brows every morning is a skill. Waking up without having to is a decision. Women who come to BrowBoss stop spending time on what should already be there — and start spending it on everything else.
+                Drawing your brows every morning is a skill. Waking up without having to is a decision. Women who come to BrowBoss stop spending time on what should already be there, and start spending it on everything else.
               </motion.p>
 
               {/* Stats table */}
