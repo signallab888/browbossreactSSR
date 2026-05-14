@@ -172,28 +172,40 @@ export default function LashLift() {
       </section>
 
       {/* ── Video ──────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
             <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-3">See It In Action</p>
-            <h2 className="font-serif text-4xl font-light">The Treatment</h2>
+            <h2 className="font-serif text-4xl md:text-5xl font-light mb-4">The Treatment</h2>
+            <div className="w-8 h-px bg-black mx-auto" />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="aspect-[9/16] md:aspect-video bg-zinc-100 overflow-hidden"
-          >
-            <video
-              src="/videos/lash-lift-reel.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {[
+              "/videos/ll-reel-1.mp4",
+              "/videos/ll-reel-2.mp4",
+              "/videos/ll-reel-3.mp4",
+              "/videos/ll-reel-4.mp4",
+            ].map((src, i) => (
+              <motion.div
+                key={src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative aspect-[9/16] bg-zinc-100 overflow-hidden group"
+              >
+                <video
+                  src={src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
