@@ -94,12 +94,12 @@ export default function LashLift() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-end bg-zinc-900 overflow-hidden">
         <video
-          src="/videos/ll-reel-4.mp4"
+          src="/videos/lash-lift-reel.mp4"
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-top opacity-70"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
         <div className="relative container mx-auto px-4 md:px-8 pb-16 md:pb-24">
