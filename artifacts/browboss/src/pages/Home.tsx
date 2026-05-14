@@ -242,9 +242,6 @@ function HeroSection({ bookingUrl }: { bookingUrl: string }) {
               </button>
             </motion.div>
 
-            <motion.p variants={fadeIn} className="hidden md:block mt-4 md:mt-7 text-[10px] text-zinc-400 tracking-wider uppercase">
-              Cherry · Afterpay · Klarna — from $50/mo
-            </motion.p>
           </motion.div>
         </div>
       </div>
