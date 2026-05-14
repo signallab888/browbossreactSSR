@@ -1321,21 +1321,28 @@ export default function Home() {
       </section>
 
       {/* Standards */}
-      <section className="py-20 bg-[#F5F1EC] border-y border-zinc-200">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
+      <section className="py-24 md:py-32 bg-[#F5F1EC] border-y border-zinc-200">
+        <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <p className="font-serif text-2xl md:text-3xl font-light text-zinc-800 leading-relaxed mb-8">
+            {/* Decorative opening mark */}
+            <p className="font-serif text-[6rem] md:text-[8rem] leading-none text-zinc-200 select-none mb-2 -ml-2">&ldquo;</p>
+
+            <p className="font-serif text-2xl md:text-4xl font-light text-zinc-800 leading-[1.4] mb-10 max-w-2xl">
               Every artist at BrowBoss is certified, trained in their specific technique, and works on one client at a time. No rushing. No shortcuts. No one practicing on you.
             </p>
-            <div className="w-8 h-px bg-zinc-300 mx-auto mb-6" />
-            <p className="text-[11px] tracking-[0.35em] uppercase text-zinc-400">
-              "The difference between a good result and a great one is who does it."
-            </p>
+
+            {/* Sub-quote with left accent */}
+            <div className="flex items-start gap-4">
+              <div className="w-px h-8 bg-zinc-400 flex-shrink-0 mt-0.5" />
+              <p className="text-[11px] tracking-[0.32em] uppercase text-zinc-500 leading-relaxed">
+                The difference between a good result and a great one is who does it.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
