@@ -92,6 +92,27 @@ export default function LashLift() {
       </header>
 
       {/* ── Hero ───────────────────────────────────────────────────────── */}
+      {/* ── TEMP IMAGE PICKER ── remove after choosing ─────────────────── */}
+      <section className="bg-zinc-50 border-b border-zinc-200 py-8 px-4">
+        <p className="text-center text-[11px] tracking-[0.3em] uppercase text-zinc-400 mb-6">Elige la imagen para la sección "Why YUMI"</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {[
+            { file: "frame-reel4.jpg", label: "A — Actual (frame-reel4)" },
+            { file: "frame-pick-1.jpg", label: "B — Cara ojos azules" },
+            { file: "frame-pick-2.jpg", label: "C — Morena en tratamiento" },
+            { file: "frame-reel1.jpg",  label: "D — Close-up ojo azul" },
+          ].map(({ file, label }) => (
+            <div key={file} className="flex flex-col gap-2">
+              <div className="aspect-[3/4] overflow-hidden bg-zinc-200">
+                <img src={`/images/${file}`} alt={label} className="w-full h-full object-cover object-bottom" />
+              </div>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-zinc-500 text-center">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      {/* ── END TEMP ──────────────────────────────────────────────────────── */}
+
       <section className="relative min-h-[75vh] flex items-end md:items-center bg-zinc-900 overflow-hidden">
         <img
           src="/images/lash-hero-new.jpg"
