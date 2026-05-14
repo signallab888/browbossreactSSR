@@ -470,13 +470,13 @@ export default function LashLift() {
           <p className="font-serif text-2xl md:text-3xl font-light text-zinc-800 text-center sm:text-left">
             Ready to book your lift?
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0 w-full sm:w-auto">
             <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors">
+              className="inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors w-full sm:w-auto">
               Book My Appointment <ArrowRight className="w-4 h-4" />
             </a>
             <a href="tel:8583220010"
-              className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors whitespace-nowrap">
+              className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto">
               <Phone className="w-3.5 h-3.5" /> (858) 322-0010
             </a>
           </div>
