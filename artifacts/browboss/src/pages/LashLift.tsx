@@ -603,8 +603,11 @@ export default function LashLift() {
             <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-5xl font-light mb-6 leading-tight">
               Book Your Lash Lift Today
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-sm text-zinc-500 mb-10 leading-relaxed">
-              We're in La Jolla and serve clients from all over San Diego: Del Mar, Pacific Beach, UTC, Mission Hills, and beyond.
+            <motion.p variants={fadeUp} className="text-sm text-zinc-500 mb-4 leading-relaxed">
+              If you are looking for the best lash lift in La Jolla or a YUMI lash lift near you in San Diego, this is the appointment.
+            </motion.p>
+            <motion.p variants={fadeUp} className="text-xs text-zinc-400 mb-10 leading-relaxed">
+              We serve clients from Del Mar, Pacific Beach, UTC, Mission Hills, and all of San Diego.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch justify-center gap-4">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
