@@ -1001,9 +1001,12 @@ export default function Home() {
               <motion.p variants={fadeIn} className="text-xs font-medium tracking-[0.2em] uppercase text-zinc-500 mb-4">
                 La Jolla · San Diego
               </motion.p>
-              <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif mb-6 leading-tight font-light">
-                Why Women in La Jolla Choose Permanent Makeup
+              <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-serif mb-3 leading-tight font-light">
+                Why Women Across San Diego Choose Permanent Makeup
               </motion.h2>
+              <motion.p variants={fadeIn} className="text-[10px] tracking-[0.22em] uppercase text-zinc-400 mb-6">
+                La Jolla · Del Mar · Carmel Valley · Pacific Beach · UTC · Bird Rock
+              </motion.p>
               <motion.p variants={fadeIn} className="text-base text-zinc-600 mb-10 font-light leading-relaxed">
                 Drawing your brows every morning is a skill. Waking up without having to is a decision. Women who come to BrowBoss stop spending time on what should already be there, and start spending it on everything else.
               </motion.p>
