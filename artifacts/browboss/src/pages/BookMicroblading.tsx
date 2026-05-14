@@ -17,7 +17,10 @@ const stagger = {
 
 interface Service {
   name: string;
+  tag: string;
   description: string;
+  bestFor: string[];
+  image: string;
   price: string;
   duration: string;
   bookingUrl: string;
@@ -36,21 +39,30 @@ const serviceGroups: ServiceGroup[] = [
     services: [
       {
         name: "Microblading",
-        description: "Includes shading when necessary. A semi-permanent technique using a handheld tool with fine needles to create natural-looking, hair-like strokes on the brows.",
+        tag: "Hair Strokes",
+        description: "A handheld tool with fine needles creates individual hair-like strokes that mimic real brow hairs. Shading is added when necessary for depth.",
+        bestFor: ["Sparse brows", "Natural finish", "Fair to medium skin"],
+        image: "/images/ba-micro-after.jpg",
         price: "$900",
         duration: "1 hr+",
         bookingUrl: bookingBase,
       },
       {
         name: "Ombre Powder Brows",
-        description: "A semi-permanent technique that gives the brows a soft, powdered look similar to makeup. Instead of hair-like strokes, it uses fine dots to create a gradient effect.",
+        tag: "Soft Powder",
+        description: "Fine dots build a soft, makeup-like gradient — lighter at the front, deeper at the tail. No harsh edges. Long-lasting on all skin types.",
+        bestFor: ["Oily skin", "Makeup look", "Bold definition"],
+        image: "/images/powder-brows.jpg",
         price: "$900",
         duration: "3 hrs 30 mins+",
         bookingUrl: bookingBase,
       },
       {
         name: "Combo Brows",
-        description: "Blends natural-looking microbladed hair strokes with soft shading done by a tattoo machine to create fuller, more defined brows.",
+        tag: "Hybrid",
+        description: "Hair strokes at the front for a natural look, powder shading through the body and tail for fullness. The best of both techniques in one session.",
+        bestFor: ["Thin to medium brows", "Defined yet natural", "Any skin type"],
+        image: "/images/ba-brow-after.jpg",
         price: "$900",
         duration: "3 hrs 30 mins",
         bookingUrl: bookingBase,
@@ -63,7 +75,10 @@ const serviceGroups: ServiceGroup[] = [
     services: [
       {
         name: "Microblading Consultation",
-        description: "If you have had previous microblading done or have questions regarding our microblading services, we highly recommend booking a consultation or giving our studio a call at (858) 322-0010.",
+        tag: "First Step",
+        description: "If you have had previous microblading done or have questions regarding our services, we highly recommend starting here. Fee is applied toward your appointment.",
+        bestFor: ["Previous microblading", "Unsure which technique", "Color matching"],
+        image: "/images/leslie-founder.jpg",
         price: "$100",
         duration: "30 mins+",
         bookingUrl: bookingBase,
@@ -178,9 +193,31 @@ export default function BookMicroblading() {
                       variants={fadeUp}
                       className="group border border-zinc-100 bg-white hover:border-zinc-300 transition-all duration-300 hover:shadow-sm flex flex-col"
                     >
+                      {/* Result image */}
+                      <div className="aspect-[4/3] overflow-hidden bg-zinc-100 relative">
+                        <img
+                          src={svc.image}
+                          alt={svc.name}
+                          className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+                        />
+                        {/* Technique tag */}
+                        <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[9px] tracking-[0.28em] uppercase text-zinc-700 px-2.5 py-1">
+                          {svc.tag}
+                        </span>
+                      </div>
+
                       <div className="p-5 flex flex-col flex-1">
                         <p className="font-serif text-lg font-light mb-2 leading-snug">{svc.name}</p>
-                        <p className="text-[12px] text-zinc-500 leading-relaxed mb-5 flex-1">{svc.description}</p>
+                        <p className="text-[12px] text-zinc-500 leading-relaxed mb-4 flex-1">{svc.description}</p>
+
+                        {/* Best for */}
+                        <div className="flex flex-wrap gap-1.5 mb-4">
+                          {svc.bestFor.map((b) => (
+                            <span key={b} className="text-[9px] tracking-[0.18em] uppercase text-zinc-400 border border-zinc-200 px-2 py-0.5">
+                              {b}
+                            </span>
+                          ))}
+                        </div>
 
                         <div className="flex items-center justify-between mb-4 pt-4 border-t border-zinc-100">
                           <span className="text-sm font-medium text-black">{svc.price}</span>
