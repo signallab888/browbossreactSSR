@@ -735,7 +735,7 @@ export default function Home() {
           </div>
 
           {/* Sub under stats */}
-          <p className="mt-6 text-[11px] tracking-[0.28em] uppercase text-zinc-400">
+          <p className="mt-6 text-[11px] tracking-[0.28em] uppercase text-zinc-500 font-medium">
             San Diego's studio that women fly in for
           </p>
 
