@@ -241,9 +241,9 @@ export default function LashLift() {
               <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed mb-8">
                 YUMI customizes the curl to your eye shape. Rod size, placement, and lift angle are all chosen for you. The result looks like your lashes on their best day, not a copied curl from a photo.
               </motion.p>
-              <motion.div variants={fadeUp} className="flex items-center gap-6 pt-6 border-t border-zinc-200">
+              <motion.div variants={fadeUp} className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 pt-6 border-t border-zinc-200">
                 <img src="/images/yumi-logo.png" alt="YUMI Lashes & Brows" className="h-24 w-auto" style={{ mixBlendMode: "multiply" }} />
-                <span className="w-px h-6 bg-zinc-300" />
+                <span className="hidden md:block w-px h-6 bg-zinc-300" />
                 <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-400">Certified Provider · La Jolla</p>
               </motion.div>
             </motion.div>
