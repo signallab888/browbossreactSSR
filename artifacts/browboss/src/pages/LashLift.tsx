@@ -289,13 +289,13 @@ export default function LashLift() {
             <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
               {[
                 "Results last 8–12 weeks",
-                "Works with straight, downward-pointing, and short lashes",
+                "No glue, no extensions, no fills",
                 "No maintenance between appointments",
                 "Safe for contact lens wearers",
                 "Safe during pregnancy",
                 "Swimming & ocean-safe after 24 hours",
+                "Works with straight, short, and downward-pointing lashes",
                 "Mascara optional, water-based only after first 24 hours",
-                "No glue, no extensions, no fills",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <Check className="w-4 h-4 text-zinc-400 flex-shrink-0 mt-0.5" />
