@@ -686,7 +686,7 @@ export default function Home() {
           {/* Service tags */}
           <div className="flex flex-wrap justify-center gap-2 mb-7">
             {["Microblading", "Permanent Makeup", "Lash Lifts", "Brow Lamination", "Lip Blushing"].map(s => (
-              <span key={s} className="text-[10px] tracking-[0.22em] uppercase text-zinc-400 border border-zinc-200 px-3 py-1.5">
+              <span key={s} className="text-[10px] tracking-[0.22em] uppercase text-zinc-400 border border-zinc-200 px-3 py-1.5 rounded-full">
                 {s}
               </span>
             ))}
@@ -733,8 +733,8 @@ export default function Home() {
           </div>
 
           {/* Location strip */}
-          <div className="mt-10 border-t border-zinc-100 pt-6">
-            <p className="text-center text-[9px] tracking-[0.35em] uppercase text-zinc-400">
+          <div className="mt-10 -mx-6 bg-black py-2.5 px-6">
+            <p className="text-center text-[9px] tracking-[0.35em] uppercase text-white">
               La Jolla&ensp;·&ensp;Del Mar&ensp;·&ensp;Pacific Beach&ensp;·&ensp;Carmel Valley&ensp;·&ensp;San Diego
             </p>
           </div>
@@ -1051,10 +1051,9 @@ export default function Home() {
                 }}
                 className="text-center"
               >
-                <div className="font-serif font-thin text-[5rem] md:text-[7rem] leading-none text-zinc-200 mb-4 tracking-tighter">{step.num}</div>
-                <div className="w-6 h-px bg-zinc-200 mb-4 mx-auto" />
-                <h3 className="text-base font-serif tracking-[0.1em] mb-3">{step.title}</h3>
-                <p className="text-sm text-zinc-500 font-light leading-relaxed">{step.desc}</p>
+                <div className="text-6xl md:text-8xl font-serif text-zinc-100 mb-6">{step.num}</div>
+                <h3 className="text-xl font-serif mb-4">{step.title}</h3>
+                <p className="text-zinc-500 font-light leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -1483,15 +1482,10 @@ export default function Home() {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-3">Follow Our Work</p>
-            <h2 className="text-3xl md:text-4xl font-serif font-light mb-2">
-              <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity">@browbosslajolla</a>
+            <h2 className="text-2xl md:text-3xl font-serif mb-12 flex items-center justify-center gap-3">
+              <Instagram className="w-6 h-6" />
+              Follow Our Work <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" className="underline decoration-1 underline-offset-4 hover:opacity-70">@browbosslajolla</a>
             </h2>
-            <div className="flex items-center justify-center gap-2 mb-12 mt-3">
-              <span className="w-6 h-px bg-zinc-300" />
-              <Instagram className="w-3 h-3 text-zinc-300" />
-              <span className="w-6 h-px bg-zinc-300" />
-            </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 max-w-7xl mx-auto">
               {[
                 "/videos/v14-f35.jpg",
