@@ -399,7 +399,7 @@ export default function LashLift() {
             <div className="w-8 h-px bg-black mx-auto mt-5" />
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            className="grid md:grid-cols-3 gap-6">
+            className="grid md:grid-cols-2 gap-6">
             {[
               {
                 quote: "Kelly has been my lash fairy for the last couple of years. I love going to Browboss for my lash lifts but also the people. I appreciate them having my lash health in mind and being super careful with the procedure. I don't live in the area but it is worth the drive.",
@@ -412,6 +412,10 @@ export default function LashLift() {
               {
                 quote: "I haven't had to wear mascara for months! I recommend purchasing the lash serum from Browboss as well. It has extended the life of the lash lift and made my lashes longer.",
                 author: "Leslie Altherr",
+              },
+              {
+                quote: "My lashes now have a natural and beautiful curl, eliminating the need for an eyelash curler.",
+                author: "Joanna Garcia",
               },
             ].map((r) => (
               <motion.div key={r.author} variants={fadeUp} className="border-t border-zinc-200 pt-6">
