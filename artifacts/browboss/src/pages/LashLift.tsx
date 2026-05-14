@@ -607,7 +607,7 @@ export default function LashLift() {
               If you are looking for the best lash lift in La Jolla or a YUMI lash lift near you in San Diego, this is the appointment.
             </motion.p>
             <motion.p variants={fadeUp} className="text-xs text-zinc-400 mb-10 leading-relaxed">
-              We serve clients from Del Mar, Pacific Beach, UTC, Mission Hills, and all of San Diego.
+              We serve clients from La Jolla, Del Mar, Carmel Valley, Pacific Beach, Bird Rock, UTC, Mission Hills, and all of San Diego County.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch justify-center gap-4">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
