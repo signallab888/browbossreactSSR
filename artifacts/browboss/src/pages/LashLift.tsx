@@ -585,7 +585,7 @@ export default function LashLift() {
                 Book My Appointment <ArrowRight className="w-4 h-4" />
               </a>
               <a href="tel:8583220010"
-                className="inline-flex items-center gap-2 border border-zinc-200 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto justify-center">
+                className="inline-flex items-center gap-2 border border-zinc-200 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto justify-center whitespace-nowrap">
                 <Phone className="w-4 h-4" /> (858) 322-0010
               </a>
             </motion.div>
