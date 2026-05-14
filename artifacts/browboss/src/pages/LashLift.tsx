@@ -109,7 +109,7 @@ export default function LashLift() {
               Your lashes.<br />Lifted.
             </motion.h1>
             <motion.p variants={fadeUp} className="text-white/70 text-base font-light mb-8 leading-relaxed max-w-sm">
-              No extensions. No glue. No morning routine. Just your natural lashes — open, curled, and visible from the moment you wake up.
+              No extensions. No glue. No morning routine. Just your natural lashes, open, curled, and visible from the moment you wake up.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
@@ -147,7 +147,7 @@ export default function LashLift() {
             </motion.blockquote>
             <motion.div variants={fadeUp} className="w-8 h-px bg-black mx-auto mb-8" />
             <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed">
-              That's the actual point of a lash lift — and it's why clients keep coming back. We use{" "}
+              That's why clients keep coming back. We use{" "}
               <strong className="text-black font-medium">YUMI™ Lashes Paris</strong>, a keratin-based system that lifts your natural
               lashes while nourishing them at the same time. No synthetic fibers. No adhesive. No damage.
             </motion.p>
@@ -220,13 +220,13 @@ export default function LashLift() {
                 The formula does more than curl.
               </motion.h2>
               <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed mb-5">
-                Most basic lash lift systems work like a perm — they force a curl and that's it. The curl holds, but the lash gets nothing back. Over time, lashes can feel brittle and dry.
+                Most basic lash lift systems work like a perm. They force a curl and stop there. The curl holds, but the lash gets nothing back. Over time, lashes can feel brittle and dry.
               </motion.p>
               <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed mb-5">
                 YUMI's formula is infused with <strong className="text-black font-medium">keratin proteins, vitamins, and natural oils</strong>. While it lifts, it nourishes. You get lashes that feel soft, move naturally, and look healthy through the entire 8–12 week cycle.
               </motion.p>
               <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed">
-                YUMI also customizes the curl to your actual eye shape — the rod size, placement, and lift angle are all adjusted specifically for you. The result looks like your lashes on their best day, not a generic curl from a template.
+                YUMI customizes the curl to your eye shape. Rod size, placement, and lift angle are all chosen for you. The result looks like your lashes on their best day, not a copied curl from a photo.
               </motion.p>
             </motion.div>
             <motion.div
@@ -256,7 +256,7 @@ export default function LashLift() {
               {
                 num: "01",
                 title: "Lift",
-                body: "Silicone pads are placed on your eyelids and your lashes are lifted and secured. A softening serum relaxes the lash from its natural position. Rod size and placement are customized to your eye shape — from subtle to dramatic.",
+                body: "Silicone pads are placed on your eyelids and your lashes are lifted and secured. A softening serum relaxes the lash from its natural position. Rod size and placement are chosen based on your eye shape, from subtle to dramatic.",
               },
               {
                 num: "02",
@@ -266,7 +266,7 @@ export default function LashLift() {
               {
                 num: "03",
                 title: "Tint (Optional)",
-                body: "If you want darker lashes, we tint in the same appointment. Most clients add this — it's the final step that makes mascara genuinely unnecessary. Total time: about 60 minutes.",
+                body: "If you want darker lashes, we tint in the same appointment. Most clients add this. It's what makes mascara unnecessary. Total time: about 60 minutes.",
               },
             ].map((step) => (
               <motion.div key={step.num} variants={fadeUp} className="border-t border-zinc-200 pt-6">
@@ -293,7 +293,7 @@ export default function LashLift() {
                 "Safe for contact lens wearers",
                 "Safe during pregnancy",
                 "Swimming & ocean-safe after 24 hours",
-                "Mascara optional — water-based only after first 24 hours",
+                "Mascara optional, water-based only after first 24 hours",
                 "No glue, no extensions, no fills",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
@@ -349,7 +349,7 @@ export default function LashLift() {
               </ul>
               <p className="text-xs text-zinc-400 mt-6 border-t border-zinc-200 pt-6">
                 If you're unsure,{" "}
-                <a href="tel:8583220010" className="text-black underline">call us</a> — we'll give you a straight answer.
+                <a href="tel:8583220010" className="text-black underline">call us</a>. We'll give you a straight answer.
               </p>
             </motion.div>
           </motion.div>
@@ -402,7 +402,7 @@ export default function LashLift() {
             className="grid md:grid-cols-3 gap-6">
             {[
               {
-                quote: "I've had lash lifts at two other places in San Diego. This is the first time I walked out actually happy with the curl. They asked me about my eye shape and adjusted everything to fit it — no other place has done that.",
+                quote: "I've had lash lifts at two other places in San Diego. This is the first time I walked out happy with the curl. They asked me about my eye shape and adjusted everything to fit it. No other place has done that.",
                 author: "Client, La Jolla",
               },
               {
@@ -447,7 +447,7 @@ export default function LashLift() {
               {
                 num: "8wk",
                 title: "Wait Before Your Next Lift",
-                body: "After the first week, you can condition your lashes with a small amount of castor or coconut oil. Wait at least 8 weeks before booking again — going sooner risks over-processing.",
+                body: "After the first week, you can condition your lashes with a small amount of castor or coconut oil. Wait at least 8 weeks before booking again. Going sooner risks over-processing.",
               },
             ].map((step) => (
               <motion.div key={step.num} variants={fadeUp} className="border-t border-zinc-200 pt-6">
@@ -478,17 +478,17 @@ export default function LashLift() {
           {/* 2-column grid */}
           {(() => {
             const faqs = [
-              { q: "Does a lash lift damage your natural lashes?", a: "No — as long as it's done correctly. The two main causes of damage are over-processing the lash (leaving solution on too long) and going back too soon. YUMI's keratin formula is specifically designed to nourish while it lifts. Our technicians are certified and trained to time every step properly." },
+              { q: "Does a lash lift damage your natural lashes?", a: "No. The two main causes of damage are over-processing the lash and going back too soon. YUMI's keratin formula nourishes while it lifts. Our technicians are trained to time every step correctly." },
               { q: "Does it hurt?", a: "No. Most clients find it relaxing and some fall asleep. You may feel slight pressure from the silicone pad but there is no pain. The whole treatment is non-invasive from start to finish." },
-              { q: "How long do results actually last?", a: "Most clients see a full lift for 8–10 weeks. Some go up to 12. The lift doesn't 'fall out' — it grows out naturally with your lash cycle, so it fades gradually rather than all at once." },
-              { q: "Is tint included?", a: "Tint is available as an add-on during the same appointment. Most clients include it — it's the step that makes mascara completely unnecessary. Just let us know when you book." },
-              { q: "Can I wear mascara after?", a: "Yes — wait 24 hours, then water-based mascara is completely fine. Most clients find they don't need it. If you want the darkest result possible, adding a tint to your appointment is the better option." },
-              { q: "What's the difference between a lash lift and extensions?", a: "Extensions add synthetic fibers to your natural lashes using adhesive. They require fills every 2–3 weeks and the grow-out can look patchy. A lash lift works entirely with your own lashes — no glue, no fibers, no fills. You book it once and come back when your natural lash cycle is done." },
-              { q: "I have short lashes. Will it still work?", a: "It depends on the actual length. Very short lashes may not give you a dramatic result, but we can assess this before we start — we won't go through with it if it's not going to do anything for you. Most clients with short but present lashes see a real difference." },
-              { q: "How soon can I book again?", a: "Wait at least 8 weeks. This gives the previous lift time to grow out and keeps your lashes from being over-processed. If the curl seems gone before 8 weeks, it's usually because your lash growth cycle is faster — not a reason to go sooner." },
+              { q: "How long do results last?", a: "Most clients see a full lift for 8 to 10 weeks. Some go up to 12. The lift doesn't fall out. It grows out naturally with your lash cycle, so it fades gradually rather than all at once." },
+              { q: "Is tint included?", a: "Tint is available as an add-on in the same appointment. Most clients include it. It's what makes mascara completely unnecessary. Just let us know when you book." },
+              { q: "Can I wear mascara after?", a: "Wait 24 hours, then water-based mascara is fine. Most clients find they don't need it. If you want the darkest result, adding a tint at booking is the better call." },
+              { q: "What's the difference between a lash lift and extensions?", a: "Extensions add synthetic fibers using adhesive and need fills every 2 to 3 weeks. A lash lift works with your own lashes only. No glue, no fibers, no fills. You book once and come back when the cycle is done." },
+              { q: "I have short lashes. Will it still work?", a: "It depends on the actual length. Very short lashes may not give you a dramatic result. We assess before we start and won't go through with it if it won't make a visible difference. Most clients with short but present lashes do see a real change." },
+              { q: "How soon can I book again?", a: "Wait at least 8 weeks. This gives the previous lift time to grow out and keeps your lashes from being over-processed. If the curl seems gone before 8 weeks, it's usually a faster lash growth cycle, not a reason to go sooner." },
               { q: "What do I need to do before the appointment?", a: "Come with clean lashes. No mascara, no eyelash curler in the 24 hours before. Remove contact lenses before we start. That's it." },
-              { q: "Is it safe during pregnancy?", a: "The treatment is non-invasive and considered safe during pregnancy. If you're in your first trimester or have any concerns, check with your doctor first. We're happy to answer any specific questions when you call." },
-              { q: "What if I don't like the result?", a: "The lift cannot be reversed, so we take the consultation seriously. If you're nervous about going too dramatic, tell us before we start — we'll choose a subtle rod and a natural angle. Our goal is always to enhance what's already there, not overdo it." },
+              { q: "Is it safe during pregnancy?", a: "The treatment is non-invasive and considered safe during pregnancy. If you're in your first trimester or have concerns, check with your doctor first. Call us and we'll answer any questions." },
+              { q: "What if I don't like the result?", a: "The lift can't be reversed, so we take the consultation seriously. If you're nervous about going too dramatic, tell us before we start. We'll choose a subtle rod and a natural angle. We're not trying to overdo it." },
             ];
             const left = faqs.slice(0, 6);
             const right = faqs.slice(6);
@@ -527,7 +527,7 @@ export default function LashLift() {
               Book Your Lash Lift Today
             </motion.h2>
             <motion.p variants={fadeUp} className="text-sm text-zinc-500 mb-10 leading-relaxed">
-              We're in La Jolla and serve clients from all over San Diego — Del Mar, Pacific Beach, UTC, Mission Hills, and beyond.
+              We're in La Jolla and serve clients from all over San Diego: Del Mar, Pacific Beach, UTC, Mission Hills, and beyond.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
