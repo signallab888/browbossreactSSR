@@ -163,9 +163,10 @@ export default function LashLift() {
             <div className="w-8 h-px bg-black mx-auto mb-4" />
             <p className="text-sm text-zinc-400 tracking-wide">Tap any card to reveal</p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
             <BeforeAfterCard label="Lash Lift" before="/images/lash-before-1.jpg" after="/images/lash-after-1.jpg" posB="top" posA="top" />
             <BeforeAfterCard label="Lash Lift" before="/images/lash-before-2.jpg" after="/images/lash-after-2.jpg" posB="center" posA="center" />
+            <BeforeAfterCard label="Lash Lift" before="/images/ba-lash-before.jpg" after="/images/ba-lash-after.jpg" posB="top" posA="top" />
           </div>
         </div>
       </section>
