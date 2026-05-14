@@ -17,18 +17,24 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-function FaqItem({ q, a }: { q: string; a: string }) {
+function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-zinc-200">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      className={`border border-zinc-200 bg-white transition-shadow duration-300 ${open ? "shadow-md" : "hover:shadow-sm"}`}
+    >
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between py-5 text-left gap-4"
+        className="w-full flex items-start justify-between px-6 py-5 text-left gap-4"
       >
-        <span className="text-sm font-medium tracking-wide">{q}</span>
-        <ChevronDown
-          className={`w-4 h-4 flex-shrink-0 text-zinc-400 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-        />
+        <span className="text-[11px] tracking-[0.18em] uppercase font-medium text-zinc-800 leading-relaxed">{q}</span>
+        <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border border-zinc-300 flex items-center justify-center transition-all duration-300 ${open ? "bg-black border-black" : ""}`}>
+          <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${open ? "rotate-180 text-white" : "text-zinc-400"}`} />
+        </span>
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -39,11 +45,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="text-sm text-zinc-500 leading-relaxed pb-5">{a}</p>
+            <p className="text-sm text-zinc-500 leading-relaxed px-6 pb-6">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
@@ -404,15 +410,23 @@ export default function LashLift() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#F5F1EC]">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
-            <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-3">Questions</p>
-            <h2 className="font-serif text-4xl font-light">FAQ</h2>
-            <div className="w-8 h-px bg-black mx-auto mt-5" />
+      <section className="py-20 md:py-32 bg-[#F5F1EC]">
+        <div className="container mx-auto px-4 max-w-6xl">
+
+          {/* Header */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
+            <p className="text-[10px] tracking-[0.5em] uppercase text-zinc-400 mb-4">Everything You Need to Know</p>
+            <h2 className="font-serif text-5xl md:text-6xl font-light mb-5">FAQ</h2>
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-px w-12 bg-zinc-300" />
+              <div className="w-1 h-1 rounded-full bg-zinc-400" />
+              <div className="h-px w-12 bg-zinc-300" />
+            </div>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            {[
+
+          {/* 2-column grid */}
+          {(() => {
+            const faqs = [
               { q: "Does a lash lift damage your natural lashes?", a: "No — as long as it's done correctly. The two main causes of damage are over-processing the lash (leaving solution on too long) and going back too soon. YUMI's keratin formula is specifically designed to nourish while it lifts. Our technicians are certified and trained to time every step properly." },
               { q: "How long do results actually last?", a: "Most clients see a full lift for 8–10 weeks. Some go up to 12. The lift doesn't 'fall out' — it grows out naturally with your lash cycle, so it fades gradually rather than all at once." },
               { q: "Can I wear mascara after?", a: "Yes — wait 24 hours, then water-based mascara is completely fine. Most clients find they don't need it. If you want the darkest result possible, adding a tint to your appointment is the better option." },
@@ -421,10 +435,30 @@ export default function LashLift() {
               { q: "How soon can I book again?", a: "Wait at least 8 weeks. This gives the previous lift time to grow out and keeps your lashes from being over-processed. If the curl seems gone before 8 weeks, it's usually because your lash growth cycle is faster — not a reason to go sooner." },
               { q: "What do I need to do before the appointment?", a: "Come with clean lashes. No mascara, no eyelash curler in the 24 hours before. Remove contact lenses before we start. That's it." },
               { q: "Is it safe during pregnancy?", a: "The treatment is non-invasive and considered safe during pregnancy. If you're in your first trimester or have any concerns, check with your doctor first. We're happy to answer any specific questions when you call." },
-            ].map((item) => (
-              <FaqItem key={item.q} {...item} />
-            ))}
-          </motion.div>
+            ];
+            const left = faqs.slice(0, 4);
+            const right = faqs.slice(4);
+            return (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="flex flex-col gap-4">
+                  {left.map((item, i) => <FaqItem key={item.q} {...item} index={i} />)}
+                </div>
+                <div className="flex flex-col gap-4">
+                  {right.map((item, i) => <FaqItem key={item.q} {...item} index={i + 4} />)}
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Bottom note */}
+          <motion.p
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="text-center text-xs text-zinc-400 tracking-widest uppercase mt-12"
+          >
+            Still have questions? <a href="tel:8583220010" className="underline underline-offset-4 hover:text-black transition-colors">(858) 322-0010</a>
+          </motion.p>
+
         </div>
       </section>
 
