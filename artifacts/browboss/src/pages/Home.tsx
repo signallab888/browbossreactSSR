@@ -935,22 +935,22 @@ export default function Home() {
             <p className="text-sm text-zinc-500 tracking-wide">The most common questions, answered in 10 seconds.</p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200">
             {[
               {
-                q: "DOES IT HURT?",
+                q: "Does it hurt?",
                 a: "Most clients describe it as mild scratching. We use medical-grade numbing cream so you stay comfortable from start to finish.",
               },
               {
-                q: "HOW LONG DOES IT LAST?",
+                q: "How long does it last?",
                 a: "Microblading and permanent makeup last 1–3 years. Lash lifts last 6–8 weeks. Brow lamination lasts 4–6 weeks.",
               },
               {
-                q: "WHAT DOES IT COST?",
+                q: "What does it cost?",
                 a: "Services start at $45. Permanent makeup from $550. Pay over time from $50/month with Cherry, Afterpay, or Klarna.",
               },
               {
-                q: "IS IT SAFE?",
+                q: "Is it safe?",
                 a: "Yes. California-licensed, fully insured, single-use disposable tools. Over 500 women have trusted us with their face.",
               },
             ].map((item, i) => (
@@ -960,9 +960,11 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
                 variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" } } }}
-                className="bg-white border border-zinc-200 p-5 md:p-6 flex flex-col gap-3"
+                className="bg-white p-6 md:p-8 flex flex-col gap-4 group hover:bg-zinc-50 transition-colors duration-200"
               >
-                <p className="text-[10px] tracking-[0.32em] uppercase text-zinc-500 font-medium leading-snug">{item.q}</p>
+                <span className="text-[10px] tracking-[0.4em] text-zinc-300 font-light">0{i + 1}</span>
+                <p className="font-serif text-base md:text-lg font-light text-black leading-snug">{item.q}</p>
+                <div className="w-6 h-px bg-zinc-200 group-hover:w-10 transition-all duration-300" />
                 <p className="text-xs text-zinc-500 leading-relaxed">{item.a}</p>
               </motion.div>
             ))}
