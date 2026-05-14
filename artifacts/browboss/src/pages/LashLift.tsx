@@ -423,6 +423,43 @@ export default function LashLift() {
         </div>
       </section>
 
+      {/* ── Aftercare ──────────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-3">After Your Appointment</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-light">Aftercare</h2>
+            <div className="w-8 h-px bg-black mx-auto mt-5" />
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
+            className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                num: "24h",
+                title: "Keep Them Dry",
+                body: "The first 24 hours are the most important. No water, no steam, no sweating, no mascara. Sleep on your back if you can. This is the window where the lift sets completely.",
+              },
+              {
+                num: "48h",
+                title: "Handle Gently",
+                body: "No rubbing, no pulling, no eyelash curler for the first 48 hours. After that, use a non-oily makeup remover and avoid anything heavy around the eye area.",
+              },
+              {
+                num: "8wk",
+                title: "Wait Before Your Next Lift",
+                body: "After the first week, you can condition your lashes with a small amount of castor or coconut oil. Wait at least 8 weeks before booking again — going sooner risks over-processing.",
+              },
+            ].map((step) => (
+              <motion.div key={step.num} variants={fadeUp} className="border-t border-zinc-200 pt-6">
+                <p className="font-serif text-4xl font-light text-zinc-200 mb-4">{step.num}</p>
+                <h3 className="font-medium text-sm tracking-widest uppercase mb-3">{step.title}</h3>
+                <p className="text-sm text-zinc-500 leading-relaxed">{step.body}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
       <section className="py-20 md:py-32 bg-[#F5F1EC]">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -442,16 +479,19 @@ export default function LashLift() {
           {(() => {
             const faqs = [
               { q: "Does a lash lift damage your natural lashes?", a: "No — as long as it's done correctly. The two main causes of damage are over-processing the lash (leaving solution on too long) and going back too soon. YUMI's keratin formula is specifically designed to nourish while it lifts. Our technicians are certified and trained to time every step properly." },
+              { q: "Does it hurt?", a: "No. Most clients find it relaxing and some fall asleep. You may feel slight pressure from the silicone pad but there is no pain. The whole treatment is non-invasive from start to finish." },
               { q: "How long do results actually last?", a: "Most clients see a full lift for 8–10 weeks. Some go up to 12. The lift doesn't 'fall out' — it grows out naturally with your lash cycle, so it fades gradually rather than all at once." },
+              { q: "Is tint included?", a: "Tint is available as an add-on during the same appointment. Most clients include it — it's the step that makes mascara completely unnecessary. Just let us know when you book." },
               { q: "Can I wear mascara after?", a: "Yes — wait 24 hours, then water-based mascara is completely fine. Most clients find they don't need it. If you want the darkest result possible, adding a tint to your appointment is the better option." },
               { q: "What's the difference between a lash lift and extensions?", a: "Extensions add synthetic fibers to your natural lashes using adhesive. They require fills every 2–3 weeks and the grow-out can look patchy. A lash lift works entirely with your own lashes — no glue, no fibers, no fills. You book it once and come back when your natural lash cycle is done." },
               { q: "I have short lashes. Will it still work?", a: "It depends on the actual length. Very short lashes may not give you a dramatic result, but we can assess this before we start — we won't go through with it if it's not going to do anything for you. Most clients with short but present lashes see a real difference." },
               { q: "How soon can I book again?", a: "Wait at least 8 weeks. This gives the previous lift time to grow out and keeps your lashes from being over-processed. If the curl seems gone before 8 weeks, it's usually because your lash growth cycle is faster — not a reason to go sooner." },
               { q: "What do I need to do before the appointment?", a: "Come with clean lashes. No mascara, no eyelash curler in the 24 hours before. Remove contact lenses before we start. That's it." },
               { q: "Is it safe during pregnancy?", a: "The treatment is non-invasive and considered safe during pregnancy. If you're in your first trimester or have any concerns, check with your doctor first. We're happy to answer any specific questions when you call." },
+              { q: "What if I don't like the result?", a: "The lift cannot be reversed, so we take the consultation seriously. If you're nervous about going too dramatic, tell us before we start — we'll choose a subtle rod and a natural angle. Our goal is always to enhance what's already there, not overdo it." },
             ];
-            const left = faqs.slice(0, 4);
-            const right = faqs.slice(4);
+            const left = faqs.slice(0, 6);
+            const right = faqs.slice(6);
             return (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="flex flex-col gap-4">
