@@ -92,7 +92,7 @@ export default function LashLift() {
       </header>
 
       {/* ── Hero ───────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[85vh] flex items-end bg-zinc-900 overflow-hidden">
+      <section className="relative min-h-[75vh] flex items-center bg-zinc-900 overflow-hidden">
         <img
           src="/images/lash-hero-new.jpg"
           alt="Lash Lift treatment"
@@ -280,11 +280,12 @@ export default function LashLift() {
       </section>
 
       {/* ── Results ────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-black text-white">
+      <section className="py-16 md:py-24 bg-[#F5F1EC]">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-            <motion.p variants={fadeUp} className="text-[10px] tracking-[0.4em] uppercase text-white/50 mb-4 text-center">What to Expect</motion.p>
-            <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-5xl font-light text-center mb-12">Results at a Glance</motion.h2>
+            <motion.p variants={fadeUp} className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-4 text-center">What to Expect</motion.p>
+            <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-5xl font-light text-center mb-4">Results at a Glance</motion.h2>
+            <motion.div variants={fadeUp} className="w-8 h-px bg-black mx-auto mb-12" />
             <motion.div variants={fadeUp} className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
               {[
                 "Results last 8–12 weeks",
@@ -297,8 +298,8 @@ export default function LashLift() {
                 "No glue, no extensions, no fills",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-white/50 flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-white/80">{item}</p>
+                  <Check className="w-4 h-4 text-zinc-400 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-zinc-700">{item}</p>
                 </div>
               ))}
             </motion.div>
@@ -425,6 +426,28 @@ export default function LashLift() {
             ))}
           </motion.div>
         </div>
+      </section>
+
+      {/* ── Mid-page CTA ───────────────────────────────────────────────── */}
+      <section className="py-12 border-t border-zinc-100 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.5 }}
+          className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl"
+        >
+          <p className="font-serif text-2xl md:text-3xl font-light text-zinc-800 text-center sm:text-left">
+            Ready to book your lift?
+          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
+            <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors">
+              Book My Appointment <ArrowRight className="w-4 h-4" />
+            </a>
+            <a href="tel:8583220010" className="text-xs tracking-widest uppercase text-zinc-400 hover:text-black transition-colors flex items-center gap-2">
+              <Phone className="w-3.5 h-3.5" /> (858) 322-0010
+            </a>
+          </div>
+        </motion.div>
       </section>
 
       {/* ── Aftercare ──────────────────────────────────────────────────── */}
