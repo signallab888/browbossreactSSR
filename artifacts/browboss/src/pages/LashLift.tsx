@@ -238,9 +238,13 @@ export default function LashLift() {
               <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed mb-5">
                 YUMI's formula is infused with <strong className="text-black font-medium">keratin proteins, vitamins, and natural oils</strong>. While it lifts, it nourishes. You get lashes that feel soft, move naturally, and look healthy through the entire 8–12 week cycle.
               </motion.p>
-              <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed">
+              <motion.p variants={fadeUp} className="text-sm text-zinc-500 leading-relaxed mb-8">
                 YUMI customizes the curl to your eye shape. Rod size, placement, and lift angle are all chosen for you. The result looks like your lashes on their best day, not a copied curl from a photo.
               </motion.p>
+              <motion.div variants={fadeUp} className="flex items-center gap-4 pt-6 border-t border-zinc-200">
+                <img src="/images/yumi-logo.png" alt="YUMI Lashes & Brows" className="h-10 w-auto opacity-80" />
+                <p className="text-[10px] tracking-[0.25em] uppercase text-zinc-400">Certified Provider · La Jolla</p>
+              </motion.div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
