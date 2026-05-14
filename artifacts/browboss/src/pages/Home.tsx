@@ -734,8 +734,13 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Sub under stats */}
+          <p className="mt-6 text-[11px] tracking-[0.28em] uppercase text-zinc-400">
+            San Diego's studio that women fly in for
+          </p>
+
           {/* Location strip */}
-          <div className="mt-10 -mx-6 bg-black py-2.5 px-6">
+          <div className="mt-6 -mx-6 bg-black py-2.5 px-6">
             <p className="text-center text-[9px] tracking-[0.35em] uppercase text-white">
               La Jolla&ensp;·&ensp;Del Mar&ensp;·&ensp;Pacific Beach&ensp;·&ensp;Carmel Valley&ensp;·&ensp;San Diego
             </p>
