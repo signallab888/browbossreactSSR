@@ -99,7 +99,8 @@ export default function LashLift() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-70"
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
+          style={{ objectPosition: "50% 20%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
         <div className="relative container mx-auto px-4 md:px-8 pb-16 md:pb-24">
