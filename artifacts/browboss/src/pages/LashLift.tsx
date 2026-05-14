@@ -310,16 +310,19 @@ export default function LashLift() {
       {/* ── Is it right for you ────────────────────────────────────────── */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
             <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-3">Candidacy</p>
             <h2 className="font-serif text-4xl md:text-5xl font-light">Is This Right for You?</h2>
             <div className="w-8 h-px bg-black mx-auto mt-5" />
           </motion.div>
+
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={fadeUp} className="border border-zinc-100 p-8">
-              <p className="text-xs tracking-[0.3em] uppercase font-medium mb-6">Good Fit If...</p>
-              <ul className="space-y-3">
+            className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-zinc-200">
+
+            {/* Left — Good fit */}
+            <motion.div variants={fadeUp} className="pb-10 md:pb-0 md:pr-12">
+              <p className="text-[10px] tracking-[0.4em] uppercase text-black font-medium mb-8">Good Fit If</p>
+              <ul className="space-y-5">
                 {[
                   "Your natural lashes grow straight or point downward",
                   "You're tired of using a curler every single morning",
@@ -327,32 +330,40 @@ export default function LashLift() {
                   "You've had extensions and want to give your lashes a break",
                   "You want the look without the upkeep",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-black flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-zinc-600">{item}</p>
+                  <li key={item} className="flex items-start gap-4">
+                    <span className="w-px h-4 bg-black flex-shrink-0 mt-1" />
+                    <p className="text-sm text-zinc-700 leading-relaxed">{item}</p>
                   </li>
                 ))}
               </ul>
             </motion.div>
-            <motion.div variants={fadeUp} className="border border-zinc-100 p-8 bg-zinc-50">
-              <p className="text-xs tracking-[0.3em] uppercase font-medium mb-6 text-zinc-400">Not the Right Time If...</p>
-              <ul className="space-y-3">
-                {[
-                  "You have an active eye infection or irritation",
-                  "You had eye surgery in the last 3 months",
-                  "Your lashes are extremely short (we can assess this at the appointment)",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <X className="w-4 h-4 text-zinc-300 flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-zinc-400">{item}</p>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-zinc-400 mt-6 border-t border-zinc-200 pt-6">
-                If you're unsure,{" "}
-                <a href="tel:8583220010" className="text-black underline">call us</a>. We'll give you a straight answer.
+
+            {/* Right — Not the right time */}
+            <motion.div variants={fadeUp} className="pt-10 md:pt-0 md:pl-12 flex flex-col justify-between">
+              <div>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 font-medium mb-8">Not the Right Time If</p>
+                <ul className="space-y-5">
+                  {[
+                    "You have an active eye infection or irritation",
+                    "You had eye surgery in the last 3 months",
+                    "Your lashes are extremely short (we assess this at the appointment)",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-4">
+                      <span className="w-3 h-px bg-zinc-300 flex-shrink-0 mt-2" />
+                      <p className="text-sm text-zinc-400 leading-relaxed">{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-xs text-zinc-400 mt-12 leading-relaxed">
+                Not sure if you qualify?{" "}
+                <a href="tel:8583220010" className="text-black underline underline-offset-2 hover:opacity-70 transition-opacity">
+                  Call us before you book.
+                </a>{" "}
+                We'll tell you honestly.
               </p>
             </motion.div>
+
           </motion.div>
         </div>
       </section>
