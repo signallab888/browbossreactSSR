@@ -94,10 +94,10 @@ export default function LashLift() {
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-end bg-zinc-900 overflow-hidden">
         <img
-          src="/images/lash-hero.jpg"
-          alt="Lash Lift result"
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
-          style={{ objectPosition: "50% 20%" }}
+          src="/images/ba-lash-before.jpg"
+          alt="Lash Lift treatment"
+          className="absolute inset-0 w-full h-full object-cover opacity-75"
+          style={{ objectPosition: "50% 30%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
         <div className="relative container mx-auto px-4 md:px-8 pb-16 md:pb-24">
