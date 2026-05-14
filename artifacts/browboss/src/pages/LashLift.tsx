@@ -171,6 +171,17 @@ export default function LashLift() {
             <BeforeAfterCard label="Lash Lift" before="/images/lash-before-2.jpg" after="/images/lash-after-2.jpg" posB="center" posA="center" />
             <BeforeAfterCard label="Lash Lift" before="/images/ba-lash-before.jpg" after="/images/ba-lash-after.jpg" posB="top" posA="top" />
           </div>
+          <motion.div
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-10"
+          >
+            <Link href="/gallery"
+              className="inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-zinc-400 hover:text-black transition-colors group">
+              View all results
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
