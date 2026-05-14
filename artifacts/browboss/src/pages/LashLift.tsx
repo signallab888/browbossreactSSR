@@ -561,13 +561,17 @@ export default function LashLift() {
           })()}
 
           {/* Bottom note */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="text-center text-xs text-zinc-400 tracking-widest uppercase mt-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-12"
           >
-            Still have questions? <a href="tel:8583220010" className="underline underline-offset-4 hover:text-black transition-colors">(858) 322-0010</a>
-          </motion.p>
+            <p className="text-xs text-zinc-400 tracking-widest uppercase">Still have questions?</p>
+            <a href="tel:8583220010"
+              className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-6 py-3 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors whitespace-nowrap">
+              <Phone className="w-3.5 h-3.5" /> (858) 322-0010
+            </a>
+          </motion.div>
 
         </div>
       </section>
