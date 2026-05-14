@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Phone, ChevronDown, Check, X } from "lucide-react";
+import { ArrowRight, Phone, ChevronDown, Check, X, Instagram } from "lucide-react";
 import { BeforeAfterCard } from "@/components/BeforeAfterCard";
 
 const bookingUrl =
@@ -590,6 +590,41 @@ export default function LashLift() {
             </a>
           </motion.div>
 
+        </div>
+      </section>
+
+      {/* ── Instagram ──────────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+          >
+            <h2 className="text-2xl md:text-3xl font-serif mb-12 flex items-center justify-center gap-3">
+              <Instagram className="w-6 h-6" />
+              Follow Our Work <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" className="underline decoration-1 underline-offset-4 hover:opacity-70">@browbosslajolla</a>
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 max-w-7xl mx-auto">
+              {[
+                "/images/frame-pick-2-clean.jpg",
+                "/images/ba-lash-after.jpg",
+                "/images/frame-reel4.jpg",
+                "/images/lash-after-1.jpg",
+                "/images/frame-pick-1.jpg",
+                "/images/lash-hero-new.jpg",
+              ].map((src, i) => (
+                <a href="https://www.instagram.com/browbosslajolla" target="_blank" rel="noopener noreferrer" key={i} className="relative aspect-square overflow-hidden group block bg-zinc-200">
+                  <img
+                    src={src}
+                    alt="BrowBoss Lash Lift"
+                    className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Instagram className="w-8 h-8 text-white" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
