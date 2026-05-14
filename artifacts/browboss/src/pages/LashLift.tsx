@@ -92,18 +92,19 @@ export default function LashLift() {
       </header>
 
       {/* ── Hero ───────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[75vh] flex items-center bg-zinc-900 overflow-hidden">
+      <section className="relative min-h-[75vh] flex items-end md:items-center bg-zinc-900 overflow-hidden">
         <img
           src="/images/lash-hero-new.jpg"
           alt="Lash Lift treatment"
           className="absolute inset-0 w-full h-full object-cover opacity-80"
-          style={{ objectPosition: "50% 40%" }}
+          style={{ objectPosition: "60% 30%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
-        <div className="relative container mx-auto px-4 md:px-8 pb-16 md:pb-24">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/5" />
+        <div className="relative container mx-auto px-4 md:px-8 pb-12 md:pb-24">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-xl">
             <motion.p variants={fadeUp} className="text-[10px] tracking-[0.4em] uppercase text-white/60 mb-5">
-              YUMI™ Keratin Lash Lift · La Jolla, San Diego
+              <span className="hidden sm:inline">YUMI™ Keratin Lash Lift · La Jolla, San Diego</span>
+              <span className="sm:hidden">YUMI™ Keratin Lash Lift</span>
             </motion.p>
             <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-serif font-light text-white leading-[1.05] mb-6">
               Your lashes.<br />Lifted.
