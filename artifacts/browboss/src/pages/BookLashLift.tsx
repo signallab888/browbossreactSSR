@@ -33,77 +33,41 @@ interface ServiceGroup {
 const serviceGroups: ServiceGroup[] = [
   {
     category: "Lash Lift",
-    description: "YUMI Keratin Lash Lift. Your natural lashes lifted, curled, and nourished. Results last 8 to 12 weeks.",
+    description: "YUMI Keratin formula. Natural lashes lifted, curled, and nourished. Results last 8 to 12 weeks.",
     services: [
-      {
-        name: "Lash Lift",
-        artist: "Fabiola",
-        artistImage: "/images/team-fabiola.jpg",
-        price: "$175",
-        duration: "30 mins",
-        bookingUrl: bookingBase,
-      },
-      {
-        name: "Lash Lift",
-        artist: "Diana",
-        artistImage: "/images/team-diana.jpg",
-        price: "$175",
-        duration: "30 mins+",
-        bookingUrl: bookingBase,
-      },
+      { name: "Lash Lift", artist: "Fabiola", artistImage: "/images/team-fabiola.jpg", price: "$175", duration: "30 mins", bookingUrl: bookingBase },
+      { name: "Lash Lift", artist: "Diana",   artistImage: "/images/team-diana.jpg",   price: "$175", duration: "30 mins+", bookingUrl: bookingBase },
     ],
   },
   {
     category: "Lash Tint",
-    description: "Lash tint enhances and defines your lashes. Pairs perfectly with a lash lift. Results last 3 to 6 weeks.",
+    description: "Enhances and defines your lashes. Pairs perfectly with a lift. Results last 3 to 6 weeks.",
     services: [
-      {
-        name: "Lash Tint",
-        artist: "Marwa",
-        artistImage: "/images/team-marwa.jpg",
-        price: "$50",
-        duration: "30 mins",
-        bookingUrl: bookingBase,
-      },
-      {
-        name: "Lash Tint",
-        artist: "Fabiola",
-        artistImage: "/images/team-fabiola.jpg",
-        price: "$49",
-        duration: "30 mins",
-        bookingUrl: bookingBase,
-      },
-      {
-        name: "Lash Tint",
-        artist: "Diana",
-        artistImage: "/images/team-diana.jpg",
-        price: "$49",
-        duration: "30 mins",
-        bookingUrl: bookingBase,
-      },
+      { name: "Lash Tint", artist: "Marwa",   artistImage: "/images/team-marwa.jpg",   price: "$50", duration: "30 mins", bookingUrl: bookingBase },
+      { name: "Lash Tint", artist: "Fabiola", artistImage: "/images/team-fabiola.jpg", price: "$49", duration: "30 mins", bookingUrl: bookingBase },
+      { name: "Lash Tint", artist: "Diana",   artistImage: "/images/team-diana.jpg",   price: "$49", duration: "30 mins", bookingUrl: bookingBase },
     ],
   },
   {
     category: "Fuller Lash Line",
-    description: "Semi-permanent lash enhancement that defines and highlights the natural beauty of your eyes. Creates a thin, precise line effect.",
+    description: "Semi-permanent enhancement that defines the natural beauty of your eyes with a thin, precise line effect.",
     services: [
-      {
-        name: "Fuller Lash Line",
-        artist: "Marisol",
-        artistImage: "/images/team-marisol.jpg",
-        price: "$550",
-        duration: "1 hr",
-        bookingUrl: bookingBase,
-      },
+      { name: "Fuller Lash Line", artist: "Marisol", artistImage: "/images/team-marisol.jpg", price: "$550", duration: "1 hr", bookingUrl: bookingBase },
     ],
   },
 ];
+
+function gridCols(count: number) {
+  if (count === 1) return "grid-cols-1 max-w-xs";
+  if (count === 2) return "grid-cols-1 sm:grid-cols-2 max-w-xl";
+  return "grid-cols-1 sm:grid-cols-2 md:grid-cols-3";
+}
 
 export default function BookLashLift() {
   return (
     <div className="min-h-screen bg-white font-sans text-black">
 
-      {/* Header */}
+      {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-zinc-100">
         <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 z-50">
@@ -120,6 +84,7 @@ export default function BookLashLift() {
               }}
             />
           </Link>
+          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8 text-[11px] tracking-[0.2em] uppercase">
             <Link href="/" className="hover:opacity-60 transition-opacity">Services</Link>
             <Link href="/gallery" className="hover:opacity-60 transition-opacity">Gallery</Link>
@@ -127,54 +92,59 @@ export default function BookLashLift() {
               <Phone className="w-3.5 h-3.5" /> (858) 322-0010
             </a>
           </nav>
+          {/* Mobile: phone icon */}
+          <a href="tel:8583220010" className="md:hidden flex items-center gap-2 text-[11px] tracking-[0.2em] text-zinc-500 hover:text-black transition-colors">
+            <Phone className="w-4 h-4" />
+          </a>
         </div>
       </header>
 
-      {/* Page intro */}
-      <section className="bg-[#F5F1EC] py-14 md:py-20 border-b border-zinc-200">
+      {/* ── Intro ──────────────────────────────────────────────────────── */}
+      <section className="bg-[#F5F1EC] py-10 md:py-16 border-b border-zinc-200">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.div variants={fadeUp} className="mb-4">
+            <motion.div variants={fadeUp} className="mb-5">
               <Link href="/lash-lift" className="inline-flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-zinc-400 hover:text-black transition-colors">
-                <ArrowLeft className="w-3 h-3" /> Back to Lash Lift
+                <ArrowLeft className="w-3 h-3" /> Lash Lift
               </Link>
             </motion.div>
-            <motion.p variants={fadeUp} className="text-[10px] tracking-[0.4em] uppercase text-zinc-400 mb-3">
-              YUMI Keratin Lash Lift · La Jolla, San Diego
-            </motion.p>
-            <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-6xl font-light leading-tight mb-4">
-              Choose your service.
+            <motion.h1 variants={fadeUp} className="font-serif text-4xl md:text-6xl font-light leading-tight mb-3">
+              Book your lash lift.
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-sm text-zinc-500 max-w-md">
-              Select a treatment and artist below. Each booking goes directly to your confirmed appointment.
+            <motion.p variants={fadeUp} className="text-sm text-zinc-500 max-w-sm">
+              Choose a service and artist. Each card books directly into that appointment.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Service groups */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* ── Services ───────────────────────────────────────────────────── */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
-            className="space-y-16 md:space-y-24"
+            className="space-y-12 md:space-y-16"
           >
             {serviceGroups.map((group) => (
               <motion.div key={group.category} variants={fadeUp}>
+
                 {/* Category header */}
-                <div className="mb-8 pb-5 border-b border-zinc-100">
-                  <h2 className="font-serif text-3xl md:text-4xl font-light mb-2">{group.category}</h2>
-                  <p className="text-sm text-zinc-500 max-w-xl">{group.description}</p>
+                <div className="mb-6 pb-4 border-b border-zinc-100">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h2 className="font-serif text-2xl md:text-3xl font-light">{group.category}</h2>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-zinc-400">{group.services.length} {group.services.length === 1 ? "artist" : "artists"}</span>
+                  </div>
+                  <p className="text-sm text-zinc-500 mt-1 max-w-xl">{group.description}</p>
                 </div>
 
                 {/* Artist cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                <div className={`grid gap-4 ${gridCols(group.services.length)}`}>
                   {group.services.map((svc) => (
                     <motion.div
-                      key={`${svc.category}-${svc.artist}`}
+                      key={`${svc.name}-${svc.artist}`}
                       variants={fadeUp}
                       className="group border border-zinc-100 bg-white hover:border-zinc-300 transition-all duration-300 hover:shadow-sm"
                     >
@@ -188,11 +158,11 @@ export default function BookLashLift() {
                       </div>
 
                       {/* Info */}
-                      <div className="p-5">
+                      <div className="p-4 md:p-5">
                         <p className="text-[10px] tracking-[0.3em] uppercase text-zinc-400 mb-1">{svc.name}</p>
                         <p className="font-serif text-xl font-light mb-4">{svc.artist}</p>
 
-                        <div className="flex items-center justify-between mb-5">
+                        <div className="flex items-center justify-between mb-4">
                           <span className="text-sm font-medium text-black">{svc.price}</span>
                           <span className="flex items-center gap-1.5 text-[11px] text-zinc-400">
                             <Clock className="w-3 h-3" /> {svc.duration}
@@ -217,11 +187,21 @@ export default function BookLashLift() {
         </div>
       </section>
 
-      {/* Footer strip */}
-      <footer className="border-t border-zinc-100 py-8 bg-white">
-        <div className="container mx-auto px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.2em] uppercase text-zinc-400">
+      {/* ── Need help strip ────────────────────────────────────────────── */}
+      <div className="bg-[#F5F1EC] border-t border-zinc-200 py-6">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-sm text-zinc-500">Not sure which service or artist is right for you?</p>
+          <a href="tel:8583220010" className="inline-flex items-center gap-2 border border-zinc-300 bg-white text-black px-6 py-3 text-[10px] tracking-[0.25em] uppercase hover:border-black transition-colors whitespace-nowrap">
+            <Phone className="w-3.5 h-3.5" /> Call Us — (858) 322-0010
+          </a>
+        </div>
+      </div>
+
+      {/* ── Footer ─────────────────────────────────────────────────────── */}
+      <footer className="border-t border-zinc-100 py-6 bg-white">
+        <div className="container mx-auto px-4 md:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] tracking-[0.2em] uppercase text-zinc-400">
           <span>1150 Silverado St Suite 308, La Jolla CA 92037</span>
-          <span>Tue–Sat 9–5 · <a href="tel:8583220010" className="hover:text-black transition-colors">(858) 322-0010</a></span>
+          <span>Tue–Sat 9am–5pm</span>
         </div>
       </footer>
 
