@@ -59,14 +59,29 @@ export default function LashLift() {
   useEffect(() => {
     const video = heroVideoRef.current;
     if (!video) return;
-    video.currentTime = 18;
+
+    const start = () => {
+      video.currentTime = 18;
+      video.play().catch(() => {});
+    };
+
     const onTimeUpdate = () => {
-      if (video.currentTime >= 20) {
+      if (video.currentTime >= 20 || video.currentTime < 18) {
         video.currentTime = 18;
       }
     };
+
+    if (video.readyState >= 1) {
+      start();
+    } else {
+      video.addEventListener("loadedmetadata", start, { once: true });
+    }
+
     video.addEventListener("timeupdate", onTimeUpdate);
-    return () => video.removeEventListener("timeupdate", onTimeUpdate);
+    return () => {
+      video.removeEventListener("loadedmetadata", start);
+      video.removeEventListener("timeupdate", onTimeUpdate);
+    };
   }, []);
 
   return (
