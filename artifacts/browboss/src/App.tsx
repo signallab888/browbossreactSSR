@@ -6,6 +6,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Gallery from "@/pages/Gallery";
 import LashLift from "@/pages/LashLift";
+import BookLashLift from "@/pages/BookLashLift";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/gallery" component={Gallery} />
       <Route path="/lash-lift" component={LashLift} />
+      <Route path="/book/lash-lift" component={BookLashLift} />
       <Route component={NotFound} />
     </Switch>
   );

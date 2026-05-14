@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Phone, ChevronDown, Check, X, Instagram } from "lucide-react";
 import { BeforeAfterCard } from "@/components/BeforeAfterCard";
 
-const bookingUrl =
-  "https://square.site/appointments/book/2H4Q2RWG1Q1QF/browboss-brow-beauty-san-diego-ca";
+const bookingUrl = "/book/lash-lift";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -77,10 +76,10 @@ export default function LashLift() {
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/#services" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Services</Link>
             <Link href="/gallery" className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity">Gallery</Link>
-            <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
+            <Link href={bookingUrl}
               className="bg-black text-white px-5 py-2 text-xs tracking-[0.2em] uppercase hover:bg-zinc-800 transition-colors">
               Book Now
-            </a>
+            </Link>
             <a href="tel:8583220010" className="text-sm tracking-widest uppercase flex items-center gap-2 hover:opacity-70 transition-opacity">
               <Phone className="w-4 h-4" /> (858) 322-0010
             </a>
@@ -113,10 +112,10 @@ export default function LashLift() {
               No extensions. No glue. No morning routine. Just your natural lashes, open, curled, and visible from the moment you wake up.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch gap-3 w-full sm:w-auto">
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
+              <Link href={bookingUrl}
                 className="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-100 transition-colors whitespace-nowrap">
                 Book My Appointment <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
               <a href="tel:8583220010"
                 className="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-white hover:bg-white/10 transition-colors whitespace-nowrap">
                 <Phone className="w-3.5 h-3.5" /> (858) 322-0010
@@ -410,10 +409,10 @@ export default function LashLift() {
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch justify-center gap-3 mt-8">
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
+              <Link href={bookingUrl}
                 className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors whitespace-nowrap">
                 Book Online <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
               <a href="tel:8583220010"
                 className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors whitespace-nowrap">
                 <Phone className="w-3.5 h-3.5" /> (858) 322-0010
@@ -471,10 +470,10 @@ export default function LashLift() {
             Ready to book your lift?
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0 w-full sm:w-auto">
-            <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
+            <Link href={bookingUrl}
               className="inline-flex items-center justify-center gap-2 bg-black text-white px-8 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors w-full sm:w-auto">
               Book My Appointment <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
             <a href="tel:8583220010"
               className="inline-flex items-center justify-center gap-2 border border-zinc-300 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto">
               <Phone className="w-3.5 h-3.5" /> (858) 322-0010
@@ -645,10 +644,10 @@ export default function LashLift() {
               We serve clients from La Jolla, Del Mar, Carmel Valley, Pacific Beach, Bird Rock, UTC, Mission Hills, and all of San Diego County.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch justify-center gap-4">
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer"
+              <Link href={bookingUrl}
                 className="inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-4 text-xs tracking-[0.25em] uppercase hover:bg-zinc-800 transition-colors w-full sm:w-auto">
                 Book My Appointment <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
               <a href="tel:8583220010"
                 className="inline-flex items-center justify-center gap-2 border border-zinc-200 text-black px-8 py-4 text-xs tracking-[0.25em] uppercase hover:border-black transition-colors w-full sm:w-auto whitespace-nowrap">
                 <Phone className="w-4 h-4" /> (858) 322-0010
