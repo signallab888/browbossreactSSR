@@ -93,12 +93,15 @@ export default function LashLift() {
 
       {/* ── Hero ───────────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-end bg-zinc-900 overflow-hidden">
-        <img
-          src="/images/lash-after-1.jpg"
-          alt="Lash Lift result"
-          className="absolute inset-0 w-full h-full object-cover object-top opacity-60"
+        <video
+          src="/videos/ll-reel-1.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
         <div className="relative container mx-auto px-4 md:px-8 pb-16 md:pb-24">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-xl">
             <motion.p variants={fadeUp} className="text-[10px] tracking-[0.4em] uppercase text-white/60 mb-5">
