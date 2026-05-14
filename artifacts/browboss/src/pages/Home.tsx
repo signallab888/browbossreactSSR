@@ -1246,7 +1246,7 @@ export default function Home() {
             {[
               { name: "Leslie Ritchie",     role: "Founder & Master Brow Specialist", img: "/images/leslie-founder.jpg",  pos: "top" },
               { name: "Marwa",              role: "Esthetician",                      img: "/images/team-fabiola.jpg",    pos: "top" },
-              { name: "Diana Jabar",        role: "Brow Specialist & Esthetician",    img: "/images/team-diana.jpg",      pos: "top" },
+
               { name: "Marisol Murillo",    role: "Lip Blush Specialist",             img: "/images/team-marisol.jpg",    pos: "top" },
               { name: "Jackielou Tantay",   role: "Eyebrow Specialist",               img: "/images/team-jackielou.jpg",  pos: "top" },
             ].map((member) => (
