@@ -931,23 +931,19 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
-                icon: "🌿",
-                q: "Does it hurt?",
+                q: "DOES IT HURT?",
                 a: "Most clients describe it as mild scratching. We use medical-grade numbing cream so you stay comfortable from start to finish.",
               },
               {
-                icon: "⏳",
-                q: "How long does it last?",
+                q: "HOW LONG DOES IT LAST?",
                 a: "Microblading and permanent makeup last 1–3 years. Lash lifts last 6–8 weeks. Brow lamination lasts 4–6 weeks.",
               },
               {
-                icon: "💳",
-                q: "What does it cost?",
+                q: "WHAT DOES IT COST?",
                 a: "Services start at $45. Permanent makeup from $550. Pay over time from $50/month with Cherry, Afterpay, or Klarna.",
               },
               {
-                icon: "🛡️",
-                q: "Is it safe?",
+                q: "IS IT SAFE?",
                 a: "Yes. California-licensed, fully insured, single-use disposable tools. Over 500 women have trusted us with their face.",
               },
             ].map((item, i) => (
@@ -959,8 +955,7 @@ export default function Home() {
                 variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" } } }}
                 className="bg-white rounded-xl p-5 flex flex-col gap-3 shadow-[0_1px_4px_rgba(0,0,0,0.06)]"
               >
-                <span className="text-2xl">{item.icon}</span>
-                <p className="font-semibold text-sm leading-snug">{item.q}</p>
+                <p className="font-semibold text-xs tracking-widest leading-snug">{item.q}</p>
                 <p className="text-xs text-zinc-500 leading-relaxed">{item.a}</p>
               </motion.div>
             ))}
