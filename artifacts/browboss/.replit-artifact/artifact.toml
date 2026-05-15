@@ -19,12 +19,7 @@ run = "pnpm --filter @workspace/browboss run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/browboss", "run", "build" ]
-publicDir = "artifacts/browboss/dist/public"
-serve = "static"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+run = "pnpm --filter @workspace/browboss run start"
 
 [services.env]
 PORT = "19857"

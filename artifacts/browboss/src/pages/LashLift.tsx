@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "wouter";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Phone, ChevronDown, Check, X, Instagram } from "lucide-react";
 import { BeforeAfterCard } from "@/components/BeforeAfterCard";

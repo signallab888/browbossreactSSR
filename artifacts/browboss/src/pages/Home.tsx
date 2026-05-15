@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState, useRef } from "react";
-import { Link } from "wouter";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Menu,
