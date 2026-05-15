@@ -1,4 +1,6 @@
 {
   "/page": "app/page.js",
-  "/lash-lift/page": "app/lash-lift/page.js"
+  "/gallery/page": "app/gallery/page.js",
+  "/book/lash-lift/page": "app/book/lash-lift/page.js",
+  "/book/microblading/page": "app/book/microblading/page.js"
 }
