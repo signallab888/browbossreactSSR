@@ -111,15 +111,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
           }}
         />
-      </head>
-      <body>
         <Providers>{children}</Providers>
       </body>
     </html>
